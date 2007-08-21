@@ -246,24 +246,28 @@ namespace wqNotes_frm
         {
             NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
             Form5 frm = new Form5();
-            frm.ShowDialog();
-            MainJrn.CreateDir(nit.wqId, frm.wqResult);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                MainJrn.CreateDir(nit.wqId, frm.wqResult);
 
-            treeView1.Nodes.Clear();
-            treeView1.Nodes.Add(MainJrn.LoadTreeView());
-            treeView1.ExpandAll();
+                treeView1.Nodes.Clear();
+                treeView1.Nodes.Add(MainJrn.LoadTreeView());
+                treeView1.ExpandAll();
+            }
         }
 
         private void Á‡ÏÂÚÍÛToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
             Form5 frm = new Form5();
-            frm.ShowDialog();
-            MainJrn.CreateNode(nit.wqId, frm.wqResult);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                MainJrn.CreateNode(nit.wqId, frm.wqResult);
 
-            treeView1.Nodes.Clear();
-            treeView1.Nodes.Add(MainJrn.LoadTreeView());
-            treeView1.ExpandAll();
+                treeView1.Nodes.Clear();
+                treeView1.Nodes.Add(MainJrn.LoadTreeView());
+                treeView1.ExpandAll();
+            }
         }
     }
 }

@@ -19,7 +19,6 @@ namespace wqNotes_frm
         private void button1_Click(object sender, EventArgs e)
         {
             wqResult = textBox1.Text;
-            this.Close();
         }
     }
 }

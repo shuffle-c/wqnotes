@@ -349,6 +349,9 @@ namespace wqNotes_frm
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.wqRichEdit1 = new wqNotes_frm.wqRichEdit();
+            this.ïèñüìîToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.îò÷åòToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -1753,6 +1756,8 @@ namespace wqNotes_frm
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.HideSelection = false;
             this.treeView1.HotTracking = true;
+            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Node2";
@@ -1788,6 +1793,7 @@ namespace wqNotes_frm
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode14});
             this.treeView1.PathSeparator = "/";
+            this.treeView1.SelectedImageIndex = 0;
             this.treeView1.ShowRootLines = false;
             this.treeView1.Size = new System.Drawing.Size(198, 304);
             this.treeView1.TabIndex = 0;
@@ -1820,7 +1826,7 @@ namespace wqNotes_frm
             this.ïåğåìåñòèòüÂíèçToolStripMenuItem,
             this.ñâîéñòâàToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(196, 446);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(196, 424);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // äîáàâèòüÂÇàêëàäêèToolStripMenuItem
@@ -1841,14 +1847,14 @@ namespace wqNotes_frm
             // ïàïêóToolStripMenuItem
             // 
             this.ïàïêóToolStripMenuItem.Name = "ïàïêóToolStripMenuItem";
-            this.ïàïêóToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ïàïêóToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.ïàïêóToolStripMenuItem.Text = "Ïàïêó";
             this.ïàïêóToolStripMenuItem.Click += new System.EventHandler(this.ïàïêóToolStripMenuItem_Click);
             // 
             // çàìåòêóToolStripMenuItem
             // 
             this.çàìåòêóToolStripMenuItem.Name = "çàìåòêóToolStripMenuItem";
-            this.çàìåòêóToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.çàìåòêóToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.çàìåòêóToolStripMenuItem.Text = "Çàìåòêó";
             this.çàìåòêóToolStripMenuItem.Click += new System.EventHandler(this.çàìåòêóToolStripMenuItem_Click);
             // 
@@ -1920,7 +1926,9 @@ namespace wqNotes_frm
             this.çàìåòêàToolStripMenuItem1,
             this.êîäToolStripMenuItem1,
             this.öèòàòàToolStripMenuItem,
-            this.ëîãToolStripMenuItem});
+            this.ëîãToolStripMenuItem,
+            this.ïèñüìîToolStripMenuItem,
+            this.îò÷åòToolStripMenuItem});
             this.ñòèëüToolStripMenuItem.Name = "ñòèëüToolStripMenuItem";
             this.ñòèëüToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.ñòèëüToolStripMenuItem.Text = "Ñòèëü";
@@ -1928,25 +1936,25 @@ namespace wqNotes_frm
             // çàìåòêàToolStripMenuItem1
             // 
             this.çàìåòêàToolStripMenuItem1.Name = "çàìåòêàToolStripMenuItem1";
-            this.çàìåòêàToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.çàìåòêàToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.çàìåòêàToolStripMenuItem1.Text = "Çàìåòêà";
             // 
             // êîäToolStripMenuItem1
             // 
             this.êîäToolStripMenuItem1.Name = "êîäToolStripMenuItem1";
-            this.êîäToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.êîäToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.êîäToolStripMenuItem1.Text = "Êîä";
             // 
             // öèòàòàToolStripMenuItem
             // 
             this.öèòàòàToolStripMenuItem.Name = "öèòàòàToolStripMenuItem";
-            this.öèòàòàToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.öèòàòàToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.öèòàòàToolStripMenuItem.Text = "Öèòàòà";
             // 
             // ëîãToolStripMenuItem
             // 
             this.ëîãToolStripMenuItem.Name = "ëîãToolStripMenuItem";
-            this.ëîãToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.ëîãToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ëîãToolStripMenuItem.Text = "Ëîã";
             // 
             // ïåğåèìåíîâàòüToolStripMenuItem
@@ -2714,12 +2722,32 @@ namespace wqNotes_frm
             // 
             this.wqRichEdit1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.wqRichEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wqRichEdit1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.wqRichEdit1.Location = new System.Drawing.Point(5, 5);
             this.wqRichEdit1.Name = "wqRichEdit1";
             this.wqRichEdit1.Size = new System.Drawing.Size(504, 192);
             this.wqRichEdit1.TabIndex = 0;
             this.wqRichEdit1.Text = resources.GetString("wqRichEdit1.Text");
             this.wqRichEdit1.TextChanged += new System.EventHandler(this.wqRichEdit1_TextChanged);
+            // 
+            // ïèñüìîToolStripMenuItem
+            // 
+            this.ïèñüìîToolStripMenuItem.Name = "ïèñüìîToolStripMenuItem";
+            this.ïèñüìîToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ïèñüìîToolStripMenuItem.Text = "Ïèñüìî";
+            // 
+            // îò÷åòToolStripMenuItem
+            // 
+            this.îò÷åòToolStripMenuItem.Name = "îò÷åòToolStripMenuItem";
+            this.îò÷åòToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.îò÷åòToolStripMenuItem.Text = "Îò÷åò";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "");
+            this.imageList1.Images.SetKeyName(1, "");
             // 
             // Form1
             // 
@@ -3040,6 +3068,9 @@ namespace wqNotes_frm
         private System.Windows.Forms.ToolStripMenuItem ñâîéñòâàToolStripMenuItem1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem ïèñüìîToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem îò÷åòToolStripMenuItem;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

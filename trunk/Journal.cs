@@ -116,11 +116,9 @@ namespace wqNotes_frm
             dtb.Columns.Add("size", typeof(Int32));
 
             this.wqMainDts.Tables["dir"].Rows.Add(new object[] {
-                1,null,"root",DateTime.Now,DateTime.Now,0,null,0,1,12});
+                1,null,"root",DateTime.Now,DateTime.Now,0,null,0,1,0});
             this.wqMainDts.Tables["node"].Rows.Add(new object[] {
-                2,1,"default",DateTime.Now,DateTime.Now,0,0,null,0,12});
-
-            this.SetNodeContent(2, "Кревед");
+                2,1,"default",DateTime.Now,DateTime.Now,0,0,null,0,0});
 
             DataRelation drln = this.wqMainDts.Relations.Add("dir-dir",
                 this.wqMainDts.Tables["dir"].Columns["id"],
@@ -148,6 +146,8 @@ namespace wqNotes_frm
             this.wqMainDts.Tables["dir"].Columns["parent_id"].ColumnMapping = MappingType.Hidden;
             this.wqMainDts.Tables["node"].Columns["parent_id"].ColumnMapping = MappingType.Hidden;
             this.wqMainDts.Tables["attach"].Columns["parent_id"].ColumnMapping = MappingType.Hidden;
+            
+            this.SetNodeContent(2, "Кревед");
 
             this.SaveDB(this.DBPath);
             return true;
@@ -229,7 +229,11 @@ namespace wqNotes_frm
             FileInfo fid = new FileInfo(this.DBPath + "s");
             fid.CopyTo(path, true);
             fid.Delete();
-            if (this.fxmltmps != null) this.fxmltmps.Close();
+            if (this.fxmltmps != null)
+            {
+                this.fxmltmps.Close();
+                this.fxmltmps = null;
+            }
             fid = new FileInfo(this.wqGetTmpName()[0]);
             if(fid.Exists) fid.Delete();
             fid = new FileInfo(this.wqGetTmpName()[1]);
