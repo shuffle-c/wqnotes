@@ -57,31 +57,31 @@ namespace wqNotes_frm
             treeNode25,
             treeNode26,
             treeNode27});
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Сегодня (3)", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Вчера (1)", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Сегодня (3)", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Вчера (1)", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "Бор жжот #932847",
             "5 КБ",
             "27.08.2006",
             "Лол"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Недавние заметки");
-            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Сотонинский червь");
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Телефон Гришки");
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Недавние заметки");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Сотонинский червь");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Телефон Гришки");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "Результат поиска 1",
             "344 байт",
             "26.07.2006",
             "26.07.2006",
             "/",
             "Заметка"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "Результат поиска 2",
             "234 байт",
             "26.07.2006",
             "26.07.2006",
             "/Лол",
             "Заметка"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "Код от Васи",
             "1000 МБ",
             "26.07.2006",
@@ -242,6 +242,7 @@ namespace wqNotes_frm
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -339,13 +340,15 @@ namespace wqNotes_frm
             this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
-            this.wqRichEdit1 = new wqNotes_frm.wqRichEdit();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripSplitButton();
-            this.сохранитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьВToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.свойстваToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripSplitButton();
             this.сохранитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьВToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -353,7 +356,9 @@ namespace wqNotes_frm
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
+            this.wqRichEdit1 = new wqNotes_frm.wqRichEdit();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -570,6 +575,7 @@ namespace wqNotes_frm
             this.копироватьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.копироватьToolStripMenuItem.Text = "Копировать";
+            this.копироватьToolStripMenuItem.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
             // 
             // вставитьToolStripMenuItem
             // 
@@ -595,6 +601,7 @@ namespace wqNotes_frm
             this.удалитьToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
             // выделитьВсеToolStripMenuItem
             // 
@@ -1640,6 +1647,12 @@ namespace wqNotes_frm
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(98, 16);
+            this.toolStripProgressBar1.Visible = false;
+            // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.AutoSize = false;
@@ -1810,6 +1823,7 @@ namespace wqNotes_frm
             this.treeView1.ShowRootLines = false;
             this.treeView1.Size = new System.Drawing.Size(198, 304);
             this.treeView1.TabIndex = 0;
+            this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
             this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDown);
@@ -1848,6 +1862,7 @@ namespace wqNotes_frm
             this.добавитьВЗакладкиToolStripMenuItem.Name = "добавитьВЗакладкиToolStripMenuItem";
             this.добавитьВЗакладкиToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.добавитьВЗакладкиToolStripMenuItem.Text = "Добавить в закладки";
+            this.добавитьВЗакладкиToolStripMenuItem.Click += new System.EventHandler(this.добавитьВЗакладкиToolStripMenuItem_Click);
             // 
             // создатьToolStripMenuItem
             // 
@@ -2490,22 +2505,22 @@ namespace wqNotes_frm
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            listViewGroup7.Header = "Сегодня (3)";
-            listViewGroup7.Name = "listViewGroup1";
-            listViewGroup8.Header = "Вчера (1)";
-            listViewGroup8.Name = "listViewGroup2";
+            listViewGroup3.Header = "Сегодня (3)";
+            listViewGroup3.Name = "listViewGroup1";
+            listViewGroup4.Header = "Вчера (1)";
+            listViewGroup4.Name = "listViewGroup2";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup7,
-            listViewGroup8});
-            listViewItem22.Group = listViewGroup7;
-            listViewItem23.Group = listViewGroup7;
-            listViewItem24.Group = listViewGroup7;
-            listViewItem25.Group = listViewGroup8;
+            listViewGroup3,
+            listViewGroup4});
+            listViewItem8.Group = listViewGroup3;
+            listViewItem9.Group = listViewGroup3;
+            listViewItem10.Group = listViewGroup3;
+            listViewItem11.Group = listViewGroup4;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem22,
-            listViewItem23,
-            listViewItem24,
-            listViewItem25});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11});
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(198, 304);
@@ -2644,12 +2659,12 @@ namespace wqNotes_frm
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
-            listViewItem27.ToolTipText = "А тута содержание этой шняги";
-            listViewItem28.ToolTipText = "#include <iostream> // Пашол нахуй";
+            listViewItem13.ToolTipText = "А тута содержание этой шняги";
+            listViewItem14.ToolTipText = "#include <iostream> // Пашол нахуй";
             this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem26,
-            listViewItem27,
-            listViewItem28});
+            listViewItem12,
+            listViewItem13,
+            listViewItem14});
             this.listView2.Location = new System.Drawing.Point(0, 4);
             this.listView2.Name = "listView2";
             this.listView2.ShowItemToolTips = true;
@@ -2657,6 +2672,7 @@ namespace wqNotes_frm
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
             // 
             // columnHeader6
             // 
@@ -2685,25 +2701,6 @@ namespace wqNotes_frm
             // 
             this.columnHeader11.Text = "Стиль";
             // 
-            // wqRichEdit1
-            // 
-            this.wqRichEdit1.AcceptsTab = true;
-            this.wqRichEdit1.AutoWordSelection = true;
-            this.wqRichEdit1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.wqRichEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wqRichEdit1.EnableAutoDragDrop = true;
-            this.wqRichEdit1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.wqRichEdit1.Location = new System.Drawing.Point(5, 5);
-            this.wqRichEdit1.Margin = new System.Windows.Forms.Padding(10);
-            this.wqRichEdit1.Name = "wqRichEdit1";
-            this.wqRichEdit1.Size = new System.Drawing.Size(504, 192);
-            this.wqRichEdit1.TabIndex = 0;
-            this.wqRichEdit1.Text = resources.GetString("wqRichEdit1.Text");
-            this.wqRichEdit1.wqNodeChanged += new wqNotes_frm.wqRichEdit.wqNodesEventHandler(this.wqRichEdit1_wqNodeChanged);
-            this.wqRichEdit1.SelectionChanged += new System.EventHandler(this.wqRichEdit1_SelectionChanged);
-            this.wqRichEdit1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wqRichEdit1_PreviewKeyDown);
-            this.wqRichEdit1.TextChanged += new System.EventHandler(this.wqRichEdit1_TextChanged);
-            // 
             // toolStrip2
             // 
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -2728,33 +2725,60 @@ namespace wqNotes_frm
             // toolStripButton10
             // 
             this.toolStripButton10.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сохранитьToolStripMenuItem2,
+            this.открытьToolStripMenuItem1,
             this.открытьВToolStripMenuItem,
-            this.удалитьToolStripMenuItem1});
+            this.сохранитьToolStripMenuItem2,
+            this.удалитьToolStripMenuItem1,
+            this.toolStripSeparator10,
+            this.свойстваToolStripMenuItem2});
             this.toolStripButton10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
             this.toolStripButton10.Size = new System.Drawing.Size(117, 22);
             this.toolStripButton10.Text = "file.jpg (234 КБ)";
+            this.toolStripButton10.ButtonClick += new System.EventHandler(this.toolStripButton10_ButtonClick);
             // 
-            // сохранитьToolStripMenuItem2
+            // открытьToolStripMenuItem1
             // 
-            this.сохранитьToolStripMenuItem2.Name = "сохранитьToolStripMenuItem2";
-            this.сохранитьToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.сохранитьToolStripMenuItem2.Text = "Сохранить";
+            this.открытьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
+            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.открытьToolStripMenuItem1.Text = "Открыть";
+            this.открытьToolStripMenuItem1.Click += new System.EventHandler(this.открытьToolStripMenuItem1_Click);
             // 
             // открытьВToolStripMenuItem
             // 
             this.открытьВToolStripMenuItem.Name = "открытьВToolStripMenuItem";
             this.открытьВToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.открытьВToolStripMenuItem.Text = "Открыть в...";
+            this.открытьВToolStripMenuItem.Click += new System.EventHandler(this.открытьВToolStripMenuItem_Click);
+            // 
+            // сохранитьToolStripMenuItem2
+            // 
+            this.сохранитьToolStripMenuItem2.Name = "сохранитьToolStripMenuItem2";
+            this.сохранитьToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.сохранитьToolStripMenuItem2.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem2.Click += new System.EventHandler(this.сохранитьToolStripMenuItem2_Click);
             // 
             // удалитьToolStripMenuItem1
             // 
             this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
             this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.удалитьToolStripMenuItem1.Text = "Удалить";
+            this.удалитьToolStripMenuItem1.Click += new System.EventHandler(this.удалитьToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(149, 6);
+            // 
+            // свойстваToolStripMenuItem2
+            // 
+            this.свойстваToolStripMenuItem2.Name = "свойстваToolStripMenuItem2";
+            this.свойстваToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.свойстваToolStripMenuItem2.Text = "Свойства";
+            this.свойстваToolStripMenuItem2.Click += new System.EventHandler(this.свойстваToolStripMenuItem2_Click);
             // 
             // toolStripButton11
             // 
@@ -2795,16 +2819,32 @@ namespace wqNotes_frm
             this.toolStripButton12.Name = "toolStripButton12";
             this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton12.Text = "Добавить файл";
+            this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
             // 
-            // openFileDialog1
+            // openFileDialog2
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog2.Filter = "Все файлы (*.*)|*.*";
+            this.openFileDialog2.FilterIndex = 0;
+            this.openFileDialog2.Title = "Добавить файл";
             // 
-            // toolStripProgressBar1
+            // wqRichEdit1
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(98, 16);
-            this.toolStripProgressBar1.Visible = false;
+            this.wqRichEdit1.AcceptsTab = true;
+            this.wqRichEdit1.AutoWordSelection = true;
+            this.wqRichEdit1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.wqRichEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wqRichEdit1.EnableAutoDragDrop = true;
+            this.wqRichEdit1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wqRichEdit1.Location = new System.Drawing.Point(5, 5);
+            this.wqRichEdit1.Margin = new System.Windows.Forms.Padding(10);
+            this.wqRichEdit1.Name = "wqRichEdit1";
+            this.wqRichEdit1.Size = new System.Drawing.Size(504, 192);
+            this.wqRichEdit1.TabIndex = 0;
+            this.wqRichEdit1.Text = resources.GetString("wqRichEdit1.Text");
+            this.wqRichEdit1.wqNodeChanged += new wqNotes_frm.wqRichEdit.wqNodesEventHandler(this.wqRichEdit1_wqNodeChanged);
+            this.wqRichEdit1.SelectionChanged += new System.EventHandler(this.wqRichEdit1_SelectionChanged);
+            this.wqRichEdit1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wqRichEdit1_PreviewKeyDown);
+            this.wqRichEdit1.TextChanged += new System.EventHandler(this.wqRichEdit1_TextChanged);
             // 
             // Form1
             // 
@@ -3133,6 +3173,11 @@ namespace wqNotes_frm
         private wqRichEdit wqRichEdit1;
         private System.Windows.Forms.ToolStripMenuItem сохранитьКакToolStripMenuItem;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem свойстваToolStripMenuItem2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
     }
 }
 
