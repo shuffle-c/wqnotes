@@ -12,3 +12,4 @@ obj\Debug\wqNotes_frm.pdb
 obj\Debug\wqNotes_frm.Form5.resources
 bin\Debug\wqNotes_frm.exe.config
 obj\Debug\wqNotes_frm.Form6.resources
+obj\Debug\wqNotes_frm.Form7.resources

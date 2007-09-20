@@ -6,11 +6,18 @@ using System.Data;
 using System.Xml;
 using System.Xml.XPath;
 using System.IO;
+using System.IO.Compression;
 
 namespace wqNotes_frm
 {
     public class Pair<T, K>
     {
+        public Pair() { }
+        public Pair(T first, K second)
+        {
+            this.First = first;
+            this.Second = second;
+        }
         public T First;
         public K Second;
     }
@@ -54,10 +61,11 @@ namespace wqNotes_frm
         public Int32 wqPriority;
         public String wqCrypto;
         public String wqHash;
-        public Int32 wqFlag;
+        public String wqFlag;
         public Int32 wqSize;
-        //schema for node & count for dir
-        public Int32 wqAddInfo;
+        public Int32 wqExSize;
+        public Int32 wqSchema;
+        public Int32 wqCount;
     }
 
     public class Journal
@@ -66,97 +74,110 @@ namespace wqNotes_frm
         private Int32 wqLastId;
         private List<Int32> DelId = new List<Int32>();
         private Dictionary<Int32, Int32> cID = new Dictionary<Int32, Int32>();
-        private FileStream fxmltmps; //Временный файл ~DBPath.wqds
+        private Dictionary<Int32, Pair<Int32, Int32>> wqIndex =
+            new Dictionary<Int32, Pair<Int32, Int32>>();
+        private FileStream fxmltmps, wqfs; //Временный файл ~DBPath.wqds
+        private String DBPath;
+        public ToolStripProgressBar DBProcess = null;
         public Boolean IsChanged;
-        public String DBPath;
 
-        //Если при загрузки файла св-во IsChanged устновлено,
-        //скорее всего программа завершилась аварийно, поэтому следует
-        //вызвать метод RecoveryDB.
-        public Journal(string path, bool IsNew)
+        #region Public members 
+        /// <summary>
+        /// Если при загрузке файла св-во IsChanged устновлено,
+        /// скорее всего программа завершилась аварийно, поэтому следует
+        /// вызвать метод RecoveryDB.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="dbproc"></param>
+        public Journal(string path, ToolStripProgressBar dbproc)
         {
-            this.DBPath = path;
-            //~DBPath.wqds - временный файл данных
-            //~DBPath.wqdx - временный файл структуры
-            FileInfo fis = new FileInfo(this.wqGetTmpName()[0]);
-            FileInfo fix = new FileInfo(this.wqGetTmpName()[1]);
-            if (fis.Exists || fix.Exists)
-                this.IsChanged = true;
-            else
-                this.IsChanged = false;
-            this.wqMainDts = new DataSet();
-            if (!IsNew) this.LoadDB(this.DBPath);
-            else this.CreateNewDB(this.DBPath);
+            this.DBProcess = dbproc;
+            this.FilePath = path;
         }
 
         ~Journal()
         {
-            if (this.fxmltmps != null)
+            this.CloseDB();
+        }
+        
+        public string FilePath
+        {
+            get { return this.DBPath; }
+            set
             {
-                this.fxmltmps.Close();
-                this.fxmltmps = null;
+                this.DBPath = value;
+                FileInfo fis = new FileInfo(this.wqGetTmpName()[0]);
+                FileInfo fix = new FileInfo(this.wqGetTmpName()[1]);
+                if (fis.Exists || fix.Exists)
+                    this.IsChanged = true;
+                else
+                    this.IsChanged = false;
             }
+        }
+
+        public void CloseDB()
+        {
+            if (DBPath == "") return;
+            if (wqfs != null) { wqfs.Close(); wqfs = null; }
+            if (fxmltmps != null) { fxmltmps.Close(); fxmltmps = null; }
             FileInfo fis = new FileInfo(this.wqGetTmpName()[0]);
             FileInfo fix = new FileInfo(this.wqGetTmpName()[1]);
             if(fis.Exists) fis.Delete();
             if(fix.Exists) fix.Delete();
         }
 
-        public bool CreateNewDB(string path)
+        public bool CreateNewDB()
         {
             //Здесь нас не ебет, сохранен ли текущий файл
-            if (this.fxmltmps != null)
-            {
-                this.fxmltmps.Close();
-                this.fxmltmps = null;
-            }
+            if (wqfs != null) { wqfs.Close(); wqfs = null; }
+            if (fxmltmps != null) { fxmltmps.Close(); fxmltmps = null; }
             FileInfo fid = new FileInfo(this.wqGetTmpName()[0]);
             if (fid.Exists) fid.Delete();
-            fid =new FileInfo(this.wqGetTmpName()[1]);
+            fid = new FileInfo(this.wqGetTmpName()[1]);
             if(fid.Exists) fid.Delete();
             this.wqLastId = 2;
             this.DelId.Clear();
             this.cID.Clear();
-            this.wqMainDts.Reset();
-            this.DBPath = path;
+            this.wqMainDts = new DataSet();
             this.wqMainDts.DataSetName = "wqStructure";
             DataTable dtb = this.wqMainDts.Tables.Add("dir");
             dtb.Columns.Add("id", typeof(Int32));
             dtb.Columns.Add("parent_id", typeof(Int32));
-            dtb.Columns.Add("name", typeof(string));
+            dtb.Columns.Add("name", typeof(String));
             dtb.Columns.Add("dtc", typeof(DateTime));
             dtb.Columns.Add("dtm", typeof(DateTime));
             dtb.Columns.Add("priority", typeof(Int32));
-            dtb.Columns.Add("crypto", typeof(string));
-            dtb.Columns.Add("flag", typeof(Int32));
+            dtb.Columns.Add("crypto", typeof(String));
+            dtb.Columns.Add("flag", typeof(String));
             dtb.Columns.Add("count", typeof(Int32));
             dtb.Columns.Add("size", typeof(Int32));
             dtb = this.wqMainDts.Tables.Add("node");
             dtb.Columns.Add("id", typeof(Int32));
             dtb.Columns.Add("parent_id", typeof(Int32));
-            dtb.Columns.Add("name", typeof(string));
+            dtb.Columns.Add("name", typeof(String));
             dtb.Columns.Add("dtc", typeof(DateTime));
             dtb.Columns.Add("dtm", typeof(DateTime));
             dtb.Columns.Add("schema", typeof(Int32));
             dtb.Columns.Add("priority", typeof(Int32));
-            dtb.Columns.Add("crypto", typeof(string));
-            dtb.Columns.Add("flag", typeof(Int32));
+            dtb.Columns.Add("crypto", typeof(String));
+            dtb.Columns.Add("flag", typeof(String));
             dtb.Columns.Add("size", typeof(Int32));
+            dtb.Columns.Add("exsize", typeof(Int32));
             dtb = this.wqMainDts.Tables.Add("attach");
             dtb.Columns.Add("id", typeof(Int32));
             dtb.Columns.Add("parent_id", typeof(Int32));
-            dtb.Columns.Add("name", typeof(string));
+            dtb.Columns.Add("name", typeof(String));
             dtb.Columns.Add("dtc", typeof(DateTime));
             dtb.Columns.Add("dtm", typeof(DateTime));
-            dtb.Columns.Add("hash", typeof(string));
-            dtb.Columns.Add("crypto", typeof(string));
-            dtb.Columns.Add("flag", typeof(Int32));
+            dtb.Columns.Add("hash", typeof(String));
+            dtb.Columns.Add("crypto", typeof(String));
+            dtb.Columns.Add("flag", typeof(String));
             dtb.Columns.Add("size", typeof(Int32));
 
             this.wqMainDts.Tables["dir"].Rows.Add(new object[] {
-                1,null,"root",DateTime.Now,DateTime.Now,0,null,0,1,0});
+                1,null,"root",DateTime.Now,DateTime.Now,0,null,"",1,0});
             this.wqMainDts.Tables["node"].Rows.Add(new object[] {
-                2,1,"default",DateTime.Now,DateTime.Now,0,0,null,0,0});
+                2,1,"default",DateTime.Now,DateTime.Now,0,0,null,"",0,0});
 
             DataRelation drln = this.wqMainDts.Relations.Add("dir-dir",
                 this.wqMainDts.Tables["dir"].Columns["id"],
@@ -181,6 +202,7 @@ namespace wqNotes_frm
                      "dtm", "hash", "crypto", "flag", "size", "parent_id" } };
             for (Int32 i = 0; i < 3; ++i) for (Int32 j = 0; j < 9; ++j)
                 this.wqMainDts.Tables[l[i]].Columns[w[i, j]].ColumnMapping = MappingType.Attribute;
+            this.wqMainDts.Tables["node"].Columns["exsize"].ColumnMapping = MappingType.Attribute;
             this.wqMainDts.Tables["dir"].Columns["parent_id"].ColumnMapping = MappingType.Hidden;
             this.wqMainDts.Tables["node"].Columns["parent_id"].ColumnMapping = MappingType.Hidden;
             this.wqMainDts.Tables["attach"].Columns["parent_id"].ColumnMapping = MappingType.Hidden;
@@ -188,43 +210,22 @@ namespace wqNotes_frm
             this.SetNodeContent(2, "Кревед");
 
             this.SaveDB(this.DBPath);
-            // Fix: Новая база должна быть помечена как измененная
-            //this.SetNodeContent(2, "");
             return true;
         }
 
-        // Не готово
-        public NodeInfoTag[] GetAttachList(Int32 id)
+        public bool LoadDB()
         {
-            NodeInfoTag[] ret = new NodeInfoTag[2];
-            //return new int[]{a, b};
-            return ret;
-        }
-
-        public bool LoadDB(string path)
-        {
-            bool ret = true;
-            try
-            {
-                this.wqMainDts.Reset();
-                this.cID.Clear();
-                this.DelId.Clear();
-                this.fxmltmps = null;
-                this.IsChanged = false;
-                this.wqMainDts.ReadXml(path, XmlReadMode.ReadSchema);
-                this.wqGetFreeId();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                ret = false;
-            }
-            return ret;
-        }
-
-        // Не готово
-        public bool RecoverDB(string path)
-        {
+            if (!File.Exists(DBPath)) return false;
+            this.cID.Clear();
+            this.IsChanged = false;
+            this.wqMainDts = new DataSet();
+            if (fxmltmps != null) { fxmltmps.Close(); fxmltmps = null; }
+            FileStream fs = new FileStream(DBPath, FileMode.Open);
+            MemoryStream ms = this.wqLoadStructure(fs);
+            this.wqMainDts.ReadXml(ms, XmlReadMode.ReadSchema);
+            this.wqLoadIndexs(fs);
+            fs.Close();
+            this.wqfs = new FileStream(DBPath, FileMode.Open, FileAccess.ReadWrite);
             return true;
         }
 
@@ -232,6 +233,10 @@ namespace wqNotes_frm
         {
             if (!this.IsChanged) return true;
 
+            Int32 count = wqMainDts.Tables["node"].Rows.Count;
+            count += wqMainDts.Tables["attach"].Rows.Count;
+            try { DBProcess.Value = 0; } catch { }
+            try { DBProcess.Maximum = count + count / 20; } catch { }
             FileStream fsm = new FileStream(this.DBPath + "s", FileMode.Create);
             XmlTextWriter xmldb = new XmlTextWriter(fsm, System.Text.Encoding.UTF8);
 
@@ -240,6 +245,8 @@ namespace wqNotes_frm
             xmldb.WriteStartElement("wqMain");
             /*xmldb.WriteAttributeString("", "");*/
             wqMainDts.WriteXml(xmldb, XmlWriteMode.WriteSchema);
+            try { DBProcess.Value += count / 20; } catch { }
+            Int32 pos = (Int32)fsm.Position;
             xmldb.WriteStartElement("wqContent");
             xmldb.WriteStartElement("infoid");
             xmldb.WriteAttributeString("lastid", this.wqLastId.ToString());
@@ -253,60 +260,192 @@ namespace wqNotes_frm
                 xmldb.WriteAttributeString("id", nId.ToString());
                 xmldb.WriteString(this.GetNode(nId));
                 xmldb.WriteEndElement();
+                try { DBProcess.Value++; } catch { }
             }
             foreach (DataRow dr in this.wqMainDts.Tables["attach"].Rows)
             {
                 Int32 nId = Int32.Parse(dr["id"].ToString());
                 xmldb.WriteStartElement("wqAttach");
                 xmldb.WriteAttributeString("id", nId.ToString());
-                xmldb.WriteString(this.GetAttach(nId, true).ToString());
+                xmldb.WriteString(this.GetAttach(nId));
+                //this.SaveAttach(nId, xmldb.BaseStream);
                 xmldb.WriteEndElement();
+                try { DBProcess.Value++; } catch { }
             }
             xmldb.WriteEndElement(); //wqCtructure
             xmldb.WriteEndElement(); //wqMain
             xmldb.Close();
 
+            wqfs.Close();
             FileInfo fid = new FileInfo(this.DBPath + "s");
             fid.CopyTo(path, true);
             fid.Delete();
-            if (this.fxmltmps != null)
-            {
-                this.fxmltmps.Close();
-                this.fxmltmps = null;
-            }
+            if (fxmltmps != null) { fxmltmps.Close(); fxmltmps = null; }
             fid = new FileInfo(this.wqGetTmpName()[0]);
             if(fid.Exists) fid.Delete();
             fid = new FileInfo(this.wqGetTmpName()[1]);
             if(fid.Exists) fid.Delete();
 
-            this.IsChanged = false;
+            this.DBPath = path;
+            this.wqfs = new FileStream(DBPath, FileMode.Open, FileAccess.ReadWrite);
             this.cID.Clear();
+            this.IsChanged = false;
+            this.wqfs.Seek(pos, SeekOrigin.Begin);
+            this.wqLoadIndexs(this.wqfs);
             return true;
+        }
+
+        // Не готово
+        public bool RecoverDB(string path)
+        {
+            return true;
+        }
+
+        public NodeInfoTag[] GetAttachList(Int32 id)
+        {
+            DataRow[] drs = wqMainDts.Tables["node"].Select(
+                "id=" + id.ToString())[0].GetChildRows("node-attach");
+            NodeInfoTag[] ret = new NodeInfoTag[drs.Length];
+            for (int i = 0; i < ret.Length; ++i)
+                ret[i] = wqSetNit(drs[i], 2);
+            return ret;
+        }
+
+        public NodeInfoTag CreateAttach(Int32 parent, string FileName, bool IsLink, DateTime dtc, DateTime dtm)
+        {
+            Int32 nId = 0;
+            if (DelId.Count > 0)
+            {
+                nId = DelId[0];
+                DelId.RemoveAt(0);
+            }
+            else nId = ++wqLastId;
+
+            FileStream fs = new FileStream(FileName, FileMode.Open,
+                FileAccess.Read, FileShare.Read, 8192);
+            Int32 sz = (Int32)fs.Length;
+            CRC32 crc = new CRC32();
+            String hash = crc.GetCrc32(fs).ToString() + "::" + sz.ToString();
+            String stype = IsLink ? "shortcut" : "base64";
+
+            try
+            {
+                if (this.fxmltmps == null)
+                {
+                    this.fxmltmps = new FileStream(this.wqGetTmpName()[0],
+                        FileMode.Create, FileAccess.ReadWrite);
+                }
+                if (this.fxmltmps.CanSeek) this.fxmltmps.Seek(0, SeekOrigin.End);
+                if (fs.CanSeek) fs.Seek(0, SeekOrigin.Begin);
+                this.cID[nId] = (Int32)this.fxmltmps.Length;
+                if (IsLink) { fs.Close(); throw new MethodAccessException(); }
+
+                byte[] buf = new byte[sz];
+                { fs.Read(buf, 0, sz); fs.Close(); }
+                MemoryStream ms = new MemoryStream(); // DeflateStream Algorithm
+                GZipStream gzip = new GZipStream(ms, CompressionMode.Compress, true);
+                { gzip.Write(buf, 0, sz); gzip.Close(); }
+                sz = (Int32)ms.Length;
+                buf = new byte[sz];
+                ms.Seek(0, SeekOrigin.Begin);
+                { ms.Read(buf, 0, sz); ms.Close(); }
+                String b64 = Convert.ToBase64String(buf);
+                UTF8Encoding utf8 = new UTF8Encoding();
+                buf = utf8.GetBytes(b64);
+                sz = buf.Length;
+                this.fxmltmps.Write(buf, 0, sz);
+                this.fxmltmps.Flush();
+            }
+            catch (MethodAccessException ex) { ex.Source = ""; sz = 0; }
+            catch { /*MessageBox.Show("bag");*/ }
+
+            DataRow dr = this.wqMainDts.Tables["attach"].Rows.Add(new object[] {
+                nId,parent,FileName,dtc,dtm,hash,null,stype,sz });
+            NodeInfoTag ret = this.wqSetNit(dr, 2);
+            dr = dr.GetParentRow("node-attach");
+            dr["dtm"] = DateTime.Now;
+            dr["size"] = Int32.Parse(dr["size"].ToString()) + sz;
+            dr = dr.GetParentRow("dir-node");
+            while (dr != null)
+            {
+                dr["size"] = Int32.Parse(dr["size"].ToString()) + sz;
+                dr = dr.GetParentRow("dir-dir");
+            }
+            this.IsChanged = true;
+            this.wqBackupStructure();
+            return ret;
+        }
+
+        public bool SaveAttach(Int32 id, string FileName)
+        {
+            FileInfo fi = new FileInfo(FileName);
+            FileStream fs = fi.Open(FileMode.Create);
+            bool ret = this.SaveAttach(id, fs); fs.Close();
+
+            DataRow dr = wqMainDts.Tables["attach"].Select("id=" + id.ToString())[0];
+            fi.CreationTimeUtc = DateTime.Parse(dr["dtc"].ToString());
+            fi.LastWriteTimeUtc = DateTime.Parse(dr["dtm"].ToString());
+            return ret;
+        }
+
+        public bool SaveAttach(Int32 id, Stream fs)
+        {
+            byte[] buf = Convert.FromBase64String(this.GetAttach(id));
+            MemoryStream ms = new MemoryStream();
+            ms.Write(buf, 0, buf.Length);
+            ms.Seek(0, SeekOrigin.Begin);
+            GZipStream gzip = new GZipStream(ms, CompressionMode.Decompress);
+
+            const Int32 _size = 8192;
+            buf = new byte[_size];
+            Int32 count = gzip.Read(buf, 0, _size);
+            if (count == 0) return false;
+            while (count > 0)
+            {
+                fs.Write(buf, 0, count);
+                count = gzip.Read(buf, 0, _size);
+            }
+            { gzip.Close(); ms.Close(); }
+            return true;
+        }
+
+        public bool DeleteAttach(Int32 id)
+        {
+            DataRow dr;
+            bool ret = true;
+            try
+            {
+                dr = this.wqMainDts.Tables["attach"].Select("id=" + id.ToString())[0];
+                Int32 sz = Int32.Parse(dr["size"].ToString());
+                DataRow dw = dr.GetParentRow("node-attach");
+                dw["dtm"] = DateTime.Now;
+                dw["size"] = Int32.Parse(dw["size"].ToString()) - sz;
+                dw = dr.GetParentRow("dir-node");
+                while (dw != null)
+                {
+                    dw["size"] = Int32.Parse(dw["size"].ToString()) - sz;
+                    dw = dw.GetParentRow("dir-dir");
+                }
+                dr.Delete();
+                this.IsChanged = true;
+                this.DelId.Add(id);
+                if (this.cID.ContainsKey(id))
+                    cID.Remove(id);
+                this.wqBackupStructure();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                ret = false;
+            }
+            return ret;
         }
 
         public string GetNode(Int32 id)
         {
-            string ret;
-            if (this.cID.ContainsKey(id))
-            {
-                DataRow dr;
-                dr = this.wqMainDts.Tables["node"].Select("id=" + id.ToString())[0];
-                Int32 sz = Int32.Parse(dr["size"].ToString());
-                byte[] res = new byte[sz];
-                this.fxmltmps.Seek(this.cID[id], SeekOrigin.Begin);
-                this.fxmltmps.Read(res, 0, sz);
-                UTF8Encoding utf8 = new UTF8Encoding();
-                ret = utf8.GetString(res);
-            }
-            else
-            {
-                XmlDocument xdoc = new XmlDocument();
-                string res = "/wqMain/wqContent/wqNode[@id=\"_id\"]";
-                res = res.Replace("_id", id.ToString());
-                xdoc.Load(this.DBPath);
-                ret = xdoc.SelectSingleNode(res).InnerText;
-            }
-            return ret;
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<wq>" + wqGetContent(id, NodeInfoTag.wqTypes.wqNode) + "</wq>");
+            return doc.DocumentElement.InnerText;
         }
 
         public bool SetSchema(Int32 id, Int32 schema)
@@ -315,7 +454,7 @@ namespace wqNotes_frm
             dr = wqMainDts.Tables["node"].Select("id=" + id.ToString());
             if (dr.Length != 1) return false;
             dr[0]["schema"] = schema;
-            this.wqSaveStructure();
+            this.wqBackupStructure();
             this.IsChanged = true;
             return true;
         }
@@ -326,7 +465,7 @@ namespace wqNotes_frm
             DataRow[] dr = wqMainDts.Tables[res].Select("id=" + id.ToString());
             if (dr.Length != 1) return false;
             dr[0]["priority"] = priory;
-            this.wqSaveStructure();
+            this.wqBackupStructure();
             this.IsChanged = true;
             return true;
         }
@@ -334,9 +473,13 @@ namespace wqNotes_frm
         public Int32 SetNodeContent(Int32 id, string text)
         {
             UTF8Encoding utf8 = new UTF8Encoding();
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<wq></wq>");
+            doc.DocumentElement.InnerText = text;
+            text = doc.DocumentElement.InnerXml;
             Int32 ret = utf8.GetByteCount(text), osz = 0;
             DataRow dr = wqMainDts.Tables["node"].Select("id=" + id.ToString())[0];
-            osz = Int32.Parse(dr["size"].ToString());
+            osz = Int32.Parse(dr["exsize"].ToString());
             try
             {
                 if (this.fxmltmps == null)
@@ -358,7 +501,9 @@ namespace wqNotes_frm
             }
 
             this.IsChanged = true;
-            dr["size"] = ret;
+            dr["size"] = Int32.Parse(dr["size"].ToString()) + ret -
+                Int32.Parse(dr["exsize"].ToString());
+            dr["exsize"] = ret;
             dr["dtm"] = DateTime.Now;
             dr = dr.GetParentRow("dir-node");
             while (dr != null)
@@ -366,11 +511,15 @@ namespace wqNotes_frm
                 dr["size"] = Int32.Parse(dr["size"].ToString()) + ret - osz;
                 dr = dr.GetParentRow("dir-dir");
             }
-            this.wqSaveStructure();
+            this.wqBackupStructure();
             return ret;
         }
 
-        // Внимание! Сначала нужно удалить все аттачи, если они есть
+        /// <summary>
+        /// Внимание! Сначала нужно удалить все аттачи, если они есть
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool DeleteNode(Int32 id)
         {
             DataRow dr;
@@ -392,7 +541,7 @@ namespace wqNotes_frm
                 this.DelId.Add(id);
                 if (this.cID.ContainsKey(id))
                     cID.Remove(id);
-                this.wqSaveStructure();
+                this.wqBackupStructure();
             }
             catch (Exception ex)
             {
@@ -413,7 +562,7 @@ namespace wqNotes_frm
             else nId = ++wqLastId;
 
             DataRow dr = this.wqMainDts.Tables["node"].Rows.Add(new object[] { 
-                nId,parent,name,DateTime.Now,DateTime.Now,0,0,null,0,0 });
+                nId,parent,name,DateTime.Now,DateTime.Now,0,0,null,"",0,0 });
             if (this.SetNodeContent(nId, "") == -1) return null;
             NodeInfoTag ret = this.wqSetNit(dr, 1);
             dr = dr.GetParentRow("dir-node");
@@ -424,25 +573,16 @@ namespace wqNotes_frm
                 dr = dr.GetParentRow("dir-dir");
             }
             this.IsChanged = true;
-            this.wqSaveStructure();
+            this.wqBackupStructure();
             return ret;
         }
 
         public bool RemoveChange(Int32 id)
         {
-            try
-            {
-                XmlDocument xdoc = new XmlDocument();
-                string res = "/wqMain/wqContent/wqNode[@id=\"_id\"]";
-                res = res.Replace("_id", id.ToString());
-                xdoc.Load(this.DBPath);
-                res = xdoc.SelectSingleNode(res).InnerText;
-            }
-            catch
-            {
-                //Заметка новая, приводим ее в исходное состояние
+            // Если заметка новая, приводим ее в исходное состояние
+            if (!this.wqIndex.ContainsKey(id))
                 return this.SetNodeContent(id, "") != -1;
-            }
+
             if (!this.cID.ContainsKey(id)) return false;
             return this.cID.Remove(id);
         }
@@ -458,15 +598,19 @@ namespace wqNotes_frm
             else nId = ++wqLastId;
 
             DataRow dr = this.wqMainDts.Tables["dir"].Rows.Add(new object[] { 
-                nId,parent,name,DateTime.Now,DateTime.Now,0,0,0,0,0 });
+                nId,parent,name,DateTime.Now,DateTime.Now,0,0,"",0,0 });
             NodeInfoTag ret = this.wqSetNit(dr, 0);
             dr.GetParentRow("dir-dir")["dtm"] = DateTime.Now;
             this.IsChanged = true;
-            this.wqSaveStructure();
+            this.wqBackupStructure();
             return ret;
         }
-
-        //Внимание! Эту функцию следует вызывать только для пустых папок!
+        
+        /// <summary>
+        /// Внимание! Эту функцию следует вызывать только для пустых папок
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool DeleteDir(Int32 id)
         {
             DataRow dr;
@@ -478,7 +622,7 @@ namespace wqNotes_frm
                 dr.Delete();
                 this.IsChanged = true;
                 this.DelId.Add(id);
-                this.wqSaveStructure();
+                this.wqBackupStructure();
             }
             catch (Exception ex)
             {
@@ -502,41 +646,12 @@ namespace wqNotes_frm
             else dr = dr.GetParentRow("dir-dir");
             if (dr != null) dr["dtm"] = DateTime.Now;
             this.IsChanged = true;
-            this.wqSaveStructure();
+            this.wqBackupStructure();
         }
 
-        // Не готово
-        public bool SetAtttachContent(string path)
+        public string GetAttach(Int32 id)
         {
-            //неважно
-            return true;
-        }
-
-        // Частично готово
-        public object GetAttach(Int32 id, bool IsBase64)
-        {
-            string ret;
-            // Не base64 вернуть в виде byte[];
-            if (this.cID.ContainsKey(id))
-            {
-                DataRow dr;
-                dr = this.wqMainDts.Tables["attach"].Select("id=" + id.ToString())[0];
-                Int32 sz = Int32.Parse(dr["attach"].ToString());
-                byte[] res = new byte[sz];
-                this.fxmltmps.Seek(this.cID[id], SeekOrigin.Begin);
-                this.fxmltmps.Read(res, 0, sz);
-                UTF8Encoding utf8 = new UTF8Encoding();
-                ret = utf8.GetString(res);
-            }
-            else
-            {
-                XmlDocument xdoc = new XmlDocument();
-                string res = "/wqMain/wqContent/wqAttach[@id=\"_id\"]";
-                res = res.Replace("_id", id.ToString());
-                xdoc.Load(this.DBPath);
-                ret = xdoc.SelectSingleNode(res).InnerText;
-            }
-            return ret;
+            return this.wqGetContent(id, NodeInfoTag.wqTypes.wqAttach);
         }
 
         public bool BringUp(NodeInfoTag child)
@@ -568,7 +683,7 @@ namespace wqNotes_frm
             OldParent["dtm"] = DateTime.Now;
             NewParent["dtm"] = DateTime.Now;
             this.IsChanged = true;
-            this.wqSaveStructure();
+            this.wqBackupStructure();
             return true;
         }
 
@@ -595,7 +710,7 @@ namespace wqNotes_frm
             Child["parent_id"] = NewParent["id"];
             NewParent["dtm"] = DateTime.Now;
             this.IsChanged = true;
-            this.wqSaveStructure();
+            this.wqBackupStructure();
             return true;
         }
 
@@ -619,6 +734,7 @@ namespace wqNotes_frm
         
         public TreeNode LoadTreeView(wqReturnNode rtnd)
         {
+            try { DBProcess.Style = ProgressBarStyle.Marquee; } catch { }
             TreeNode ret = null;
             DataRow[] dr = this.wqMainDts.Tables["dir"].Select("id=1");
             if (dr.Length == 1)
@@ -627,8 +743,12 @@ namespace wqNotes_frm
                 this.wqLoadTreeView(dr[0], ret, "dir-dir", rtnd);
                 this.wqLoadTreeView(dr[0], ret, "dir-node", rtnd);
             }
+            try { DBProcess.Style = ProgressBarStyle.Blocks; } catch { }
             return ret;
         }
+        #endregion
+
+        #region Private members
 
         private void wqLoadTreeView(DataRow dr, TreeNode tnd, string relation, wqReturnNode rtnd)
         {
@@ -653,21 +773,22 @@ namespace wqNotes_frm
                 nit.wqParent_id = Int32.Parse(dr["parent_id"].ToString());
             if (dr["crypto"].ToString() != "")
                 nit.wqCrypto = dr["crypto"].ToString();
+            if (nt != 2) nit.wqPriority = Int32.Parse(dr["priority"].ToString());
             nit.wqName = dr["name"].ToString();
             nit.wqDtc = DateTime.Parse(dr["dtc"].ToString());
             nit.wqDtm = DateTime.Parse(dr["dtm"].ToString());
-            nit.wqPriority = Int32.Parse(dr["priority"].ToString());
-            nit.wqFlag = Int32.Parse(dr["flag"].ToString());
+            nit.wqFlag = dr["flag"].ToString();
             nit.wqSize = Int32.Parse(dr["size"].ToString());
             switch (nt)
             {
                 case 0: //dir
                     nit.wqType = NodeInfoTag.wqTypes.wqDir;
-                    nit.wqAddInfo = Int32.Parse(dr["count"].ToString());
+                    nit.wqCount = Int32.Parse(dr["count"].ToString());
                     break;
                 case 1: //node
                     nit.wqType = NodeInfoTag.wqTypes.wqNode;
-                    nit.wqAddInfo = Int32.Parse(dr["schema"].ToString());
+                    nit.wqSchema = Int32.Parse(dr["schema"].ToString());
+                    nit.wqExSize = Int32.Parse(dr["exsize"].ToString());
                     break;
                 case 2: // attach
                     nit.wqType = NodeInfoTag.wqTypes.wqAttach;
@@ -675,6 +796,102 @@ namespace wqNotes_frm
                     break;
             }
             return nit;
+        }
+
+        private MemoryStream wqLoadStructure(FileStream fs)
+        {
+            UTF8Encoding utf8 = new UTF8Encoding();
+            MemoryStream ms = new MemoryStream();
+            String wqstruc = "", res = ""; Int32 c = 0;
+            try { DBProcess.Style = ProgressBarStyle.Marquee; } catch { }
+            fs.Seek(0, SeekOrigin.Begin);
+            while (!wqstruc.EndsWith("<wqStructure>"))
+            {
+                c = fs.ReadByte();
+                if (c != 32 && c != 13 && c != 10 && c != 9)
+                    wqstruc += ((char)c).ToString();
+                if (fs.Position == fs.Length) throw new Exception("file corrupt");
+            }
+            wqstruc = "<wqStructure>";
+            ms.Write(utf8.GetBytes(wqstruc), 0, utf8.GetByteCount(wqstruc));
+            while (res != "</wqStructure")
+            {
+                c = fs.ReadByte();
+                ms.WriteByte((byte)c);
+                res += ((char)c).ToString();
+                if (res.Length > 13) res = res.Substring(1);
+                if (fs.Position == fs.Length) throw new Exception("file corrupt");
+            }
+            while ((c = fs.ReadByte()) != '>') ; ms.WriteByte((byte)c);
+            ms.Seek(0, SeekOrigin.Begin); { res = ""; }
+            while (!res.EndsWith("<infoidlastid=\""))
+            {
+                c = fs.ReadByte();
+                if (c != 32 && c != 13 && c != 10 && c != 9)
+                    res += ((char)c).ToString();
+                if (fs.Position == fs.Length) throw new Exception("file corrupt");
+            }
+            res = ""; bool flag = false;
+            while (!res.EndsWith("\">"))
+            {
+                c = fs.ReadByte();
+                if (c == '/') flag = true;
+                if (c != 32 && c != 13 && c != 10 && c != 9 && c != '/')
+                    res += ((char)c).ToString();
+                if (fs.Position == fs.Length) throw new Exception("file corrupt");
+            }
+            this.wqLastId = Int32.Parse(res.Substring(0, res.Length - 2));
+            res = ""; this.DelId.Clear();
+            try { DBProcess.Style = ProgressBarStyle.Blocks; } catch { }
+            if (flag) return ms;
+            while (!res.EndsWith("</infoid"))
+            {
+                c = fs.ReadByte();
+                if (c != '|') res += ((char)c).ToString();
+                else { this.DelId.Add(Int32.Parse(res)); res = ""; }
+                if (fs.Position == fs.Length) throw new Exception("file corrupt");
+            }
+            return ms;
+        }
+
+        private void wqLoadIndexs(FileStream fs)
+        {
+            Int32 count = wqMainDts.Tables["node"].Rows.Count;
+            count += wqMainDts.Tables["attach"].Rows.Count;
+            try { DBProcess.Style = ProgressBarStyle.Blocks; } catch { }
+            try { DBProcess.Maximum = count; } catch { }
+            try { DBProcess.Value = 0; } catch { }
+
+            String res = "", tab = "", tap = ""; Int32 c = 0;
+            this.wqIndex.Clear();
+            while (fs.CanRead)
+            {
+                string a = "<wqNodeid=\"", b = "<wqAttachid=\"";
+                while ((!res.EndsWith(a) && !res.EndsWith(b)) && fs.Position != fs.Length)
+                {
+                    c = fs.ReadByte();
+                    if (c != 32 && c != 13 && c != 10 && c != 9)
+                        res += ((char)c).ToString();
+                }
+                tab = res.EndsWith(a) ? "node" : "attach";
+                tap = res.EndsWith(b) ? "size" : "exsize";
+                if (fs.Position == fs.Length) break; res = "";
+                while (!res.EndsWith("\">"))
+                {
+                    c = fs.ReadByte();
+                    if (c != 32 && c != 13 && c != 10 && c != 9 && c != '/')
+                        res += ((char)c).ToString();
+                    if (fs.Position == fs.Length) throw new Exception("file corrupt");
+                }
+                Int32 id = Int32.Parse(res.Substring(0, res.Length - 2));
+                Int32 begin = (Int32)fs.Position;
+                Int32 end = Int32.Parse(this.wqMainDts.Tables[tab]
+                    .Select("id=" + id)[0][tap].ToString());
+                fs.Seek(end, SeekOrigin.Current);
+                this.wqIndex.Add(id, new Pair<Int32, Int32>(begin, end));
+                try { DBProcess.Value++; } catch { }
+            }
+
         }
 
         private string[] wqGetTmpName() //[0] - данные, [1] - схема
@@ -685,30 +902,7 @@ namespace wqNotes_frm
             return new string[] { ret + "s", ret + "x" };
         }
 
-        private bool wqGetFreeId()
-        {
-            XmlDocument xdoc = new XmlDocument();
-            bool ret = true;
-            try
-            {
-                xdoc.Load(this.DBPath);
-                string res = "/wqMain/wqContent/infoid";
-                this.wqLastId = Int32.Parse(xdoc.SelectSingleNode(res)
-                    .Attributes["lastid"].Value);
-                res = xdoc.SelectSingleNode(res).InnerText;
-                string[] em = res.Split('|');
-                foreach (string u in em) if (u != "") 
-                    DelId.Add(Int32.Parse(u));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                ret = false;
-            }
-            return ret;
-        }
-
-        private void wqSaveStructure()
+        private void wqBackupStructure()
         {
             FileStream fstream = new FileStream(this.wqGetTmpName()[1],
                 FileMode.Create);
@@ -736,6 +930,29 @@ namespace wqNotes_frm
             xmldb.Close();
         }
 
+        private string wqGetContent(Int32 id, NodeInfoTag.wqTypes it)
+        {
+            byte[] buf;
+            UTF8Encoding utf8 = new UTF8Encoding();
+            String a = it == NodeInfoTag.wqTypes.wqNode ? "node" : "attach";
+            String b = it == NodeInfoTag.wqTypes.wqNode ? "exsize" : "size";
+            if (this.cID.ContainsKey(id))
+            {
+                DataRow dr = this.wqMainDts.Tables[a].Select("id=" + id)[0];
+                Int32 sz = Int32.Parse(dr[b].ToString());
+                buf = new byte[sz];
+                this.fxmltmps.Seek(this.cID[id], SeekOrigin.Begin);
+                this.fxmltmps.Read(buf, 0, sz);
+            }
+            else
+            {
+                this.wqfs.Seek(this.wqIndex[id].First, SeekOrigin.Begin);
+                buf = new byte[this.wqIndex[id].Second];
+                this.wqfs.Read(buf, 0, buf.Length);
+            }
+            return utf8.GetString(buf);
+        }
+        #endregion
     }
 
 }
