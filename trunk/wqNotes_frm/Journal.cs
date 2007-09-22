@@ -92,7 +92,13 @@ namespace wqNotes_frm
         public Journal(string path, ToolStripProgressBar dbproc)
         {
             this.DBProcess = dbproc;
-            this.FilePath = path;
+            this.DBPath = path;
+            FileInfo fis = new FileInfo(this.wqGetTmpName()[0]);
+            FileInfo fix = new FileInfo(this.wqGetTmpName()[1]);
+            if (fis.Exists || fix.Exists)
+                this.IsChanged = true;
+            else
+                this.IsChanged = false;
         }
 
         ~Journal()
@@ -103,16 +109,6 @@ namespace wqNotes_frm
         public string FilePath
         {
             get { return this.DBPath; }
-            set
-            {
-                this.DBPath = value;
-                FileInfo fis = new FileInfo(this.wqGetTmpName()[0]);
-                FileInfo fix = new FileInfo(this.wqGetTmpName()[1]);
-                if (fis.Exists || fix.Exists)
-                    this.IsChanged = true;
-                else
-                    this.IsChanged = false;
-            }
         }
 
         public void CloseDB()
@@ -129,8 +125,7 @@ namespace wqNotes_frm
         public bool CreateNewDB()
         {
             //Здесь нас не ебет, сохранен ли текущий файл
-            if (wqfs != null) { wqfs.Close(); wqfs = null; }
-            if (fxmltmps != null) { fxmltmps.Close(); fxmltmps = null; }
+            this.CloseDB();
             FileInfo fid = new FileInfo(this.wqGetTmpName()[0]);
             if (fid.Exists) fid.Delete();
             fid = new FileInfo(this.wqGetTmpName()[1]);
@@ -276,10 +271,10 @@ namespace wqNotes_frm
             xmldb.WriteEndElement(); //wqMain
             xmldb.Close();
 
-            wqfs.Close();
+            if(wqfs != null) wqfs.Close();
             FileInfo fid = new FileInfo(this.DBPath + "s");
-            fid.CopyTo(path, true);
-            fid.Delete();
+            try { File.Delete(path); } catch { }
+            fid.MoveTo(path);
             if (fxmltmps != null) { fxmltmps.Close(); fxmltmps = null; }
             fid = new FileInfo(this.wqGetTmpName()[0]);
             if(fid.Exists) fid.Delete();
