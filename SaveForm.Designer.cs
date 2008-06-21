@@ -1,6 +1,6 @@
-namespace wqNotes_frm
+namespace wqNotes
 {
-    partial class Form6
+    partial class SaveForm
     {
         /// <summary>
         /// Required designer variable.

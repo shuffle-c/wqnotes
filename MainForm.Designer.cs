@@ -1,6 +1,6 @@
-namespace wqNotes_frm
+namespace wqNotes
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,59 +29,59 @@ namespace wqNotes_frm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("C++ (4)");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Программинг (5)", new System.Windows.Forms.TreeNode[] {
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Теория чисел (3)");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Задачи (1)");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Математика (5)", new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18});
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Логи (2)");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Цитаты (2)");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Лол (6)");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Пароли (1)");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Ссылки (1)");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Заметки (2)");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Планы (1)");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Хуйня (0)");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Все записи (25)", new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode19,
-            treeNode20,
-            treeNode21,
-            treeNode22,
-            treeNode23,
-            treeNode24,
-            treeNode25,
-            treeNode26,
-            treeNode27});
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Сегодня (3)", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Вчера (1)", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("C++ (4)");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Программинг (5)", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Теория чисел (3)");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Задачи (1)");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Математика (5)", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Логи (2)");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Цитаты (2)");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Лол (6)");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Пароли (1)");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Ссылки (1)");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Заметки (2)");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Планы (1)");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Что-то (0)");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Все записи (25)", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13});
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Сегодня (3)", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Вчера (1)", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Бор жжот #932847",
             "5 КБ",
             "27.08.2006",
             "Лол"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Недавние заметки");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Сотонинский червь");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Телефон Гришки");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Недавние заметки");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Сотонинский червь");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Телефон Гришки");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "Результат поиска 1",
             "344 байт",
             "26.07.2006",
             "26.07.2006",
             "/",
             "Заметка"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "Результат поиска 2",
             "234 байт",
             "26.07.2006",
             "26.07.2006",
             "/Лол",
             "Заметка"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Код от Васи",
             "1000 МБ",
             "26.07.2006",
@@ -294,6 +294,8 @@ namespace wqNotes_frm
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
@@ -315,8 +317,6 @@ namespace wqNotes_frm
             this.label6 = new System.Windows.Forms.Label();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -338,8 +338,25 @@ namespace wqNotes_frm
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
+            this.chPath = new System.Windows.Forms.ColumnHeader();
             this.columnHeader11 = new System.Windows.Forms.ColumnHeader();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.копироватьСодержимоеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьНазваниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьПутьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.удалитьИзСпискаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wqRichEdit1 = new wqNotes.wqRichEdit();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.отменитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.повторитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.вырезатьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.выделитьВсеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripSplitButton();
@@ -358,7 +375,18 @@ namespace wqNotes_frm
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
-            this.wqRichEdit1 = new wqNotes_frm.wqRichEdit();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.открытьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьИзБуфераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.планировщикToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.адреснаяКнигаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.защитаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -384,7 +412,10 @@ namespace wqNotes_frm
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.contextMenuStrip3.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.contextMenuStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -519,6 +550,7 @@ namespace wqNotes_frm
             this.выходToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // редактироватьToolStripMenuItem
             // 
@@ -546,6 +578,7 @@ namespace wqNotes_frm
             this.отменитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.отменитьToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.отменитьToolStripMenuItem.Text = "Отменить";
+            this.отменитьToolStripMenuItem.Click += new System.EventHandler(this.отменитьToolStripMenuItem_Click);
             // 
             // повторитьToolStripMenuItem
             // 
@@ -554,6 +587,7 @@ namespace wqNotes_frm
             this.повторитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.повторитьToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.повторитьToolStripMenuItem.Text = "Повторить";
+            this.повторитьToolStripMenuItem.Click += new System.EventHandler(this.повторитьToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -598,7 +632,6 @@ namespace wqNotes_frm
             // 
             this.удалитьToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("удалитьToolStripMenuItem.Image")));
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
@@ -799,6 +832,7 @@ namespace wqNotes_frm
             this.ссылкаToolStripMenuItem1,
             this.горизонтальнаяЛинияToolStripMenuItem1,
             this.файлToolStripMenuItem1});
+            this.вставкаToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.вставкаToolStripMenuItem.Name = "вставкаToolStripMenuItem";
             this.вставкаToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.вставкаToolStripMenuItem.Text = "Вставка";
@@ -899,6 +933,7 @@ namespace wqNotes_frm
             this.выделениеToolStripMenuItem,
             this.верхнийИндексToolStripMenuItem,
             this.нижнийИндексToolStripMenuItem});
+            this.форматToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.форматToolStripMenuItem.Name = "форматToolStripMenuItem";
             this.форматToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.форматToolStripMenuItem.Text = "Формат";
@@ -992,6 +1027,7 @@ namespace wqNotes_frm
             this.toolStripMenuItem5,
             this.настройкиToolStripMenuItem,
             this.панельИнструментовToolStripMenuItem});
+            this.сервисToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.сервисToolStripMenuItem.Name = "сервисToolStripMenuItem";
             this.сервисToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.сервисToolStripMenuItem.Text = "Сервис";
@@ -1028,6 +1064,7 @@ namespace wqNotes_frm
             this.вчерашниеЗакладкиToolStripMenuItem,
             this.toolStripMenuItem23,
             this.добавитьЗакладкуЗдесьToolStripMenuItem1});
+            this.закладкиToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.закладкиToolStripMenuItem.Name = "закладкиToolStripMenuItem";
             this.закладкиToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.закладкиToolStripMenuItem.Text = "Закладки";
@@ -1098,6 +1135,7 @@ namespace wqNotes_frm
             this.шифрованиеToolStripMenuItem,
             this.хэшированиеToolStripMenuItem,
             this.датаИВремяToolStripMenuItem});
+            this.надстройкиToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.надстройкиToolStripMenuItem.Name = "надстройкиToolStripMenuItem";
             this.надстройкиToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.надстройкиToolStripMenuItem.Text = "Надстройки";
@@ -1238,6 +1276,7 @@ namespace wqNotes_frm
             this.закрытьВсеToolStripMenuItem,
             this.toolStripMenuItem7,
             this.списокToolStripMenuItem});
+            this.окнаToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.окнаToolStripMenuItem.Name = "окнаToolStripMenuItem";
             this.окнаToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.окнаToolStripMenuItem.Text = "Окна";
@@ -1274,6 +1313,7 @@ namespace wqNotes_frm
             this.проверитьОбновленияToolStripMenuItem,
             this.toolStripMenuItem6,
             this.оПрограммеToolStripMenuItem});
+            this.справкаToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
@@ -1355,7 +1395,7 @@ namespace wqNotes_frm
             this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton2.Name = "toolStripSplitButton2";
             this.toolStripSplitButton2.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton2.Text = "toolStripSplitButton2";
+            this.toolStripSplitButton2.Text = "Назад";
             // 
             // toolStripSplitButton3
             // 
@@ -1364,7 +1404,7 @@ namespace wqNotes_frm
             this.toolStripSplitButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton3.Name = "toolStripSplitButton3";
             this.toolStripSplitButton3.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton3.Text = "toolStripSplitButton3";
+            this.toolStripSplitButton3.Text = "Вперед";
             // 
             // toolStripSeparator6
             // 
@@ -1380,6 +1420,7 @@ namespace wqNotes_frm
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.ToolTipText = "Новый";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -1392,6 +1433,7 @@ namespace wqNotes_frm
             this.toolStripButton2.Size = new System.Drawing.Size(32, 22);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.ToolTipText = "Открыть";
+            this.toolStripButton2.ButtonClick += new System.EventHandler(this.toolStripButton2_ButtonClick);
             // 
             // списокНедавнихФайловToolStripMenuItem
             // 
@@ -1408,6 +1450,7 @@ namespace wqNotes_frm
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
             this.toolStripButton3.ToolTipText = "Сохранить";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1433,6 +1476,7 @@ namespace wqNotes_frm
             this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton6.Text = "toolStripButton6";
             this.toolStripButton6.ToolTipText = "Копировать";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // toolStripButton7
             // 
@@ -1443,6 +1487,7 @@ namespace wqNotes_frm
             this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton7.Text = "toolStripButton7";
             this.toolStripButton7.ToolTipText = "Вставить";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // toolStripButton8
             // 
@@ -1479,6 +1524,7 @@ namespace wqNotes_frm
             this.toolStripButton9.Size = new System.Drawing.Size(32, 22);
             this.toolStripButton9.Text = "toolStripButton9";
             this.toolStripButton9.ToolTipText = "Отменить";
+            this.toolStripButton9.ButtonClick += new System.EventHandler(this.toolStripButton9_ButtonClick);
             // 
             // toolStripSplitButton1
             // 
@@ -1489,6 +1535,7 @@ namespace wqNotes_frm
             this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             this.toolStripSplitButton1.ToolTipText = "Повторить";
+            this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
             // 
             // toolStripSeparator3
             // 
@@ -1513,6 +1560,7 @@ namespace wqNotes_frm
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox1.ToolTipText = "Стили";
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // toolStripDropDownButton1
             // 
@@ -1640,7 +1688,7 @@ namespace wqNotes_frm
             this.toolStripStatusLabel5,
             this.toolStripStatusLabel6,
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 401);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 445);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.ShowItemToolTips = true;
             this.statusStrip1.Size = new System.Drawing.Size(742, 22);
@@ -1707,7 +1755,7 @@ namespace wqNotes_frm
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(474, 17);
             this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "I:\\Denis\\My Secret Folder\\notes.xml (213876 записей, 12.6 МБ)";
+            this.toolStripStatusLabel1.Text = "I:\\My Secret Folder\\notes.xml (213876 записей, 12.6 МБ)";
             this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // splitContainer1
@@ -1728,7 +1776,7 @@ namespace wqNotes_frm
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.toolStrip2);
-            this.splitContainer1.Size = new System.Drawing.Size(742, 352);
+            this.splitContainer1.Size = new System.Drawing.Size(742, 396);
             this.splitContainer1.SplitterDistance = 220;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 4;
@@ -1745,9 +1793,9 @@ namespace wqNotes_frm
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 352F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 352F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(220, 352);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 396F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 396F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(220, 396);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tabControl1
@@ -1761,8 +1809,9 @@ namespace wqNotes_frm
             this.tabControl1.Margin = new System.Windows.Forms.Padding(8, 8, 0, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(212, 336);
+            this.tabControl1.Size = new System.Drawing.Size(212, 380);
             this.tabControl1.TabIndex = 5;
+            this.tabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseClick);
             // 
             // tabPage1
             // 
@@ -1770,7 +1819,7 @@ namespace wqNotes_frm
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(204, 310);
+            this.tabPage1.Size = new System.Drawing.Size(204, 354);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Записи";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1786,42 +1835,42 @@ namespace wqNotes_frm
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            treeNode15.Name = "Node2";
-            treeNode15.Text = "C++ (4)";
-            treeNode16.Name = "Node1";
-            treeNode16.Text = "Программинг (5)";
-            treeNode17.Name = "Node12";
-            treeNode17.Text = "Теория чисел (3)";
-            treeNode18.Name = "Node13";
-            treeNode18.Text = "Задачи (1)";
-            treeNode19.Name = "Node11";
-            treeNode19.Text = "Математика (5)";
-            treeNode20.Name = "Node3";
-            treeNode20.Text = "Логи (2)";
-            treeNode21.Name = "Node4";
-            treeNode21.Text = "Цитаты (2)";
-            treeNode22.Name = "Node5";
-            treeNode22.Text = "Лол (6)";
-            treeNode23.ForeColor = System.Drawing.Color.Red;
-            treeNode23.Name = "Node6";
-            treeNode23.Text = "Пароли (1)";
-            treeNode24.Name = "Node7";
-            treeNode24.Text = "Ссылки (1)";
-            treeNode25.Name = "Node8";
-            treeNode25.Text = "Заметки (2)";
-            treeNode26.Name = "Node9";
-            treeNode26.Text = "Планы (1)";
-            treeNode27.Name = "Node10";
-            treeNode27.Text = "Хуйня (0)";
-            treeNode28.Name = "Node0";
-            treeNode28.NodeFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            treeNode28.Text = "Все записи (25)";
+            treeNode1.Name = "Node2";
+            treeNode1.Text = "C++ (4)";
+            treeNode2.Name = "Node1";
+            treeNode2.Text = "Программинг (5)";
+            treeNode3.Name = "Node12";
+            treeNode3.Text = "Теория чисел (3)";
+            treeNode4.Name = "Node13";
+            treeNode4.Text = "Задачи (1)";
+            treeNode5.Name = "Node11";
+            treeNode5.Text = "Математика (5)";
+            treeNode6.Name = "Node3";
+            treeNode6.Text = "Логи (2)";
+            treeNode7.Name = "Node4";
+            treeNode7.Text = "Цитаты (2)";
+            treeNode8.Name = "Node5";
+            treeNode8.Text = "Лол (6)";
+            treeNode9.ForeColor = System.Drawing.Color.Red;
+            treeNode9.Name = "Node6";
+            treeNode9.Text = "Пароли (1)";
+            treeNode10.Name = "Node7";
+            treeNode10.Text = "Ссылки (1)";
+            treeNode11.Name = "Node8";
+            treeNode11.Text = "Заметки (2)";
+            treeNode12.Name = "Node9";
+            treeNode12.Text = "Планы (1)";
+            treeNode13.Name = "Node10";
+            treeNode13.Text = "Что-то (0)";
+            treeNode14.Name = "Node0";
+            treeNode14.NodeFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            treeNode14.Text = "Все записи (25)";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode28});
+            treeNode14});
             this.treeView1.PathSeparator = "/";
             this.treeView1.SelectedImageIndex = 1;
             this.treeView1.ShowRootLines = false;
-            this.treeView1.Size = new System.Drawing.Size(198, 304);
+            this.treeView1.Size = new System.Drawing.Size(198, 348);
             this.treeView1.TabIndex = 0;
             this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
             this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
@@ -1894,18 +1943,21 @@ namespace wqNotes_frm
             // 
             // вырезатьToolStripMenuItem1
             // 
+            this.вырезатьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.вырезатьToolStripMenuItem1.Name = "вырезатьToolStripMenuItem1";
             this.вырезатьToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
             this.вырезатьToolStripMenuItem1.Text = "Вырезать";
             // 
             // копироватьToolStripMenuItem1
             // 
+            this.копироватьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.копироватьToolStripMenuItem1.Name = "копироватьToolStripMenuItem1";
             this.копироватьToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
             this.копироватьToolStripMenuItem1.Text = "Копировать";
             // 
             // вставитьToolStripMenuItem1
             // 
+            this.вставитьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.вставитьToolStripMenuItem1.Name = "вставитьToolStripMenuItem1";
             this.вставитьToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
             this.вставитьToolStripMenuItem1.Text = "Вставить";
@@ -1968,7 +2020,7 @@ namespace wqNotes_frm
             // 
             // заметкаToolStripMenuItem1
             // 
-            this.заметкаToolStripMenuItem1.Image = global::wqNotes_frm.Properties.Resources.заметка;
+            this.заметкаToolStripMenuItem1.Image = global::wqNotes.Properties.Resources.заметка;
             this.заметкаToolStripMenuItem1.Name = "заметкаToolStripMenuItem1";
             this.заметкаToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
             this.заметкаToolStripMenuItem1.Text = "Заметка";
@@ -1976,7 +2028,7 @@ namespace wqNotes_frm
             // 
             // кодToolStripMenuItem1
             // 
-            this.кодToolStripMenuItem1.Image = global::wqNotes_frm.Properties.Resources.код;
+            this.кодToolStripMenuItem1.Image = global::wqNotes.Properties.Resources.код;
             this.кодToolStripMenuItem1.Name = "кодToolStripMenuItem1";
             this.кодToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
             this.кодToolStripMenuItem1.Text = "Код";
@@ -1984,7 +2036,7 @@ namespace wqNotes_frm
             // 
             // цитатаToolStripMenuItem
             // 
-            this.цитатаToolStripMenuItem.Image = global::wqNotes_frm.Properties.Resources.цитата;
+            this.цитатаToolStripMenuItem.Image = global::wqNotes.Properties.Resources.цитата;
             this.цитатаToolStripMenuItem.Name = "цитатаToolStripMenuItem";
             this.цитатаToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.цитатаToolStripMenuItem.Text = "Цитата";
@@ -1992,7 +2044,7 @@ namespace wqNotes_frm
             // 
             // логToolStripMenuItem
             // 
-            this.логToolStripMenuItem.Image = global::wqNotes_frm.Properties.Resources.лог;
+            this.логToolStripMenuItem.Image = global::wqNotes.Properties.Resources.лог;
             this.логToolStripMenuItem.Name = "логToolStripMenuItem";
             this.логToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.логToolStripMenuItem.Text = "Лог";
@@ -2000,7 +2052,7 @@ namespace wqNotes_frm
             // 
             // письмоToolStripMenuItem
             // 
-            this.письмоToolStripMenuItem.Image = global::wqNotes_frm.Properties.Resources.письмо;
+            this.письмоToolStripMenuItem.Image = global::wqNotes.Properties.Resources.письмо;
             this.письмоToolStripMenuItem.Name = "письмоToolStripMenuItem";
             this.письмоToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.письмоToolStripMenuItem.Text = "Письмо";
@@ -2008,7 +2060,7 @@ namespace wqNotes_frm
             // 
             // отчетToolStripMenuItem
             // 
-            this.отчетToolStripMenuItem.Image = global::wqNotes_frm.Properties.Resources.отчет;
+            this.отчетToolStripMenuItem.Image = global::wqNotes.Properties.Resources.отчет;
             this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
             this.отчетToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.отчетToolStripMenuItem.Text = "Отчет";
@@ -2035,12 +2087,14 @@ namespace wqNotes_frm
             // 
             // установитьПарольToolStripMenuItem
             // 
+            this.установитьПарольToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.установитьПарольToolStripMenuItem.Name = "установитьПарольToolStripMenuItem";
             this.установитьПарольToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.установитьПарольToolStripMenuItem.Text = "Установить пароль";
             // 
             // удалитьПарольToolStripMenuItem
             // 
+            this.удалитьПарольToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.удалитьПарольToolStripMenuItem.Name = "удалитьПарольToolStripMenuItem";
             this.удалитьПарольToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.удалитьПарольToolStripMenuItem.Text = "Удалить пароль";
@@ -2087,6 +2141,7 @@ namespace wqNotes_frm
             // 
             // свойстваToolStripMenuItem1
             // 
+            this.свойстваToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.свойстваToolStripMenuItem1.Name = "свойстваToolStripMenuItem1";
             this.свойстваToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
             this.свойстваToolStripMenuItem1.Text = "Свойства";
@@ -2115,7 +2170,7 @@ namespace wqNotes_frm
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(204, 310);
+            this.tabPage2.Size = new System.Drawing.Size(204, 354);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Поиск";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2161,6 +2216,8 @@ namespace wqNotes_frm
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.checkBox12);
+            this.groupBox1.Controls.Add(this.checkBox11);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.comboBox4);
             this.groupBox1.Controls.Add(this.numericUpDown3);
@@ -2182,15 +2239,33 @@ namespace wqNotes_frm
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.checkBox7);
             this.groupBox1.Controls.Add(this.checkBox5);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Location = new System.Drawing.Point(6, 103);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(190, 204);
+            this.groupBox1.Size = new System.Drawing.Size(190, 248);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Дополнительно";
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(10, 66);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(167, 17);
+            this.checkBox12.TabIndex = 39;
+            this.checkBox12.Text = "НЕ содержащие вхождения";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(107, 20);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(65, 17);
+            this.checkBox11.TabIndex = 38;
+            this.checkBox11.Text = "Регэксп";
+            this.checkBox11.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
@@ -2428,30 +2503,6 @@ namespace wqNotes_frm
             this.checkBox5.TabIndex = 13;
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Место:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Везде",
-            "В текущей ветке",
-            "В текущей записи"});
-            this.comboBox1.Location = new System.Drawing.Point(56, 66);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(128, 21);
-            this.comboBox1.TabIndex = 4;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -2471,6 +2522,7 @@ namespace wqNotes_frm
             this.button1.TabIndex = 1;
             this.button1.Text = "Искать";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -2480,7 +2532,6 @@ namespace wqNotes_frm
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(122, 21);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "хуй";
             // 
             // tabPage3
             // 
@@ -2488,7 +2539,7 @@ namespace wqNotes_frm
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(204, 310);
+            this.tabPage3.Size = new System.Drawing.Size(204, 354);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "История";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2505,29 +2556,31 @@ namespace wqNotes_frm
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            listViewGroup3.Header = "Сегодня (3)";
-            listViewGroup3.Name = "listViewGroup1";
-            listViewGroup4.Header = "Вчера (1)";
-            listViewGroup4.Name = "listViewGroup2";
+            listViewGroup1.Header = "Сегодня (3)";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "Вчера (1)";
+            listViewGroup2.Name = "listViewGroup2";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
-            listViewItem8.Group = listViewGroup3;
-            listViewItem9.Group = listViewGroup3;
-            listViewItem10.Group = listViewGroup3;
-            listViewItem11.Group = listViewGroup4;
+            listViewGroup1,
+            listViewGroup2});
+            listViewItem1.Group = listViewGroup1;
+            listViewItem2.Group = listViewGroup1;
+            listViewItem3.Group = listViewGroup1;
+            listViewItem4.Group = listViewGroup2;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(198, 304);
+            this.listView1.ShowItemToolTips = true;
+            this.listView1.Size = new System.Drawing.Size(198, 348);
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -2557,7 +2610,7 @@ namespace wqNotes_frm
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(514, 327);
+            this.panel1.Size = new System.Drawing.Size(514, 371);
             this.panel1.TabIndex = 7;
             // 
             // splitContainer3
@@ -2581,7 +2634,7 @@ namespace wqNotes_frm
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer3.Panel2MinSize = 22;
-            this.splitContainer3.Size = new System.Drawing.Size(514, 327);
+            this.splitContainer3.Size = new System.Drawing.Size(514, 371);
             this.splitContainer3.SplitterDistance = 22;
             this.splitContainer3.SplitterWidth = 1;
             this.splitContainer3.TabIndex = 21;
@@ -2641,7 +2694,7 @@ namespace wqNotes_frm
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainer2.Panel2.Controls.Add(this.wqRichEdit1);
             this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.splitContainer2.Size = new System.Drawing.Size(514, 304);
+            this.splitContainer2.Size = new System.Drawing.Size(514, 348);
             this.splitContainer2.SplitterDistance = 94;
             this.splitContainer2.SplitterWidth = 8;
             this.splitContainer2.TabIndex = 12;
@@ -2654,17 +2707,18 @@ namespace wqNotes_frm
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader9,
-            this.columnHeader10,
+            this.chPath,
             this.columnHeader11});
+            this.listView2.ContextMenuStrip = this.contextMenuStrip3;
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
-            listViewItem13.ToolTipText = "А тута содержание этой шняги";
-            listViewItem14.ToolTipText = "#include <iostream> // Пашол нахуй";
+            listViewItem6.ToolTipText = "А тута содержание этой шняги";
+            listViewItem7.ToolTipText = "#include <iostream> // Пашол нахуй";
             this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem12,
-            listViewItem13,
-            listViewItem14});
+            listViewItem5,
+            listViewItem6,
+            listViewItem7});
             this.listView2.Location = new System.Drawing.Point(0, 4);
             this.listView2.Name = "listView2";
             this.listView2.ShowItemToolTips = true;
@@ -2693,13 +2747,153 @@ namespace wqNotes_frm
             this.columnHeader9.Text = "Дата модификации";
             this.columnHeader9.Width = 80;
             // 
-            // columnHeader10
+            // chPath
             // 
-            this.columnHeader10.Text = "Расположение";
+            this.chPath.Text = "Расположение";
             // 
             // columnHeader11
             // 
             this.columnHeader11.Text = "Стиль";
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьСодержимоеToolStripMenuItem,
+            this.копироватьНазваниеToolStripMenuItem,
+            this.копироватьПутьToolStripMenuItem,
+            this.toolStripSeparator13,
+            this.удалитьИзСпискаToolStripMenuItem});
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(212, 98);
+            this.contextMenuStrip3.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip3_Opening);
+            // 
+            // копироватьСодержимоеToolStripMenuItem
+            // 
+            this.копироватьСодержимоеToolStripMenuItem.Name = "копироватьСодержимоеToolStripMenuItem";
+            this.копироватьСодержимоеToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.копироватьСодержимоеToolStripMenuItem.Text = "Копировать содержимое";
+            this.копироватьСодержимоеToolStripMenuItem.Click += new System.EventHandler(this.копироватьСодержимоеToolStripMenuItem_Click);
+            // 
+            // копироватьНазваниеToolStripMenuItem
+            // 
+            this.копироватьНазваниеToolStripMenuItem.Name = "копироватьНазваниеToolStripMenuItem";
+            this.копироватьНазваниеToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.копироватьНазваниеToolStripMenuItem.Text = "Копировать название";
+            this.копироватьНазваниеToolStripMenuItem.Click += new System.EventHandler(this.копироватьНазваниеToolStripMenuItem_Click);
+            // 
+            // копироватьПутьToolStripMenuItem
+            // 
+            this.копироватьПутьToolStripMenuItem.Name = "копироватьПутьToolStripMenuItem";
+            this.копироватьПутьToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.копироватьПутьToolStripMenuItem.Text = "Копировать путь";
+            this.копироватьПутьToolStripMenuItem.Click += new System.EventHandler(this.копироватьПутьToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(208, 6);
+            // 
+            // удалитьИзСпискаToolStripMenuItem
+            // 
+            this.удалитьИзСпискаToolStripMenuItem.Name = "удалитьИзСпискаToolStripMenuItem";
+            this.удалитьИзСпискаToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.удалитьИзСпискаToolStripMenuItem.Text = "Удалить из списка";
+            this.удалитьИзСпискаToolStripMenuItem.Click += new System.EventHandler(this.удалитьИзСпискаToolStripMenuItem_Click);
+            // 
+            // wqRichEdit1
+            // 
+            this.wqRichEdit1.AcceptsTab = true;
+            this.wqRichEdit1.AutoWordSelection = true;
+            this.wqRichEdit1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.wqRichEdit1.ContextMenuStrip = this.contextMenuStrip2;
+            this.wqRichEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wqRichEdit1.EnableAutoDragDrop = true;
+            this.wqRichEdit1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wqRichEdit1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.wqRichEdit1.HideSelection = false;
+            this.wqRichEdit1.Location = new System.Drawing.Point(5, 5);
+            this.wqRichEdit1.Margin = new System.Windows.Forms.Padding(10);
+            this.wqRichEdit1.Name = "wqRichEdit1";
+            this.wqRichEdit1.Size = new System.Drawing.Size(504, 236);
+            this.wqRichEdit1.TabIndex = 0;
+            this.wqRichEdit1.Text = resources.GetString("wqRichEdit1.Text");
+            this.wqRichEdit1.SelectionChanged += new System.EventHandler(this.wqRichEdit1_SelectionChanged);
+            this.wqRichEdit1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wqRichEdit1_PreviewKeyDown);
+            this.wqRichEdit1.TextChanged += new System.EventHandler(this.wqRichEdit1_TextChanged);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.отменитьToolStripMenuItem1,
+            this.повторитьToolStripMenuItem1,
+            this.toolStripSeparator11,
+            this.вырезатьToolStripMenuItem2,
+            this.копироватьToolStripMenuItem2,
+            this.вставитьToolStripMenuItem2,
+            this.удалитьToolStripMenuItem4,
+            this.toolStripSeparator12,
+            this.выделитьВсеToolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(157, 170);
+            this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
+            // 
+            // отменитьToolStripMenuItem1
+            // 
+            this.отменитьToolStripMenuItem1.Name = "отменитьToolStripMenuItem1";
+            this.отменитьToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
+            this.отменитьToolStripMenuItem1.Text = "Отменить";
+            this.отменитьToolStripMenuItem1.Click += new System.EventHandler(this.отменитьToolStripMenuItem1_Click);
+            // 
+            // повторитьToolStripMenuItem1
+            // 
+            this.повторитьToolStripMenuItem1.Name = "повторитьToolStripMenuItem1";
+            this.повторитьToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
+            this.повторитьToolStripMenuItem1.Text = "Повторить";
+            this.повторитьToolStripMenuItem1.Click += new System.EventHandler(this.повторитьToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(153, 6);
+            // 
+            // вырезатьToolStripMenuItem2
+            // 
+            this.вырезатьToolStripMenuItem2.Name = "вырезатьToolStripMenuItem2";
+            this.вырезатьToolStripMenuItem2.Size = new System.Drawing.Size(156, 22);
+            this.вырезатьToolStripMenuItem2.Text = "Вырезать";
+            // 
+            // копироватьToolStripMenuItem2
+            // 
+            this.копироватьToolStripMenuItem2.Name = "копироватьToolStripMenuItem2";
+            this.копироватьToolStripMenuItem2.Size = new System.Drawing.Size(156, 22);
+            this.копироватьToolStripMenuItem2.Text = "Копировать";
+            this.копироватьToolStripMenuItem2.Click += new System.EventHandler(this.копироватьToolStripMenuItem2_Click);
+            // 
+            // вставитьToolStripMenuItem2
+            // 
+            this.вставитьToolStripMenuItem2.Name = "вставитьToolStripMenuItem2";
+            this.вставитьToolStripMenuItem2.Size = new System.Drawing.Size(156, 22);
+            this.вставитьToolStripMenuItem2.Text = "Вставить";
+            this.вставитьToolStripMenuItem2.Click += new System.EventHandler(this.вставитьToolStripMenuItem2_Click);
+            // 
+            // удалитьToolStripMenuItem4
+            // 
+            this.удалитьToolStripMenuItem4.Name = "удалитьToolStripMenuItem4";
+            this.удалитьToolStripMenuItem4.Size = new System.Drawing.Size(156, 22);
+            this.удалитьToolStripMenuItem4.Text = "Удалить";
+            this.удалитьToolStripMenuItem4.Click += new System.EventHandler(this.удалитьToolStripMenuItem4_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(153, 6);
+            // 
+            // выделитьВсеToolStripMenuItem1
+            // 
+            this.выделитьВсеToolStripMenuItem1.Name = "выделитьВсеToolStripMenuItem1";
+            this.выделитьВсеToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
+            this.выделитьВсеToolStripMenuItem1.Text = "Выделить все";
+            this.выделитьВсеToolStripMenuItem1.Click += new System.EventHandler(this.выделитьВсеToolStripMenuItem1_Click);
             // 
             // toolStrip2
             // 
@@ -2709,7 +2903,7 @@ namespace wqNotes_frm
             this.toolStripButton10,
             this.toolStripButton11,
             this.toolStripButton12});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 327);
+            this.toolStrip2.Location = new System.Drawing.Point(0, 371);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(514, 25);
             this.toolStrip2.TabIndex = 5;
@@ -2827,30 +3021,103 @@ namespace wqNotes_frm
             this.openFileDialog2.FilterIndex = 0;
             this.openFileDialog2.Title = "Добавить файл";
             // 
-            // wqRichEdit1
+            // notifyIcon1
             // 
-            this.wqRichEdit1.AcceptsTab = true;
-            this.wqRichEdit1.AutoWordSelection = true;
-            this.wqRichEdit1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.wqRichEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wqRichEdit1.EnableAutoDragDrop = true;
-            this.wqRichEdit1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.wqRichEdit1.Location = new System.Drawing.Point(5, 5);
-            this.wqRichEdit1.Margin = new System.Windows.Forms.Padding(10);
-            this.wqRichEdit1.Name = "wqRichEdit1";
-            this.wqRichEdit1.Size = new System.Drawing.Size(504, 192);
-            this.wqRichEdit1.TabIndex = 0;
-            this.wqRichEdit1.Text = resources.GetString("wqRichEdit1.Text");
-            this.wqRichEdit1.wqNodeChanged += new wqNotes_frm.wqRichEdit.wqNodesEventHandler(this.wqRichEdit1_wqNodeChanged);
-            this.wqRichEdit1.SelectionChanged += new System.EventHandler(this.wqRichEdit1_SelectionChanged);
-            this.wqRichEdit1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wqRichEdit1_PreviewKeyDown);
-            this.wqRichEdit1.TextChanged += new System.EventHandler(this.wqRichEdit1_TextChanged);
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip4;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "wqNotes - сборщик заметок";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // Form1
+            // contextMenuStrip4
+            // 
+            this.contextMenuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem2,
+            this.добавитьИзБуфераToolStripMenuItem,
+            this.toolStripSeparator14,
+            this.планировщикToolStripMenuItem1,
+            this.адреснаяКнигаToolStripMenuItem1,
+            this.защитаToolStripMenuItem1,
+            this.toolStripSeparator15,
+            this.оПрограммеToolStripMenuItem1,
+            this.выходToolStripMenuItem1});
+            this.contextMenuStrip4.Name = "contextMenuStrip4";
+            this.contextMenuStrip4.Size = new System.Drawing.Size(191, 170);
+            this.contextMenuStrip4.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip4_Opening);
+            // 
+            // открытьToolStripMenuItem2
+            // 
+            this.открытьToolStripMenuItem2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.открытьToolStripMenuItem2.Name = "открытьToolStripMenuItem2";
+            this.открытьToolStripMenuItem2.Size = new System.Drawing.Size(190, 22);
+            this.открытьToolStripMenuItem2.Text = "Открыть";
+            this.открытьToolStripMenuItem2.Click += new System.EventHandler(this.открытьToolStripMenuItem2_Click);
+            // 
+            // добавитьИзБуфераToolStripMenuItem
+            // 
+            this.добавитьИзБуфераToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.добавитьИзБуфераToolStripMenuItem.Image = global::wqNotes.Properties.Resources.add_16x16;
+            this.добавитьИзБуфераToolStripMenuItem.Name = "добавитьИзБуфераToolStripMenuItem";
+            this.добавитьИзБуфераToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.добавитьИзБуфераToolStripMenuItem.Text = "Добавить из буфера";
+            this.добавитьИзБуфераToolStripMenuItem.Click += new System.EventHandler(this.добавитьИзБуфераToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(187, 6);
+            // 
+            // планировщикToolStripMenuItem1
+            // 
+            this.планировщикToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.планировщикToolStripMenuItem1.Name = "планировщикToolStripMenuItem1";
+            this.планировщикToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.планировщикToolStripMenuItem1.Text = "Планировщик";
+            // 
+            // адреснаяКнигаToolStripMenuItem1
+            // 
+            this.адреснаяКнигаToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.адреснаяКнигаToolStripMenuItem1.Name = "адреснаяКнигаToolStripMenuItem1";
+            this.адреснаяКнигаToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.адреснаяКнигаToolStripMenuItem1.Text = "Адресная книга";
+            // 
+            // защитаToolStripMenuItem1
+            // 
+            this.защитаToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.защитаToolStripMenuItem1.Name = "защитаToolStripMenuItem1";
+            this.защитаToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.защитаToolStripMenuItem1.Text = "Защита";
+            // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(187, 6);
+            // 
+            // оПрограммеToolStripMenuItem1
+            // 
+            this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.оПрограммеToolStripMenuItem1.Text = "О программе";
+            this.оПрограммеToolStripMenuItem1.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem1_Click);
+            // 
+            // выходToolStripMenuItem1
+            // 
+            this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
+            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.выходToolStripMenuItem1.Text = "Выход";
+            this.выходToolStripMenuItem1.Click += new System.EventHandler(this.выходToolStripMenuItem1_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 423);
+            this.ClientSize = new System.Drawing.Size(742, 467);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -2860,13 +3127,13 @@ namespace wqNotes_frm
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(400, 300);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "wqNotes interface version 0.07a - [История звездной болезни]";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.InputLanguageChanged += new System.Windows.Forms.InputLanguageChangedEventHandler(this.Form1_InputLanguageChanged);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Text = "wqNotes 0.9.1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.InputLanguageChanged += new System.Windows.Forms.InputLanguageChangedEventHandler(this.Form1_InputLanguageChanged);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -2898,8 +3165,11 @@ namespace wqNotes_frm
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
+            this.contextMenuStrip3.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.contextMenuStrip4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3040,9 +3310,7 @@ namespace wqNotes_frm
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+       private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
@@ -3114,7 +3382,7 @@ namespace wqNotes_frm
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader chPath;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
@@ -3178,6 +3446,36 @@ namespace wqNotes_frm
         private System.Windows.Forms.ToolStripMenuItem свойстваToolStripMenuItem2;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+       private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+       private System.Windows.Forms.ToolStripMenuItem отменитьToolStripMenuItem1;
+       private System.Windows.Forms.ToolStripMenuItem повторитьToolStripMenuItem1;
+       private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+       private System.Windows.Forms.ToolStripMenuItem вырезатьToolStripMenuItem2;
+       private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItem2;
+       private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem2;
+       private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem4;
+       private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+       private System.Windows.Forms.ToolStripMenuItem выделитьВсеToolStripMenuItem1;
+       private System.Windows.Forms.CheckBox checkBox11;
+       private System.Windows.Forms.CheckBox checkBox12;
+       private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+       private System.Windows.Forms.ToolStripMenuItem копироватьСодержимоеToolStripMenuItem;
+       private System.Windows.Forms.ToolStripMenuItem копироватьНазваниеToolStripMenuItem;
+       private System.Windows.Forms.ToolStripMenuItem копироватьПутьToolStripMenuItem;
+       private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+       private System.Windows.Forms.ToolStripMenuItem удалитьИзСпискаToolStripMenuItem;
+       private System.Windows.Forms.NotifyIcon notifyIcon1;
+       private System.Windows.Forms.ContextMenuStrip contextMenuStrip4;
+       private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem2;
+       private System.Windows.Forms.ToolStripMenuItem добавитьИзБуфераToolStripMenuItem;
+       private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+       private System.Windows.Forms.ToolStripMenuItem планировщикToolStripMenuItem1;
+       private System.Windows.Forms.ToolStripMenuItem адреснаяКнигаToolStripMenuItem1;
+       private System.Windows.Forms.ToolStripMenuItem защитаToolStripMenuItem1;
+       private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+       private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem1;
+       private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem1;
+       private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -1,6 +1,6 @@
-namespace wqNotes_frm
+namespace wqNotes
 {
-    partial class Form7
+    partial class AttachForm
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@ namespace wqNotes_frm
             this.textBox1.Location = new System.Drawing.Point(50, 20);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(230, 20);
+            this.textBox1.Size = new System.Drawing.Size(230, 21);
             this.textBox1.TabIndex = 3;
             // 
             // checkBox1
@@ -107,10 +107,10 @@ namespace wqNotes_frm
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(6, 19);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(99, 17);
+            this.radioButton1.Size = new System.Drawing.Size(57, 17);
             this.radioButton1.TabIndex = 6;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Оригинальную";
+            this.radioButton1.Text = "Файла";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
@@ -118,7 +118,7 @@ namespace wqNotes_frm
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(6, 42);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 17);
+            this.radioButton2.Size = new System.Drawing.Size(73, 17);
             this.radioButton2.TabIndex = 6;
             this.radioButton2.Text = "Текущую";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@ namespace wqNotes_frm
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(6, 65);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(66, 17);
+            this.radioButton3.Size = new System.Drawing.Size(69, 17);
             this.radioButton3.TabIndex = 6;
             this.radioButton3.Text = "Другую:";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@ namespace wqNotes_frm
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(78, 65);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(184, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(184, 21);
             this.dateTimePicker1.TabIndex = 6;
             this.dateTimePicker1.Enter += new System.EventHandler(this.dateTimePicker1_Enter);
             // 
@@ -158,7 +158,7 @@ namespace wqNotes_frm
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(78, 65);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(184, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(184, 21);
             this.dateTimePicker2.TabIndex = 6;
             this.dateTimePicker2.Enter += new System.EventHandler(this.dateTimePicker2_Enter);
             // 
@@ -167,7 +167,7 @@ namespace wqNotes_frm
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(6, 65);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(66, 17);
+            this.radioButton4.Size = new System.Drawing.Size(69, 17);
             this.radioButton4.TabIndex = 6;
             this.radioButton4.Text = "Другую:";
             this.radioButton4.UseVisualStyleBackColor = true;
@@ -177,7 +177,7 @@ namespace wqNotes_frm
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(6, 42);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(71, 17);
+            this.radioButton5.Size = new System.Drawing.Size(73, 17);
             this.radioButton5.TabIndex = 6;
             this.radioButton5.Text = "Текущую";
             this.radioButton5.UseVisualStyleBackColor = true;
@@ -188,10 +188,10 @@ namespace wqNotes_frm
             this.radioButton6.Checked = true;
             this.radioButton6.Location = new System.Drawing.Point(6, 19);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(99, 17);
+            this.radioButton6.Size = new System.Drawing.Size(57, 17);
             this.radioButton6.TabIndex = 6;
             this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Оригинальную";
+            this.radioButton6.Text = "Файла";
             this.radioButton6.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
@@ -214,6 +214,7 @@ namespace wqNotes_frm
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.HelpButton = true;
             this.MaximizeBox = false;

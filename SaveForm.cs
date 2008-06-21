@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace wqNotes_frm
+namespace wqNotes
 {
-    public partial class Form6 : Form
+    public partial class SaveForm : Form
     {
         /// <summary>
         /// Declaration
@@ -16,7 +16,7 @@ namespace wqNotes_frm
         public Dictionary<Int32, String> wqInput = new Dictionary<Int32, String>();
         public List<Int32> wqResult = new List<Int32>();
 
-        public Form6()
+        public SaveForm()
         {
             InitializeComponent();
         }

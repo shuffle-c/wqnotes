@@ -7,7 +7,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
-namespace wqNotes_frm
+namespace wqNotes
 {
     static class Program
     {
@@ -35,12 +35,6 @@ namespace wqNotes_frm
             }
             String[] use = { "สม", "ฬม", "รม", "าม" };
             return ret + " " + use[c];
-        }
-
-        public static string GetShortlessPath(string path, Int32 maxlen)
-        {
-            return path;
-            //min: "x:\\...x"
         }
 
         public static Image GetFileIcon(string FileName, bool IsIconContains, bool _16x16)
@@ -76,6 +70,22 @@ namespace wqNotes_frm
             return ret;
         }
 
+        public static Image MergeImages(Image ImageBack, Image ImageFore)
+        {
+            Image ret = (Image)ImageBack.Clone();
+            Graphics res = Graphics.FromImage(ret);
+            res.DrawImageUnscaled(ImageBack, 0, 0);
+            res.DrawImageUnscaled(ImageFore, 0, 0);
+            res.Save();
+            return ret;
+        }
+
+       public static string GetTextFromRtf(string rtf)
+       {
+          RichTextBox rtb = new RichTextBox();
+          rtb.Rtf = rtf;
+          return rtb.Text;
+       }
 
         /// <summary>
         /// The main entry point for the application.
@@ -85,7 +95,7 @@ namespace wqNotes_frm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 

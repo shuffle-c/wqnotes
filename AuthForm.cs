@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace wqNotes_frm
+namespace wqNotes
 {
-    public partial class Form5 : Form
+    public partial class AuthForm : Form
     {
         public string wqResult;
-        public Form5()
+        public AuthForm()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
-namespace wqNotes_frm
+namespace wqNotes
 {
-    partial class Form5
+    partial class AuthForm
     {
         /// <summary>
         /// Required designer variable.
