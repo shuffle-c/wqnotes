@@ -6,16 +6,16 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace wqNotes_frm
+namespace wqNotes
 {
-    public partial class Form7 : Form
+    public partial class AttachForm : Form
     {
         public string wqInput;
         public bool wqOut_IsLink;
         public DateTime wqOut_Dtc;
         public DateTime wqOut_Dtm;
 
-        public Form7()
+        public AttachForm()
         {
             InitializeComponent();
         }

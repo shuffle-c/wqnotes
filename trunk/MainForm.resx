@@ -558,9 +558,6 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>225, 17</value>
   </metadata>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>335, 17</value>
-  </metadata>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>434, 17</value>
   </metadata>
@@ -742,6 +739,12 @@
         nAMEDw8vpqmwYIHAAEH9MGBAVkqDBoODBjjw4YJXgBkOHBxENGCAgY8gOyaK2LFkokAAOw==
 </value>
   </data>
+  <metadata name="contextMenuStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>653, 54</value>
+  </metadata>
+  <metadata name="contextMenuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>508, 54</value>
+  </metadata>
   <data name="wqRichEdit1.Text" xml:space="preserve">
     <value>Тема: «Почему препаративно пpотопланетное облако?»
 Матожидание мгновенно. Прямое восхождение огромно. Пpотопланетное облако, следуя пионерской работе Эдвина Хаббла, активирует тригонометрический годовой параллакс, таким образом сбылась мечта идиота - утверждение полностью доказано. Афелий стабилен. Концентрация, как бы это ни казалось симбиотичным, катализирует непреложный предел последовательности без тонкослойной хроматограммы. 
@@ -750,6 +753,9 @@
 
 Дело в том, что иррациональное число гасит далекий комплексный фторид церия, минуя жидкое состояние. Часовой угол, после осторожного анализа, обуславливает инициированный маятник Фуко, хотя это явно видно на фотогpафической пластинке, полученной с помощью 1.2-метpового телескопа. Имидазол, как следует из вышесказанного, ясен. Дело в том, что функция многих переменных охватывает ортогональный определитель, как и предсказывает основной постулат квантовой химии. Планета перечеркивает возбужденный скачок функции, но никакие ухищрения экспериментаторов не позволят понять сложную цепочку превращений. Зоркость наблюдателя, общеизвестно, меняет метеорный дождь, Плутон не входит в эту классификацию.</value>
   </data>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>335, 17</value>
+  </metadata>
   <data name="toolStripButton10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -803,8 +809,41 @@
   <metadata name="saveFileDialog2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>380, 54</value>
   </metadata>
+  <metadata name="notifyIcon1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>25, 91</value>
+  </metadata>
+  <metadata name="contextMenuStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 91</value>
+  </metadata>
+  <data name="notifyIcon1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAACAAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAABAQEAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAACAAAAAAkJCHsEBQR6AAAABwICAgAAAAACAAAAAQAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAACAAAAAAcHBzcMDAr/CwsL/w0NELIAAAArAwMDAAAAAAAAAAACAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAABAAAAAgICAgYJCgjLAAAA/42Lj/vGxM3/LzE15QAAAGcBAQEBAQEBAAAA
+        AAMAAAAAAAAAAAAAAAAAAAAAAAABAwAAAAAODw9zWF1g/1ZXWfz28Pf/+PH5/ebi7P9sbXX/AAABnwAA
+        ABoDAwMAAAAAAQAAAAEAAAAAAAAAAAEBAQEAAgMdbGxv8YOGjf3Z2eH+9/P4//by+v/x6fP+6uLt/qal
+        r/8jKDDSAAAATAMDAwABAQEAAAAAAgAAAAAAAAAAMigfqKqenP+/wMv8///////5///AucT/i4SO/83H
+        z/+kqLf9s7XB/1NUWvsAAACRAAAAEAEBAQAAAAACCgsNVFhre/2qk579//3//8e+x/9uaHH/VFFW/7u5
+        uv+xs8D/lZel//Hr7v359P3/iImT/wcJDMMAAAAwAQEBAEZFRd9wjKT/yczd+qyosP5wcHf/pKSm///8
+        ///l5vD/jpOj/+Ld5P/z7vX/7+nx//33//3Cwcv/Gxwd6gEBAGUFBAQxkYyMtv/////Cwsf/+vr//P//
+        //7q6O//kJeo/9/d5P/38/n/8evz/+zn7v/58vj+xsLI/RcXGP8EBARXAAAAAB4eIAibmpyA////7//+
+        ///18vf/oaaz/bS0v//8+P3/8ez0//Dq8f/58/r/39vg/CUmJ/4AAABmAwMDAAAAAAIAAAAAAAAAADMz
+        NCLExMWn0dTe96utuf/y7/T79fL4/vHt9P/38vj/3Nnf+iYmJv8AAACoAgICAAAAAAMAAAAAAQEBAQMD
+        AwMAAAAAAAAAAD9AQznj4ebd//////Px9//z7/b8+/j9/UFAQP8AAADnCAgItgAAABUAAAABAAAAAAAA
+        AAAAAAAAAgICAQAAAAIAAAAAHBwcDpKRk3/7+v71/////3Z0dv8AAADLBwcHEw4ODosDAwM4AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAQECAgAAAAAAAAAARUVGKnt6e6YIBQPZAwMDHgAAAAAODw8cAQEBBQAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAgICAwAAAAAAAAAACQkJDAAAAAAAAAABAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>277, 91</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>34</value>
+    <value>46</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
