@@ -118,5 +118,17 @@ namespace wqNotes.Properties {
                 this["LastNumberElem"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GeneralOptions {
+            get {
+                return ((string)(this["GeneralOptions"]));
+            }
+            set {
+                this["GeneralOptions"] = value;
+            }
+        }
     }
 }

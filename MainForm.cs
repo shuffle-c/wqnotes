@@ -389,6 +389,14 @@ namespace wqNotes
          //wqRichEdit1.SelectionBackColor = Color.LightBlue;
          wqRichEdit1.ProcessSelectedLines();
       }
+      public void InitSettings(bool isload)
+      {
+         if (isload) // Если при загрузке
+         {
+            this.wqRichEdit1.Font = Program.Opt.FontRichEdit;
+         }
+         //...
+      }
       #endregion
 
       #region События главного меню
@@ -1232,6 +1240,8 @@ namespace wqNotes
          listView1.Items.Clear();
          listView1.Groups.Clear();
          ////////////////////////////
+         InitSettings(true);
+
          mDB = new wqFile();
          mDB.NodeChange = false;
 
@@ -1368,6 +1378,8 @@ namespace wqNotes
             Properties.Settings.Default.Location = this.RestoreBounds.Location;
             Properties.Settings.Default.Size = this.RestoreBounds.Size;
          }
+
+         Program.Opt.Save();
          Properties.Settings.Default.Save();
       }
 
@@ -1632,6 +1644,7 @@ namespace wqNotes
 
       private void открытьToolStripMenuItem2_Click(object sender, EventArgs e)
       {
+         if (Program.Opt.IsHideOnMinimize) this.Show();
          this.WindowState = FormWindowState.Normal;
          this.Activate();
       }
@@ -1702,6 +1715,26 @@ namespace wqNotes
       private void удалитьToolStripMenuItem4_Click(object sender, EventArgs e)
       {
          удалитьToolStripMenuItem_Click(sender, e);
+      }
+
+      private void MainForm_Move(object sender, EventArgs e)
+      {
+         if (this.WindowState == FormWindowState.Minimized)
+         {
+            if (Program.Opt.IsHideOnMinimize == true)
+            {
+               this.Hide();
+            }
+         }
+      }
+
+      private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         OptionsForm opt = new OptionsForm();
+         if (opt.ShowDialog() == DialogResult.Yes)
+         {
+            InitSettings(false);
+         }
       }
    }
 }
