@@ -82,7 +82,7 @@ namespace wqNotes
            this.label3.Name = "label3";
            this.label3.Size = new System.Drawing.Size(71, 13);
            this.label3.TabIndex = 2;
-           this.label3.Text = "версия 0.9.1";
+           this.label3.Text = "версия 0.9.2";
            // 
            // label4
            // 
