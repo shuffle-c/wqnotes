@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?><wqMain><wqStructure><xs:schema id="wqStructure" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"><xs:element name="dir"><xs:complexType><xs:sequence><xs:element ref="dir" minOccurs="0" maxOccurs="unbounded" /><xs:element name="node" minOccurs="0" maxOccurs="unbounded"><xs:complexType><xs:sequence><xs:element name="attach" minOccurs="0" maxOccurs="unbounded"><xs:complexType><xs:attribute name="id" type="xs:int" /><xs:attribute name="parent_id" type="xs:int" use="prohibited" /><xs:attribute name="name" type="xs:string" /><xs:attribute name="dtc" type="xs:dateTime" /><xs:attribute name="dtm" type="xs:dateTime" /><xs:attribute name="hash" type="xs:string" /><xs:attribute name="crypto" type="xs:string" /><xs:attribute name="flag" type="xs:string" /><xs:attribute name="size" type="xs:int" /></xs:complexType></xs:element></xs:sequence><xs:attribute name="id" type="xs:int" /><xs:attribute name="parent_id" type="xs:int" use="prohibited" /><xs:attribute name="name" type="xs:string" /><xs:attribute name="dtc" type="xs:dateTime" /><xs:attribute name="dtm" type="xs:dateTime" /><xs:attribute name="schema" type="xs:int" /><xs:attribute name="priority" type="xs:int" /><xs:attribute name="crypto" type="xs:string" /><xs:attribute name="flag" type="xs:string" /><xs:attribute name="size" type="xs:int" /><xs:attribute name="exsize" type="xs:int" /></xs:complexType></xs:element></xs:sequence><xs:attribute name="id" type="xs:int" /><xs:attribute name="parent_id" type="xs:int" use="prohibited" /><xs:attribute name="name" type="xs:string" /><xs:attribute name="dtc" type="xs:dateTime" /><xs:attribute name="dtm" type="xs:dateTime" /><xs:attribute name="priority" type="xs:int" /><xs:attribute name="crypto" type="xs:string" /><xs:attribute name="flag" type="xs:string" /><xs:attribute name="count" type="xs:int" /><xs:attribute name="size" type="xs:int" /></xs:complexType></xs:element><xs:element name="wqStructure" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"><xs:complexType><xs:choice minOccurs="0" maxOccurs="unbounded"><xs:element ref="dir" /></xs:choice></xs:complexType><xs:unique name="Constraint1"><xs:selector xpath=".//node" /><xs:field xpath="@id" /></xs:unique><xs:unique name="Constraint2"><xs:selector xpath=".//dir" /><xs:field xpath="@id" /></xs:unique><xs:keyref name="dir-dir" refer="Constraint2" msdata:IsNested="true"><xs:selector xpath=".//dir" /><xs:field xpath="@parent_id" /></xs:keyref><xs:keyref name="dir-node" refer="Constraint2" msdata:IsNested="true"><xs:selector xpath=".//node" /><xs:field xpath="@parent_id" /></xs:keyref><xs:keyref name="node-attach" refer="Constraint1" msdata:IsNested="true"><xs:selector xpath=".//attach" /><xs:field xpath="@parent_id" /></xs:keyref></xs:element></xs:schema><dir id="1" name="Projects" dtc="2008-06-05T00:57:28.522875+04:00" dtm="2008-06-05T00:57:53.25725+04:00" priority="0" flag="" count="41" size="30201"><dir id="3" name="wqNotes" dtc="2008-06-05T00:57:39.897875+04:00" dtm="2008-06-05T01:00:39.147875+04:00" priority="0" crypto="0" flag="" count="40" size="30189"><dir id="5" name="Формы" dtc="2008-06-05T00:58:14.991625+04:00" dtm="2008-06-05T00:58:14.991625+04:00" priority="0" crypto="0" flag="" count="0" size="0" /><dir id="6" name="Классы" dtc="2008-06-05T00:58:48.460375+04:00" dtm="2008-06-05T00:59:57.022875+04:00" priority="0" crypto="0" flag="" count="36" size="25798"><dir id="7" name="Journal" dtc="2008-06-05T00:58:55.6635+04:00" dtm="2008-06-05T01:51:51.7885+04:00" priority="0" crypto="0" flag="" count="35" size="25798"><dir id="44" name="Private" dtc="2008-06-05T01:51:46.272875+04:00" dtm="2008-06-05T02:00:23.554125+04:00" priority="0" crypto="0" flag="" count="8" size="1670"><node id="45" name="wqCompare" dtc="2008-06-05T01:51:55.38225+04:00" dtm="2008-06-05T01:51:55.38225+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="46" name="wqLoadTreeView" dtc="2008-06-05T01:57:38.335375+04:00" dtm="2008-06-05T01:57:38.335375+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="47" name="wqSetNit" dtc="2008-06-05T01:57:54.491625+04:00" dtm="2008-06-05T01:57:54.491625+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="48" name="wqLoadStructure" dtc="2008-06-05T01:58:44.7885+04:00" dtm="2008-06-05T01:58:44.7885+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="49" name="wqLoadIndexs" dtc="2008-06-05T01:59:03.601+04:00" dtm="2008-06-05T01:59:03.601+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="50" name="wqGetTmpName" dtc="2008-06-05T01:59:55.772875+04:00" dtm="2008-06-05T01:59:55.772875+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="51" name="wqBackupStructure" dtc="2008-06-05T02:00:09.585375+04:00" dtm="2008-06-05T02:00:09.585375+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="52" name="wqGetContent" dtc="2008-06-05T02:00:22.116625+04:00" dtm="2008-06-05T02:01:57.241625+04:00" schema="1" priority="0" flag="" size="1670" exsize="1670" /></dir><node id="17" name="Journal" dtc="2008-06-05T01:07:36.147875+04:00" dtm="2008-06-05T01:08:53.554125+04:00" schema="1" priority="0" flag="" size="923" exsize="923" /><node id="18" name="CloseDB" dtc="2008-06-05T01:10:07.25725+04:00" dtm="2008-06-05T01:10:25.81975+04:00" schema="1" priority="0" flag="" size="990" exsize="990" /><node id="19" name="CreateNewDB" dtc="2008-06-05T01:10:40.554125+04:00" dtm="2008-06-05T01:16:02.460375+04:00" schema="1" priority="0" flag="" size="7143" exsize="7143" /><node id="20" name="LoadDB" dtc="2008-06-05T01:16:03.94475+04:00" dtm="2008-06-05T01:21:13.616625+04:00" schema="1" priority="0" flag="" size="1193" exsize="1193" /><node id="21" name="SaveDB" dtc="2008-06-05T01:21:20.960375+04:00" dtm="2008-06-05T01:22:26.2885+04:00" schema="1" priority="0" flag="" size="4548" exsize="4548" /><node id="22" name="GetAttachList" dtc="2008-06-05T01:22:38.647875+04:00" dtm="2008-06-05T01:23:01.00725+04:00" schema="1" priority="0" flag="" size="855" exsize="855" /><node id="23" name="CreateAttach" dtc="2008-06-05T01:23:08.6635+04:00" dtm="2008-06-05T01:24:31.88225+04:00" schema="1" priority="0" flag="" size="4256" exsize="4256" /><node id="24" name="SaveAttach" dtc="2008-06-05T01:27:30.44475+04:00" dtm="2008-06-05T01:28:04.56975+04:00" schema="1" priority="0" flag="" size="983" exsize="983" /><node id="25" name="SaveAttach [Stream]" dtc="2008-06-05T01:28:26.25725+04:00" dtm="2008-06-05T01:30:17.2885+04:00" schema="1" priority="2" flag="" size="1363" exsize="1363" /><node id="26" name="DeleteAttach" dtc="2008-06-05T01:31:11.25725+04:00" dtm="2008-06-05T01:34:20.976+04:00" schema="1" priority="0" flag="" size="1874" exsize="1874" /><node id="27" name="GetNode" dtc="2008-06-05T01:34:31.210375+04:00" dtm="2008-06-05T01:34:31.210375+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="28" name="SetSchema" dtc="2008-06-05T01:34:45.7885+04:00" dtm="2008-06-05T01:34:45.7885+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="29" name="SetPriority" dtc="2008-06-05T01:35:10.054125+04:00" dtm="2008-06-05T01:35:10.054125+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="30" name="SetNodeContent" dtc="2008-06-05T01:35:21.6635+04:00" dtm="2008-06-05T01:35:21.6635+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="31" name="DeleteNode" dtc="2008-06-05T01:35:37.06975+04:00" dtm="2008-06-05T01:35:37.06975+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="32" name="CreateNode" dtc="2008-06-05T01:41:36.6635+04:00" dtm="2008-06-05T01:41:36.6635+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="33" name="RemoveChange" dtc="2008-06-05T01:42:20.4135+04:00" dtm="2008-06-05T01:42:20.4135+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="34" name="CreateDir" dtc="2008-06-05T01:42:55.601+04:00" dtm="2008-06-05T01:42:55.601+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="35" name="DeleteDir" dtc="2008-06-05T01:43:27.085375+04:00" dtm="2008-06-05T01:43:27.085375+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="36" name="Rename" dtc="2008-06-05T01:43:41.00725+04:00" dtm="2008-06-05T01:43:41.00725+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="37" name="GetAttach" dtc="2008-06-05T01:43:54.647875+04:00" dtm="2008-06-05T01:43:54.647875+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="38" name="BringUp" dtc="2008-06-05T01:44:07.960375+04:00" dtm="2008-06-05T01:44:07.960375+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="39" name="BringDown" dtc="2008-06-05T01:44:21.94475+04:00" dtm="2008-06-05T01:44:21.94475+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="40" name="GetInfoElem" dtc="2008-06-05T01:44:34.054125+04:00" dtm="2008-06-05T01:44:34.054125+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="41" name="LoadTreeView" dtc="2008-06-05T01:44:54.2885+04:00" dtm="2008-06-05T01:44:54.2885+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="42" name="GetHistory" dtc="2008-06-05T01:50:04.491625+04:00" dtm="2008-06-05T01:50:04.491625+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /><node id="43" name="Search" dtc="2008-06-05T01:50:20.9135+04:00" dtm="2008-06-05T01:50:20.9135+04:00" schema="1" priority="0" flag="" size="0" exsize="0" /></dir><dir id="8" name="wqRichEdit" dtc="2008-06-05T00:59:23.226+04:00" dtm="2008-06-05T00:59:23.226+04:00" priority="0" crypto="0" flag="" count="0" size="0" /><dir id="9" name="Program" dtc="2008-06-05T00:59:34.2885+04:00" dtm="2008-06-05T00:59:34.2885+04:00" priority="0" crypto="0" flag="" count="0" size="0" /><dir id="10" name="Settings" dtc="2008-06-05T00:59:40.69475+04:00" dtm="2008-06-05T00:59:40.69475+04:00" priority="0" crypto="0" flag="" count="0" size="0" /><node id="11" name="Инфо" dtc="2008-06-05T00:59:51.772875+04:00" dtm="2008-06-05T00:59:51.772875+04:00" schema="0" priority="0" flag="" size="0" exsize="0" /></dir><dir id="12" name="stuff" dtc="2008-06-05T01:00:28.9135+04:00" dtm="2008-06-05T01:05:51.460375+04:00" priority="0" crypto="0" flag="" count="3" size="4391"><dir id="14" name="syntax" dtc="2008-06-05T01:05:17.1635+04:00" dtm="2008-06-05T01:06:50.56975+04:00" priority="0" crypto="0" flag="" count="1" size="0"><node id="16" name="ver 1.0" dtc="2008-06-05T01:06:15.335375+04:00" dtm="2008-06-05T01:06:15.335375+04:00" schema="3" priority="0" flag="" size="0" exsize="0" /></dir><node id="13" name="app.config" dtc="2008-06-05T01:00:46.116625+04:00" dtm="2008-06-05T01:01:18.5385+04:00" schema="5" priority="2" flag="" size="1908" exsize="1908" /><node id="15" name="Настройки" dtc="2008-06-05T01:05:45.022875+04:00" dtm="2008-06-05T01:06:06.647875+04:00" schema="2" priority="0" flag="" size="2483" exsize="2483" /></dir><node id="4" name="Инфо" dtc="2008-06-05T00:58:06.851+04:00" dtm="2008-06-05T00:58:06.851+04:00" schema="0" priority="0" flag="" size="0" exsize="0" /></dir><node id="2" name="default" dtc="2008-06-05T00:57:28.522875+04:00" dtm="2008-06-05T00:57:28.522875+04:00" schema="0" priority="0" flag="" size="12" exsize="12" /></dir></wqStructure><wqContent><infoid lastid="52" /><wqNode id="2">{\rtf1}&#x0;</wqNode><wqNode id="4" /><wqNode id="11" /><wqNode id="13">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204 Lucida Console;}}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs17   &lt;?xml version="1.0" encoding="utf-8" ?&gt; \par
+- &lt;configuration&gt;\par
+- &lt;configSections&gt;\par
+- &lt;sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"&gt;\par
+  &lt;section name="wqNotes_frm.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" /&gt; \par
+  &lt;/sectionGroup&gt;\par
+  &lt;/configSections&gt;\par
+- &lt;userSettings&gt;\par
+- &lt;wqNotes_frm.Properties.Settings&gt;\par
+- &lt;setting name="Size" serializeAs="String"&gt;\par
+  &lt;value&gt;750, 543&lt;/value&gt; \par
+  &lt;/setting&gt;\par
+- &lt;setting name="Location" serializeAs="String"&gt;\par
+  &lt;value&gt;0, 0&lt;/value&gt; \par
+  &lt;/setting&gt;\par
+- &lt;setting name="LastFile" serializeAs="String"&gt;\par
+  &lt;value /&gt; \par
+  &lt;/setting&gt;\par
+- &lt;setting name="RecentFiles" serializeAs="String"&gt;\par
+  &lt;value /&gt; \par
+  &lt;/setting&gt;\par
+- &lt;setting name="WinState" serializeAs="String"&gt;\par
+  &lt;value&gt;Normal&lt;/value&gt; \par
+  &lt;/setting&gt;\par
+- &lt;setting name="LoadLastFile" serializeAs="String"&gt;\par
+  &lt;value&gt;True&lt;/value&gt; \par
+  &lt;/setting&gt;\par
+- &lt;setting name="SaveMode" serializeAs="String"&gt;\par
+  &lt;value&gt;1&lt;/value&gt; \par
+  &lt;/setting&gt;\par
+- &lt;setting name="LastNumberElem" serializeAs="String"&gt;\par
+  &lt;value&gt;0&lt;/value&gt; \par
+  &lt;/setting&gt;\par
+  &lt;/wqNotes_frm.Properties.Settings&gt;\par
+  &lt;/userSettings&gt;\par
+  &lt;/configuration&gt;\par
+}
+</wqNode><wqNode id="15">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204 Lucida Console;}}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs17 SaveMode:\par
+\par
+0: \'c2\'f1\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'ed\'fb\'e5 \'e7\'e0\'ec\'e5\'f2\'ea\'e8 \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'fe\'f2\'f1\'ff \'e4\'f0\'f3\'e3 \'e7\'e0 \'e4\'f0\'f3\'e3\'ee\'ec \'e2 \'ee\'e4\'ed\'ee\'ec \'ee\'ea\'ed\'e5 \'f7\'e5\'f0\'e5\'e7 \'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'fc.\par
+   \'d1\'ee\'f5\'f0\'e0\'ed\'ff\'fe\'f2\'f1\'ff \'eb\'e8\'e1\'ee \'e2\'f1\'e5 \'e2\'ec\'e5\'f1\'f2\'e5, \'eb\'e8\'e1\'ee \'ed\'e8 \'ee\'e4\'ed\'e0.\par
+\par
+1: \'c2\'f1\'e5 \'e8\'e7\'ec\'e5\'ed\'e5\'ed\'ed\'fb\'e5 \'e7\'e0\'ec\'e5\'f2\'ea\'e8 \'ee\'f2\'ee\'e1\'f0\'e0\'e6\'e0\'fe\'f2\'f1\'ff \'e4\'f0\'f3\'e3 \'e7\'e0 \'e4\'f0\'f3\'e3\'ee\'ec \'e2 \'ee\'e4\'ed\'ee\'ec \'ee\'ea\'ed\'e5 \'f7\'e5\'f0\'e5\'e7 \'f0\'e0\'e7\'e4\'e5\'eb\'e8\'f2\'e5\'eb\'fc.\par
+   \'cf\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fe \'ef\'f0\'e5\'e4\'eb\'e0\'e3\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'e1\'f0\'e0\'f2\'fc \'e7\'e0\'ec\'e5\'f2\'ea\'e8, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f1\'eb\'e5\'e4\'f3\'e5\'f2 \'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc.\par
+\par
+2: \'c8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'fe\'f2\'f1\'ff \'ef\'ee\'f1\'eb\'e5 \'ee\'f2\'ea\'f0\'fb\'f2\'e8\'ff \'e4\'f0\'f3\'e3\'ee\'e9 \'e7\'e0\'ec\'e5\'f2\'ea\'e8.\par
+   \'d1\'ee\'f5\'f0\'e0\'ed\'ff\'fe\'f2\'f1\'ff \'eb\'e8\'e1\'ee \'e2\'f1\'e5 \'e2\'ec\'e5\'f1\'f2\'e5, \'eb\'e8\'e1\'ee \'ed\'e8 \'ee\'e4\'ed\'e0.\par
+\par
+3: \'c8\'e7\'ec\'e5\'ed\'e5\'ed\'e8\'ff \'e0\'e2\'f2\'ee\'ec\'e0\'f2\'e8\'f7\'e5\'f1\'ea\'e8 \'ef\'f0\'e8\'ed\'e8\'ec\'e0\'fe\'f2\'f1\'ff \'ef\'ee\'f1\'eb\'e5 \'ee\'f2\'ea\'f0\'fb\'f2\'e8\'ff \'e4\'f0\'f3\'e3\'ee\'e9 \'e7\'e0\'ec\'e5\'f2\'ea\'e8.\par
+   \'cf\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'fe \'ef\'f0\'e5\'e4\'eb\'e0\'e3\'e0\'e5\'f2\'f1\'ff \'e2\'fb\'e1\'f0\'e0\'f2\'fc \'e7\'e0\'ec\'e5\'f2\'ea\'e8, \'ea\'ee\'f2\'ee\'f0\'fb\'e5 \'f1\'eb\'e5\'e4\'f3\'e5\'f2 \'f1\'ee\'f5\'f0\'e0\'ed\'e8\'f2\'fc.\par
+\par
+4: \'cf\'f0\'e8 \'e2\'fb\'e1\'ee\'f0\'e5 \'ed\'ee\'e2\'ee\'e9 \'e7\'e0\'ec\'e5\'f2\'ea\'e8 \'e7\'e0\'ef\'f0\'ee\'f1\'e8\'f2\'fc \'f3 \'ef\'ee\'eb\'fc\'e7\'ee\'e2\'e0\'f2\'e5\'eb\'ff \'e8\'ed\'f4\'ee\'f0\'ec\'e0\'f6\'e8\'fe \'ee \'f1\'ee\'f5\'f0\'e0\'ed\'e5\'ed\'e8\'e8\par
+   \'ee\'f2\'ea\'f0\'fb\'f2\'ee\'e9 \'e7\'e0\'ec\'e5\'f2\'ea\'e8.\par
+}
+</wqNode><wqNode id="16" /><wqNode id="17">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  Journal(\cf1 string\cf0  path, ToolStripProgressBar dbproc)\par
+        \{\par
+            \cf1 this\cf0 .DBProcess = dbproc;\par
+            \cf1 this\cf0 .DBPath = path;\par
+            FileInfo fis = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf2 0\cf0 ]);\par
+            FileInfo fix = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf2 1\cf0 ]);\par
+            \cf1 if\cf0  (fis.Exists || fix.Exists)\par
+                \cf1 this\cf0 .IsChanged = \cf1 true\cf0 ;\par
+            \cf1 else\cf0\par
+                \cf1 this\cf0 .IsChanged = \cf1 false\cf0 ;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="18">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  \cf1 void\cf0  CloseDB()\par
+        \{\par
+            \cf1 if\cf0  (DBPath == \cf2 ""\cf0 ) \cf1 return\cf0 ;\par
+            \cf1 if\cf0  (wqfs != \cf1 null\cf0 ) \{ wqfs.Close(); wqfs = \cf1 null\cf0 ; \}\par
+            \cf1 if\cf0  (fxmltmps != \cf1 null\cf0 ) \{ fxmltmps.Close(); fxmltmps = \cf1 null\cf0 ; \}\par
+            FileInfo fis = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf3 0\cf0 ]);\par
+            FileInfo fix = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf3 1\cf0 ]);\par
+            \cf1 if\cf0 (fis.Exists) fis.Delete();\par
+            \cf1 if\cf0 (fix.Exists) fix.Delete();\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="19">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue0;\red128\green128\blue128;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  \cf1 bool\cf0  CreateNewDB()\par
+        \{\par
+            \cf1 this\cf0 .CloseDB();\par
+            FileInfo fid = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf2 0\cf0 ]);\par
+            \cf1 if\cf0  (fid.Exists) fid.Delete();\par
+            fid = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf2 1\cf0 ]);\par
+            \cf1 if\cf0 (fid.Exists) fid.Delete();\par
+            \cf1 this\cf0 .wqLastId = \cf2 2\cf0 ;\par
+            \cf1 this\cf0 .DelId.Clear();\par
+            \cf1 this\cf0 .cID.Clear();\par
+            \cf1 this\cf0 .wqMainDts = \cf1 new\cf0  DataSet();\par
+            \cf1 this\cf0 .wqMainDts.DataSetName = \cf3 "wqStructure"\cf0 ;\par
+            DataTable dtb = \cf1 this\cf0 .wqMainDts.Tables.Add(\cf3 "dir"\cf0 );\par
+            dtb.Columns.Add(\cf3 "id"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "parent_id"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "name"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "dtc"\cf0 , \cf1 typeof\cf0 (DateTime));\par
+            dtb.Columns.Add(\cf3 "dtm"\cf0 , \cf1 typeof\cf0 (DateTime));\par
+            dtb.Columns.Add(\cf3 "priority"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "crypto"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "flag"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "count"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "size"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb = \cf1 this\cf0 .wqMainDts.Tables.Add(\cf3 "node"\cf0 );\par
+            dtb.Columns.Add(\cf3 "id"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "parent_id"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "name"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "dtc"\cf0 , \cf1 typeof\cf0 (DateTime));\par
+            dtb.Columns.Add(\cf3 "dtm"\cf0 , \cf1 typeof\cf0 (DateTime));\par
+            dtb.Columns.Add(\cf3 "schema"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "priority"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "crypto"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "flag"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "size"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "exsize"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb = \cf1 this\cf0 .wqMainDts.Tables.Add(\cf3 "attach"\cf0 );\par
+            dtb.Columns.Add(\cf3 "id"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "parent_id"\cf0 , \cf1 typeof\cf0 (Int32));\par
+            dtb.Columns.Add(\cf3 "name"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "dtc"\cf0 , \cf1 typeof\cf0 (DateTime));\par
+            dtb.Columns.Add(\cf3 "dtm"\cf0 , \cf1 typeof\cf0 (DateTime));\par
+            dtb.Columns.Add(\cf3 "hash"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "crypto"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "flag"\cf0 , \cf1 typeof\cf0 (\cf1 String\cf0 ));\par
+            dtb.Columns.Add(\cf3 "size"\cf0 , \cf1 typeof\cf0 (Int32));\par
+\par
+            \cf1 this\cf0 .wqMainDts.Tables[\cf3 "dir"\cf0 ].Rows.Add(\cf1 new\cf0  \cf1 object\cf0 [] \{\par
+                \cf2 1\cf0 ,\cf1 null\cf0 ,\cf3 "root"\cf0 ,DateTime.Now,DateTime.Now,\cf2 0\cf0 ,\cf1 null\cf0 ,\cf3 ""\cf0 ,\cf2 1\cf0 ,\cf2 0\cf0\});\par
+            \cf1 this\cf0 .wqMainDts.Tables[\cf3 "node"\cf0 ].Rows.Add(\cf1 new\cf0  \cf1 object\cf0 [] \{\par
+                \cf2 2\cf0 ,\cf2 1\cf0 ,\cf3 "default"\cf0 ,DateTime.Now,DateTime.Now,\cf2 0\cf0 ,\cf2 0\cf0 ,\cf1 null\cf0 ,\cf3 ""\cf0 ,\cf2 0\cf0 ,\cf2 0\cf0\});\par
+\par
+            DataRelation drln = \cf1 this\cf0 .wqMainDts.Relations.Add(\cf3 "dir-dir"\cf0 ,\par
+                \cf1 this\cf0 .wqMainDts.Tables[\cf3 "dir"\cf0 ].Columns[\cf3 "id"\cf0 ],\par
+                \cf1 this\cf0 .wqMainDts.Tables[\cf3 "dir"\cf0 ].Columns[\cf3 "parent_id"\cf0 ]);\par
+            drln.Nested = \cf1 true\cf0 ;\par
+\par
+            drln = \cf1 this\cf0 .wqMainDts.Relations.Add(\cf3 "dir-node"\cf0 ,\par
+                \cf1 this\cf0 .wqMainDts.Tables[\cf3 "dir"\cf0 ].Columns[\cf3 "id"\cf0 ],\par
+                \cf1 this\cf0 .wqMainDts.Tables[\cf3 "node"\cf0 ].Columns[\cf3 "parent_id"\cf0 ]);\par
+            drln.Nested = \cf1 true\cf0 ;\par
+\par
+            drln = \cf1 this\cf0 .wqMainDts.Relations.Add(\cf3 "node-attach"\cf0 ,\par
+                \cf1 this\cf0 .wqMainDts.Tables[\cf3 "node"\cf0 ].Columns[\cf3 "id"\cf0 ],\par
+                \cf1 this\cf0 .wqMainDts.Tables[\cf3 "attach"\cf0 ].Columns[\cf3 "parent_id"\cf0 ]);\par
+            drln.Nested = \cf1 true\cf0 ;\par
+\par
+            \cf1 string\cf0 [] l = \{ \cf3 "dir"\cf0 , \cf3 "node"\cf0 , \cf3 "attach"\cf0  \};\par
+            \cf1 string\cf0 [,] w = \{ \{ \cf3 "id"\cf0 , \cf3 "name"\cf0 , \cf3 "dtc"\cf0 , \cf3 "dtm"\cf0 , \cf3 "priority"\cf0 , \par
+                \cf3 "crypto"\cf0 , \cf3 "flag"\cf0 , \cf3 "count"\cf0 , \cf3 "size"\cf0  \}, \par
+                \{ \cf3 "id"\cf0 , \cf3 "name"\cf0 , \cf3 "dtc"\cf0 , \cf3 "dtm"\cf0 , \cf3 "schema"\cf0 , \cf3 "priority"\cf0 , \par
+                 \cf3 "crypto"\cf0 , \cf3 "flag"\cf0 , \cf3 "size"\cf0  \}, \{ \cf3 "id"\cf0 , \cf3 "name"\cf0 , \cf3 "dtc"\cf0 , \par
+                     \cf3 "dtm"\cf0 , \cf3 "hash"\cf0 , \cf3 "crypto"\cf0 , \cf3 "flag"\cf0 , \cf3 "size"\cf0 , \cf3 "parent_id"\cf0  \} \};\par
+            \cf1 for\cf0  (Int32 i = \cf2 0\cf0 ; i &lt; \cf2 3\cf0 ; ++i) \cf1 for\cf0  (Int32 j = \cf2 0\cf0 ; j &lt; \cf2 9\cf0 ; ++j)\par
+                \cf1 this\cf0 .wqMainDts.Tables[l[i]].Columns[w[i, j]].ColumnMapping = MappingType.Attribute;\par
+            \cf1 this\cf0 .wqMainDts.Tables[\cf3 "node"\cf0 ].Columns[\cf3 "exsize"\cf0 ].ColumnMapping = MappingType.Attribute;\par
+            \cf1 this\cf0 .wqMainDts.Tables[\cf3 "dir"\cf0 ].Columns[\cf3 "parent_id"\cf0 ].ColumnMapping = MappingType.Hidden;\par
+            \cf1 this\cf0 .wqMainDts.Tables[\cf3 "node"\cf0 ].Columns[\cf3 "parent_id"\cf0 ].ColumnMapping = MappingType.Hidden;\par
+            \cf1 this\cf0 .wqMainDts.Tables[\cf3 "attach"\cf0 ].Columns[\cf3 "parent_id"\cf0 ].ColumnMapping = MappingType.Hidden;\par
+\par
+            \cf1 this\cf0 .SetNodeContent(\cf2 2\cf0 , \cf3 "\{{\field{\*\fldinst{HYPERLINK "\\\\\\\\rtf1\}\\\\0"}}{\fldrslt{\ul\cf1\\\\rtf1\}\\0}}}\f0\fs20 "\cf0 );\par
+\par
+            \cf1 this\cf0 .SaveDB(\cf1 this\cf0 .DBPath);\par
+            \cf1 return\cf0  \cf1 true\cf0 ;\par
+        \}\par
+}
+</wqNode><wqNode id="20">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  \cf1 bool\cf0  LoadDB()\par
+        \{\par
+            \cf1 if\cf0  (!File.Exists(DBPath)) \cf1 return\cf0  \cf1 false\cf0 ;\par
+            \cf1 this\cf0 .cID.Clear();\par
+            \cf1 this\cf0 .IsChanged = \cf1 false\cf0 ;\par
+            \cf1 this\cf0 .wqMainDts = \cf1 new\cf0  DataSet();\par
+            \cf1 if\cf0  (fxmltmps != \cf1 null\cf0 ) \{ fxmltmps.Close(); fxmltmps = \cf1 null\cf0 ; \}\par
+            FileStream fs = \cf1 new\cf0  FileStream(DBPath, FileMode.Open);\par
+            MemoryStream ms = \cf1 this\cf0 .wqLoadStructure(fs);\par
+            \cf1 this\cf0 .wqMainDts.ReadXml(ms, XmlReadMode.ReadSchema);\par
+            \cf1 this\cf0 .wqLoadIndexs(fs);\par
+            fs.Close();\par
+            \cf1 this\cf0 .wqfs = \cf1 new\cf0  FileStream(DBPath, FileMode.Open, FileAccess.ReadWrite);\par
+            \cf1 return\cf0  \cf1 true\cf0 ;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="21">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;\red0\green128\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  \cf1 bool\cf0  SaveDB(\cf1 string\cf0  path)\par
+        \{\par
+            \cf1 if\cf0  (!\cf1 this\cf0 .IsChanged) \cf1 return\cf0  \cf1 true\cf0 ;\par
+\par
+            Int32 count = wqMainDts.Tables[\cf2 "node"\cf0 ].Rows.Count;\par
+            count += wqMainDts.Tables[\cf2 "attach"\cf0 ].Rows.Count;\par
+            \cf1 try\cf0  \{ DBProcess.Value = \cf3 0\cf0 ; \} \cf1 catch\cf0  \{ \}\par
+            \cf1 try\cf0  \{ DBProcess.Maximum = count + count / \cf3 20\cf0 ; \} \cf1 catch\cf0  \{ \}\par
+            FileStream fsm = \cf1 new\cf0  FileStream(\cf1 this\cf0 .DBPath + \cf2 "s"\cf0 , FileMode.Create);\par
+            XmlTextWriter xmldb = \cf1 new\cf0  XmlTextWriter(fsm, System.Text.Encoding.UTF8);\par
+\par
+            \cf1 string\cf0  res = \cf2 ""\cf0 ;\par
+            xmldb.WriteStartDocument(\cf1 true\cf0 );\par
+            xmldb.WriteStartElement(\cf2 "wqMain"\cf0 );\par
+            /*xmldb.WriteAttributeString(\cf2 ""\cf0 , \cf2 ""\cf0 );*/\par
+            wqMainDts.WriteXml(xmldb, XmlWriteMode.WriteSchema);\par
+            \cf1 try\cf0  \{ DBProcess.Value += count / \cf3 20\cf0 ; \} \cf1 catch\cf0  \{ \}\par
+            Int32 pos = (Int32)fsm.Position;\par
+            xmldb.WriteStartElement(\cf2 "wqContent"\cf0 );\par
+            xmldb.WriteStartElement(\cf2 "infoid"\cf0 );\par
+            xmldb.WriteAttributeString(\cf2 "lastid"\cf0 , \cf1 this\cf0 .wqLastId.ToString());\par
+            \cf1 foreach\cf0  (Int32 u \cf1 in\cf0  \cf1 this\cf0 .DelId) res += u.ToString() + \cf2 "|"\cf0 ;\par
+            xmldb.WriteString(res.TrimEnd('|'));\par
+            xmldb.WriteEndElement();\par
+            \cf1 foreach\cf0  (DataRow dr \cf1 in\cf0  \cf1 this\cf0 .wqMainDts.Tables[\cf2 "node"\cf0 ].Rows)\par
+            \{\par
+                Int32 nId = Int32.Parse(dr[\cf2 "id"\cf0 ].ToString());\par
+                xmldb.WriteStartElement(\cf2 "wqNode"\cf0 );\par
+                xmldb.WriteAttributeString(\cf2 "id"\cf0 , nId.ToString());\par
+                xmldb.WriteString(\cf1 this\cf0 .GetNode(nId));\par
+                xmldb.WriteEndElement();\par
+                \cf1 try\cf0  \{ DBProcess.Value++; \} \cf1 catch\cf0  \{ \}\par
+            \}\par
+            \cf1 foreach\cf0  (DataRow dr \cf1 in\cf0  \cf1 this\cf0 .wqMainDts.Tables[\cf2 "attach"\cf0 ].Rows)\par
+            \{\par
+                Int32 nId = Int32.Parse(dr[\cf2 "id"\cf0 ].ToString());\par
+                xmldb.WriteStartElement(\cf2 "wqAttach"\cf0 );\par
+                xmldb.WriteAttributeString(\cf2 "id"\cf0 , nId.ToString());\par
+                xmldb.WriteString(\cf1 this\cf0 .GetAttach(nId));\par
+                \cf4 //this.SaveAttach(nId, xmldb.BaseStream);\cf0\par
+                xmldb.WriteEndElement();\par
+                \cf1 try\cf0  \{ DBProcess.Value++; \} \cf1 catch\cf0  \{ \}\par
+            \}\par
+            xmldb.WriteEndElement(); \cf4 //wqCtructure\cf0\par
+            xmldb.WriteEndElement(); \cf4 //wqMain\cf0\par
+            xmldb.Close();\par
+\par
+            \cf1 if\cf0 (wqfs != \cf1 null\cf0 ) wqfs.Close();\par
+            FileInfo fid = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .DBPath + \cf2 "s"\cf0 );\par
+            \cf1 try\cf0  \{ File.Delete(path); \} \cf1 catch\cf0  \{ \}\par
+            fid.MoveTo(path);\par
+            \cf1 if\cf0  (fxmltmps != \cf1 null\cf0 ) \{ fxmltmps.Close(); fxmltmps = \cf1 null\cf0 ; \}\par
+            fid = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf3 0\cf0 ]);\par
+            \cf1 if\cf0 (fid.Exists) fid.Delete();\par
+            fid = \cf1 new\cf0  FileInfo(\cf1 this\cf0 .wqGetTmpName()[\cf3 1\cf0 ]);\par
+            \cf1 if\cf0 (fid.Exists) fid.Delete();\par
+\par
+            \cf1 this\cf0 .DBPath = path;\par
+            \cf1 this\cf0 .wqfs = \cf1 new\cf0  FileStream(DBPath, FileMode.Open, FileAccess.ReadWrite);\par
+            \cf1 this\cf0 .cID.Clear();\par
+            \cf1 this\cf0 .IsChanged = \cf1 false\cf0 ;\par
+            \cf1 this\cf0 .wqfs.Seek(pos, SeekOrigin.Begin);\par
+            \cf1 this\cf0 .wqLoadIndexs(\cf1 this\cf0 .wqfs);\par
+            \cf1 return\cf0  \cf1 true\cf0 ;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="22">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  NodeInfoTag[] GetAttachList(Int32 id)\par
+        \{\par
+            DataRow[] drs = wqMainDts.Tables[\cf2 "node"\cf0 ].Select(\par
+                \cf2 "id="\cf0  + id.ToString())[\cf3 0\cf0 ].GetChildRows(\cf2 "node-attach"\cf0 );\par
+            NodeInfoTag[] ret = \cf1 new\cf0  NodeInfoTag[drs.Length];\par
+            \cf1 for\cf0  (\cf1 int\cf0  i = \cf3 0\cf0 ; i &lt; ret.Length; ++i)\par
+                ret[i] = wqSetNit(drs[i], \cf3 2\cf0 );\par
+            \cf1 return\cf0  ret;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="23">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue0;\red128\green128\blue128;\red0\green128\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  NodeInfoTag CreateAttach(Int32 parent, \cf1 string\cf0  FileName, \cf1 bool\cf0  IsLink, DateTime dtc, DateTime dtm)\par
+        \{\par
+            Int32 nId = \cf2 0\cf0 ;\par
+            \cf1 if\cf0  (DelId.Count &gt; \cf2 0\cf0 )\par
+            \{\par
+                nId = DelId[\cf2 0\cf0 ];\par
+                DelId.RemoveAt(\cf2 0\cf0 );\par
+            \}\par
+            \cf1 else\cf0  nId = ++wqLastId;\par
+\par
+            FileStream fs = \cf1 new\cf0  FileStream(FileName, FileMode.Open,\par
+                FileAccess.Read, FileShare.Read, \cf2 8192\cf0 );\par
+            Int32 sz = (Int32)fs.Length;\par
+            CRC32 crc = \cf1 new\cf0  CRC32();\par
+            \cf1 String\cf0  hash = crc.GetCrc32(fs).ToString() + \cf3 "::"\cf0  + sz.ToString();\par
+            \cf1 String\cf0  stype = IsLink ? \cf3 "shortcut"\cf0  : \cf3 "base64"\cf0 ;\par
+\par
+            \cf1 try\cf0\par
+            \{\par
+                \cf1 if\cf0  (\cf1 this\cf0 .fxmltmps == \cf1 null\cf0 )\par
+                \{\par
+                    \cf1 this\cf0 .fxmltmps = \cf1 new\cf0  FileStream(\cf1 this\cf0 .wqGetTmpName()[\cf2 0\cf0 ],\par
+                        FileMode.Create, FileAccess.ReadWrite);\par
+                \}\par
+                \cf1 if\cf0  (\cf1 this\cf0 .fxmltmps.CanSeek) \cf1 this\cf0 .fxmltmps.Seek(\cf2 0\cf0 , SeekOrigin.End);\par
+                \cf1 if\cf0  (fs.CanSeek) fs.Seek(\cf2 0\cf0 , SeekOrigin.Begin);\par
+                \cf1 this\cf0 .cID[nId] = (Int32)\cf1 this\cf0 .fxmltmps.Length;\par
+                \cf1 if\cf0  (IsLink) \{ fs.Close(); \cf1 throw\cf0  \cf1 new\cf0  MethodAccessException(); \}\par
+\par
+                \cf1 byte\cf0 [] buf = \cf1 new\cf0  \cf1 byte\cf0 [sz];\par
+                \{ fs.Read(buf, \cf2 0\cf0 , sz); fs.Close(); \}\par
+                MemoryStream ms = \cf1 new\cf0  MemoryStream(); \cf4 // DeflateStream Algorithm\cf0\par
+                GZipStream gzip = \cf1 new\cf0  GZipStream(ms, CompressionMode.Compress, \cf1 true\cf0 );\par
+                \{ gzip.Write(buf, \cf2 0\cf0 , sz); gzip.Close(); \}\par
+                sz = (Int32)ms.Length;\par
+                buf = \cf1 new\cf0  \cf1 byte\cf0 [sz];\par
+                ms.Seek(\cf2 0\cf0 , SeekOrigin.Begin);\par
+                \{ ms.Read(buf, \cf2 0\cf0 , sz); ms.Close(); \}\par
+                \cf1 String\cf0  b64 = Convert.ToBase64String(buf);\par
+                UTF8Encoding utf8 = \cf1 new\cf0  UTF8Encoding();\par
+                buf = utf8.GetBytes(b64);\par
+                sz = buf.Length;\par
+                \cf1 this\cf0 .fxmltmps.Write(buf, \cf2 0\cf0 , sz);\par
+                \cf1 this\cf0 .fxmltmps.Flush();\par
+            \}\par
+            \cf1 catch\cf0  (MethodAccessException ex) \{ ex.Source = \cf3 ""\cf0 ; sz = \cf2 0\cf0 ; \}\par
+            \cf1 catch\cf0  \{ /*MessageBox.Show(\cf3 "bag"\cf0 );*/ \}\par
+\par
+            DataRow dr = \cf1 this\cf0 .wqMainDts.Tables[\cf3 "attach"\cf0 ].Rows.Add(\cf1 new\cf0  \cf1 object\cf0 [] \{\par
+                nId,parent,FileName,dtc,dtm,hash,\cf1 null\cf0 ,stype,sz \});\par
+            NodeInfoTag ret = \cf1 this\cf0 .wqSetNit(dr, \cf2 2\cf0 );\par
+            dr = dr.GetParentRow(\cf3 "node-attach"\cf0 );\par
+            dr[\cf3 "dtm"\cf0 ] = DateTime.Now;\par
+            dr[\cf3 "size"\cf0 ] = Int32.Parse(dr[\cf3 "size"\cf0 ].ToString()) + sz;\par
+            dr = dr.GetParentRow(\cf3 "dir-node"\cf0 );\par
+            \cf1 while\cf0  (dr != \cf1 null\cf0 )\par
+            \{\par
+                dr[\cf3 "size"\cf0 ] = Int32.Parse(dr[\cf3 "size"\cf0 ].ToString()) + sz;\par
+                dr = dr.GetParentRow(\cf3 "dir-dir"\cf0 );\par
+            \}\par
+            \cf1 this\cf0 .IsChanged = \cf1 true\cf0 ;\par
+            \cf1 this\cf0 .wqBackupStructure();\par
+            \cf1 return\cf0  ret;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="24">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  \cf1 bool\cf0  SaveAttach(Int32 id, \cf1 string\cf0  FileName)\par
+        \{\par
+            FileInfo fi = \cf1 new\cf0  FileInfo(FileName);\par
+            FileStream fs = fi.Open(FileMode.Create);\par
+            \cf1 bool\cf0  ret = \cf1 this\cf0 .SaveAttach(id, fs); fs.Close();\par
+\par
+            DataRow dr = wqMainDts.Tables[\cf2 "attach"\cf0 ].Select(\cf2 "id="\cf0  + id.ToString())[\cf3 0\cf0 ];\par
+            fi.CreationTimeUtc = DateTime.Parse(dr[\cf2 "dtc"\cf0 ].ToString());\par
+            fi.LastWriteTimeUtc = DateTime.Parse(dr[\cf2 "dtm"\cf0 ].ToString());\par
+            \cf1 return\cf0  ret;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="25">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  \cf1 bool\cf0  SaveAttach(Int32 id, Stream fs)\par
+        \{\par
+            \cf1 byte\cf0 [] buf = Convert.FromBase64String(\cf1 this\cf0 .GetAttach(id));\par
+            MemoryStream ms = \cf1 new\cf0  MemoryStream();\par
+            ms.Write(buf, \cf2 0\cf0 , buf.Length);\par
+            ms.Seek(\cf2 0\cf0 , SeekOrigin.Begin);\par
+            GZipStream gzip = \cf1 new\cf0  GZipStream(ms, CompressionMode.Decompress);\par
+\par
+            \cf1 const\cf0  Int32 _size = \cf2 8192\cf0 ;\par
+            buf = \cf1 new\cf0  \cf1 byte\cf0 [_size];\par
+            Int32 count = gzip.Read(buf, \cf2 0\cf0 , _size);\par
+            \cf1 if\cf0  (count == \cf2 0\cf0 ) \cf1 return\cf0  \cf1 false\cf0 ;\par
+            \cf1 while\cf0  (count &gt; \cf2 0\cf0 )\par
+            \{\par
+                fs.Write(buf, \cf2 0\cf0 , count);\par
+                count = gzip.Read(buf, \cf2 0\cf0 , _size);\par
+            \}\par
+            \{ gzip.Close(); ms.Close(); \}\par
+            \cf1 return\cf0  \cf1 true\cf0 ;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="26">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 public\cf0  \cf1 bool\cf0  DeleteAttach(Int32 id)\par
+        \{\par
+            DataRow dr;\par
+            \cf1 bool\cf0  ret = \cf1 true\cf0 ;\par
+            \cf1 try\cf0\par
+            \{\par
+                dr = \cf1 this\cf0 .wqMainDts.Tables[\cf2 "attach"\cf0 ].Select(\cf2 "id="\cf0  + id.ToString())[\cf3 0\cf0 ];\par
+                Int32 sz = Int32.Parse(dr[\cf2 "size"\cf0 ].ToString());\par
+                DataRow dw = dr.GetParentRow(\cf2 "node-attach"\cf0 );\par
+                dw[\cf2 "dtm"\cf0 ] = DateTime.Now;\par
+                dw[\cf2 "size"\cf0 ] = Int32.Parse(dw[\cf2 "size"\cf0 ].ToString()) - sz;\par
+                dw = dr.GetParentRow(\cf2 "dir-node"\cf0 );\par
+                \cf1 while\cf0  (dw != \cf1 null\cf0 )\par
+                \{\par
+                    dw[\cf2 "size"\cf0 ] = Int32.Parse(dw[\cf2 "size"\cf0 ].ToString()) - sz;\par
+                    dw = dw.GetParentRow(\cf2 "dir-dir"\cf0 );\par
+                \}\par
+                dr.Delete();\par
+                \cf1 this\cf0 .IsChanged = \cf1 true\cf0 ;\par
+                \cf1 this\cf0 .DelId.Add(id);\par
+                \cf1 if\cf0  (\cf1 this\cf0 .cID.ContainsKey(id))\par
+                    cID.Remove(id);\par
+                \cf1 this\cf0 .wqBackupStructure();\par
+            \}\par
+            \cf1 catch\cf0  (Exception ex)\par
+            \{\par
+                Console.WriteLine(ex);\par
+                ret = \cf1 false\cf0 ;\par
+            \}\par
+            \cf1 return\cf0  ret;\par
+        \}\f1\fs17\par
+}
+</wqNode><wqNode id="27" /><wqNode id="28" /><wqNode id="29" /><wqNode id="30" /><wqNode id="31" /><wqNode id="32" /><wqNode id="33" /><wqNode id="34" /><wqNode id="35" /><wqNode id="36" /><wqNode id="37" /><wqNode id="38" /><wqNode id="39" /><wqNode id="40" /><wqNode id="41" /><wqNode id="42" /><wqNode id="43" /><wqNode id="45" /><wqNode id="46" /><wqNode id="47" /><wqNode id="48" /><wqNode id="49" /><wqNode id="50" /><wqNode id="51" /><wqNode id="52">{\rtf1\ansi\ansicpg1251\deff0\deflang1049{\fonttbl{\f0\fnil\fcharset204{\*\fname Courier New;}Courier New CYR;}{\f1\fnil\fcharset204 Lucida Console;}}
+{\colortbl ;\red0\green0\blue255;\red128\green128\blue128;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\f0\fs20         \cf1 private\cf0  \cf1 string\cf0  wqGetContent(Int32 id, NodeInfoTag.wqTypes it)\par
+        \{\par
+            \cf1 byte\cf0 [] buf;\par
+            UTF8Encoding utf8 = \cf1 new\cf0  UTF8Encoding();\par
+            \cf1 String\cf0  a = it == NodeInfoTag.wqTypes.wqNode ? \cf2 "node"\cf0  : \cf2 "attach"\cf0 ;\par
+            \cf1 String\cf0  b = it == NodeInfoTag.wqTypes.wqNode ? \cf2 "exsize"\cf0  : \cf2 "size"\cf0 ;\par
+            \cf1 if\cf0  (\cf1 this\cf0 .cID.ContainsKey(id))\par
+            \{\par
+                DataRow dr = \cf1 this\cf0 .wqMainDts.Tables[a].Select(\cf2 "id="\cf0  + id)[\cf3 0\cf0 ];\par
+                Int32 sz = Int32.Parse(dr[b].ToString());\par
+                buf = \cf1 new\cf0  \cf1 byte\cf0 [sz];\par
+                \cf1 this\cf0 .fxmltmps.Seek(\cf1 this\cf0 .cID[id], SeekOrigin.Begin);\par
+                \cf1 this\cf0 .fxmltmps.Read(buf, \cf3 0\cf0 , sz);\par
+            \}\par
+            \cf1 else\cf0\par
+            \{\par
+                \cf1 this\cf0 .wqfs.Seek(\cf1 this\cf0 .wqIndex[id].First, SeekOrigin.Begin);\par
+                buf = \cf1 new\cf0  \cf1 byte\cf0 [\cf1 this\cf0 .wqIndex[id].Second];\par
+                \cf1 this\cf0 .wqfs.Read(buf, \cf3 0\cf0 , buf.Length);\par
+            \}\par
+            \cf1 return\cf0  utf8.GetString(buf);\par
+        \}\f1\fs17\par
+}
+</wqNode></wqContent></wqMain>
