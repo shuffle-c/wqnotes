@@ -8,7 +8,7 @@ namespace wqNotes
 {
    public class wqRichEdit : RichTextBox
    {
-      private static IntPtr RichEditModuleHandle;
+      //private static IntPtr RichEditModuleHandle;
       private const string RichEditDllV3 = "RichEd20.dll";
       private const string RichEditDllV41 = "Msftedit.dll";
 
@@ -18,24 +18,24 @@ namespace wqNotes
 
       protected override CreateParams CreateParams
       {
-         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode = true)]
+         //[System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode = true)]
          get
          {
-            if (RichEditModuleHandle == IntPtr.Zero)
-            {
-               //попытаемся загрузить реализацию RichEdit v4.1 (Msftedit.dll, WinXP + SP1) 
-               RichEditModuleHandle = Program.LoadLibrary(RichEditDllV41);
-               if (RichEditModuleHandle == IntPtr.Zero)
-               {
+            //if (RichEditModuleHandle == IntPtr.Zero)
+            //{
+            //   //попытаемся загрузить реализацию RichEdit v4.1 (Msftedit.dll, WinXP + SP1) 
+            //   RichEditModuleHandle = Program.LoadLibrary(RichEditDllV41);
+            //   if (RichEditModuleHandle == IntPtr.Zero)
+            //   {
                   //нет такой dll, используем стандартную реализацию (Riched20.dll) 
                   return base.CreateParams;
-               }
-            }
+            //   }
+            //}
 
             //используем более новую реализацию richedit'а 
-            CreateParams theParams = base.CreateParams;
-            theParams.ClassName = RichEditClassV41W;
-            return theParams;
+            //CreateParams theParams = base.CreateParams;
+            //theParams.ClassName = RichEditClassV41W;
+            //return theParams;
          }
       }
 
