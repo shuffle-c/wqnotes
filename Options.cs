@@ -166,17 +166,18 @@ namespace wqNotes
 
       static public Options Load()
       {
-         if (Properties.Settings.Default.GeneralOptions == "")
-            return new Options();
+         //if (Properties.Settings.Default.GeneralOptions == "")
+         //   return new Options();
 
          Options opt;
          try
          {
-            IFormatter serializer = new BinaryFormatter();
-            MemoryStream stream = new MemoryStream(
-               Convert.FromBase64String(
-               Properties.Settings.Default.GeneralOptions));
-            opt = (Options)serializer.Deserialize(stream);
+            //IFormatter serializer = new BinaryFormatter();
+            //MemoryStream stream = new MemoryStream(
+            //   Convert.FromBase64String(
+            //   Properties.Settings.Default.GeneralOptions));
+            //opt = (Options)serializer.Deserialize(stream);
+            opt = new Options();
          }
          catch { opt = new Options(); }
          return opt;
@@ -184,13 +185,13 @@ namespace wqNotes
 
       public void Save()
       {
-         IFormatter serializer = new BinaryFormatter();
-         MemoryStream stream = new MemoryStream();
-         serializer.Serialize(stream, this);
-         stream.Seek(0, SeekOrigin.Begin);
-         Properties.Settings.Default.GeneralOptions =
-            Convert.ToBase64String(stream.ToArray());
-         Properties.Settings.Default.Save();
+         //IFormatter serializer = new BinaryFormatter();
+         //MemoryStream stream = new MemoryStream();
+         //serializer.Serialize(stream, this);
+         //stream.Seek(0, SeekOrigin.Begin);
+         //Properties.Settings.Default.GeneralOptions =
+         //   Convert.ToBase64String(stream.ToArray());
+         //Properties.Settings.Default.Save();
       }
 
       private bool _IsHideOnMinimize = false;

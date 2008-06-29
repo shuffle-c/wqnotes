@@ -11,12 +11,14 @@ namespace wqNotes
 {
     static class Program
     {
-        [DllImport("shell32.dll")]
-        private static extern UInt32 ExtractIconEx(String lpszFile, Int32 nIconIndex, ref IntPtr phiconLarge, ref IntPtr phiconSmall, UInt32 nIcons);
-        [DllImport("user32.dll")]
-        private static extern Int32 DestroyIcon(IntPtr hIcon);
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr LoadLibrary(String lpFileName);
+        //[DllImport("shell32.dll")]
+        //private static extern UInt32 ExtractIconEx(String lpszFile, Int32 nIconIndex, ref IntPtr phiconLarge, ref IntPtr phiconSmall, UInt32 nIcons);
+        //[DllImport("user32.dll")]
+        //private static extern Int32 DestroyIcon(IntPtr hIcon);
+        //[DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        //public static extern IntPtr LoadLibrary(String lpFileName);
+
+       public static Int32 LastNumberElem = 0;
 
         public static string GetShortSize(Int32 qw) //UInt64
         {
@@ -39,35 +41,36 @@ namespace wqNotes
 
         public static Image GetFileIcon(string FileName, bool IsIconContains, bool _16x16)
         {
-            Image ret = null; Int32 DefIndex = 0;
-            if (IsIconContains == false)
-            {
-                RegistryKey hKey = null;
-                String skey = Path.GetExtension(FileName);
-                if ((hKey = Registry.ClassesRoot.OpenSubKey(skey)) != null)
-                {
-                    skey = hKey.GetValue(null).ToString();
-                    skey += "\\DefaultIcon"; hKey.Close();
-                    if ((hKey = Registry.ClassesRoot.OpenSubKey(skey)) != null)
-                    {
-                        skey = hKey.GetValue(null).ToString();
-                        String[] df = skey.Split(',');
-                        hKey.Close();
-                        if (df.Length == 2)
-                        {
-                            FileName = df[0];
-                            Int32.TryParse(df[1], out DefIndex);
-                        }
-                    }
-                }
-            }
-            IntPtr hSmall = IntPtr.Zero, hLarge = IntPtr.Zero;
-            ExtractIconEx(FileName, DefIndex, ref hLarge, ref hSmall, 1);
-            if (hSmall == IntPtr.Zero)
-                ExtractIconEx("shell32.dll", 0, ref hLarge, ref hSmall, 1);
-            ret = (Image)Icon.FromHandle(_16x16 ? hSmall : hLarge).ToBitmap();
-            DestroyIcon(hLarge); DestroyIcon(hSmall);
-            return ret;
+            //Image ret = null; Int32 DefIndex = 0;
+            //if (IsIconContains == false)
+            //{
+            //    RegistryKey hKey = null;
+            //    String skey = Path.GetExtension(FileName);
+            //    if ((hKey = Registry.ClassesRoot.OpenSubKey(skey)) != null)
+            //    {
+            //        skey = hKey.GetValue(null).ToString();
+            //        skey += "\\DefaultIcon"; hKey.Close();
+            //        if ((hKey = Registry.ClassesRoot.OpenSubKey(skey)) != null)
+            //        {
+            //            skey = hKey.GetValue(null).ToString();
+            //            String[] df = skey.Split(',');
+            //            hKey.Close();
+            //            if (df.Length == 2)
+            //            {
+            //                FileName = df[0];
+            //                Int32.TryParse(df[1], out DefIndex);
+            //            }
+            //        }
+            //    }
+            //}
+            //IntPtr hSmall = IntPtr.Zero, hLarge = IntPtr.Zero;
+            //ExtractIconEx(FileName, DefIndex, ref hLarge, ref hSmall, 1);
+            //if (hSmall == IntPtr.Zero)
+            //    ExtractIconEx("shell32.dll", 0, ref hLarge, ref hSmall, 1);
+            //ret = (Image)Icon.FromHandle(_16x16 ? hSmall : hLarge).ToBitmap();
+            //DestroyIcon(hLarge); DestroyIcon(hSmall);
+            //return ret;
+           return null;
         }
 
         public static Image MergeImages(Image ImageBack, Image ImageFore)

@@ -32,8 +32,7 @@ namespace wqNotes
             DialogResult iDr;
             List<Int32> ires = null;
             Boolean isl = false;
-            if ((Properties.Settings.Default.SaveMode == 1 ||
-                Properties.Settings.Default.SaveMode == 3) &&
+            if ((false) && //xz
                 mDB.NodeList.Count > 0)
             {
                SaveForm ifrm = new SaveForm();
@@ -556,66 +555,66 @@ namespace wqNotes
       // ïîêàç è ñêğûòèå 6 îñíîâíûõ ıëåìåíòîâ èíòåğôåéñà 
       private void ïàíåëüÈíñòğóìåíòîâToolStripMenuItem1_CheckedChanged(object sender, EventArgs e)
       {
-         toolStrip1.Visible = ïàíåëüÈíñòğóìåíòîâToolStripMenuItem1.Checked;
+         toolStrip1.Visible = toolBarToolStripMenuItem1.Checked;
       }
       private void ïàíåëüÍàâèãàöèèToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
       {
-         splitContainer1.Panel1Collapsed = !ïàíåëüÍàâèãàöèèToolStripMenuItem.Checked;
+         splitContainer1.Panel1Collapsed = !navigateBarToolStripMenuItem.Checked;
       }
       private void çàãîëîâîêToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
       {
-         splitContainer3.Panel1Collapsed = !çàãîëîâîêToolStripMenuItem.Checked;
+         splitContainer3.Panel1Collapsed = !headToolStripMenuItem.Checked;
       }
       private void ğåçóëüòàòûÏîèñêàToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
       {
-         çàìåòêàToolStripMenuItem.Enabled = ğåçóëüòàòûÏîèñêàToolStripMenuItem.Checked;
-         splitContainer2.Panel1Collapsed = !ğåçóëüòàòûÏîèñêàToolStripMenuItem.Checked;
+         noteToolStripMenuItem.Enabled = searchResultToolStripMenuItem.Checked;
+         splitContainer2.Panel1Collapsed = !searchResultToolStripMenuItem.Checked;
       }
       private void ïğèñîåäèíåííûåÔàéëûToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
       {
-         toolStrip2.Visible = ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Checked;
+         toolStrip2.Visible = attachedFilesToolStripMenuItem.Checked;
       }
       private void ñòğîêàÑîñòîÿíèÿToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
       {
-         statusStrip1.Visible = ñòğîêàÑîñòîÿíèÿToolStripMenuItem.Checked;
+         statusStrip1.Visible = statusBarToolStripMenuItem.Checked;
       }
       private void çàìåòêàToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
       {
-         ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Enabled = çàìåòêàToolStripMenuItem.Checked;
-         if (çàìåòêàToolStripMenuItem.Checked)
+         attachedFilesToolStripMenuItem.Enabled = noteToolStripMenuItem.Checked;
+         if (noteToolStripMenuItem.Checked)
          {
-            ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Checked = (bool)ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Tag;
+            attachedFilesToolStripMenuItem.Checked = (bool)attachedFilesToolStripMenuItem.Tag;
          }
          else
          {
-            ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Tag = ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Checked;
-            ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Checked = false;
+            attachedFilesToolStripMenuItem.Tag = attachedFilesToolStripMenuItem.Checked;
+            attachedFilesToolStripMenuItem.Checked = false;
          }
-         ğåçóëüòàòûÏîèñêàToolStripMenuItem.Enabled = çàìåòêàToolStripMenuItem.Checked;
-         splitContainer2.Panel2Collapsed = !çàìåòêàToolStripMenuItem.Checked;
+         searchResultToolStripMenuItem.Enabled = noteToolStripMenuItem.Checked;
+         splitContainer2.Panel2Collapsed = !noteToolStripMenuItem.Checked;
       }
 
       // Ìåíş Âèä - Áûñòğûå êîíôèãóğàöèè
       private void ïîëíàÿToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         ïàíåëüÈíñòğóìåíòîâToolStripMenuItem1.Checked = true;
-         ïàíåëüÍàâèãàöèèToolStripMenuItem.Checked = true;
-         çàãîëîâîêToolStripMenuItem.Checked = true;
-         ğåçóëüòàòûÏîèñêàToolStripMenuItem.Checked = true;
-         çàìåòêàToolStripMenuItem.Checked = true;
-         ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Checked = true;
-         ñòğîêàÑîñòîÿíèÿToolStripMenuItem.Checked = true;
+         toolBarToolStripMenuItem1.Checked = true;
+         navigateBarToolStripMenuItem.Checked = true;
+         headToolStripMenuItem.Checked = true;
+         searchResultToolStripMenuItem.Checked = true;
+         noteToolStripMenuItem.Checked = true;
+         attachedFilesToolStripMenuItem.Checked = true;
+         statusBarToolStripMenuItem.Checked = true;
       }
 
       private void ìèíèìàëüíàÿToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         ïàíåëüÈíñòğóìåíòîâToolStripMenuItem1.Checked = true;
-         ïàíåëüÍàâèãàöèèToolStripMenuItem.Checked = false;
-         çàãîëîâîêToolStripMenuItem.Checked = true;
-         ğåçóëüòàòûÏîèñêàToolStripMenuItem.Checked = false;
-         çàìåòêàToolStripMenuItem.Checked = true;
-         ïğèñîåäèíåííûåÔàéëûToolStripMenuItem.Checked = false;
-         ñòğîêàÑîñòîÿíèÿToolStripMenuItem.Checked = true;
+         toolBarToolStripMenuItem1.Checked = true;
+         navigateBarToolStripMenuItem.Checked = false;
+         headToolStripMenuItem.Checked = true;
+         searchResultToolStripMenuItem.Checked = false;
+         noteToolStripMenuItem.Checked = true;
+         attachedFilesToolStripMenuItem.Checked = false;
+         statusBarToolStripMenuItem.Checked = true;
       }
       #endregion
 
@@ -687,82 +686,82 @@ namespace wqNotes
          {
             NodeInfoTag np = null;
             if (treeView1.SelectedNode.Parent == null)
-               íàÓğîâåíüÂâåğõToolStripMenuItem.Enabled = false;
-            else íàÓğîâåíüÂâåğõToolStripMenuItem.Enabled = true;
+               toLevelTopToolStripMenuItem.Enabled = false;
+            else toLevelTopToolStripMenuItem.Enabled = true;
             if (treeView1.SelectedNode.PrevNode == null)
-               ïåğåìåñòèòüÂâåğõToolStripMenuItem.Enabled = false;
+               movetoTopToolStripMenuItem.Enabled = false;
             else
             {
-               ïåğåìåñòèòüÂâåğõToolStripMenuItem.Enabled = true;
+               movetoTopToolStripMenuItem.Enabled = true;
                np = (NodeInfoTag)treeView1.SelectedNode.PrevNode.Tag;
             }
             if (treeView1.SelectedNode.NextNode == null)
-               ïåğåìåñòèòüÂíèçToolStripMenuItem.Enabled = false;
-            else ïåğåìåñòèòüÂíèçToolStripMenuItem.Enabled = true;
+               movetoBottomToolStripMenuItem.Enabled = false;
+            else movetoBottomToolStripMenuItem.Enabled = true;
             if (np == null || np.wqType != NodeInfoTag.wqTypes.wqDir)
-               íàÓğîâåíüÂíèçToolStripMenuItem.Enabled = false;
-            else íàÓğîâåíüÂíèçToolStripMenuItem.Enabled = true;
+               toLevelBottomToolStripMenuItem.Enabled = false;
+            else toLevelBottomToolStripMenuItem.Enabled = true;
 
             NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
             if (nit.wqParent_id == 1)
-               íàÓğîâåíüÂâåğõToolStripMenuItem.Enabled = false;
-            óäàëèòüToolStripMenuItem3.Visible = true;
-            èçâëå÷üÂñåToolStripMenuItem.Visible = true;
-            íàÓğîâåíüÂâåğõToolStripMenuItem.Visible = true;
-            íàÓğîâåíüÂíèçToolStripMenuItem.Visible = true;
-            ïåğåìåñòèòüÂâåğõToolStripMenuItem.Visible = true;
-            ïåğåìåñòèòüÂíèçToolStripMenuItem.Visible = true;
+               toLevelTopToolStripMenuItem.Enabled = false;
+            deleteToolStripMenuItem3.Visible = true;
+            extractAllToolStripMenuItem.Visible = true;
+            toLevelTopToolStripMenuItem.Visible = true;
+            toLevelBottomToolStripMenuItem.Visible = true;
+            movetoTopToolStripMenuItem.Visible = true;
+            movetoBottomToolStripMenuItem.Visible = true;
             if (nit.wqType == NodeInfoTag.wqTypes.wqDir)
             {
-               âûğåçàòüToolStripMenuItem1.Visible = false;
-               êîïèğîâàòüToolStripMenuItem1.Visible = false;
-               äîáàâèòüÂÇàêëàäêèToolStripMenuItem.Visible = false;
-               ñòèëüToolStripMenuItem.Visible = false;
-               ñîçäàòüToolStripMenuItem.Visible = true;
-               èçâëå÷üÂñåToolStripMenuItem.Visible = true;
+               cutToolStripMenuItem1.Visible = false;
+               copyToolStripMenuItem1.Visible = false;
+               addToMarksToolStripMenuItem.Visible = false;
+               styleToolStripMenuItem.Visible = false;
+               createToolStripMenuItem.Visible = true;
+               extractAllToolStripMenuItem.Visible = true;
                if (nit.wqId == 1)
                {
-                  óäàëèòüToolStripMenuItem3.Visible = false;
-                  èçâëå÷üÂñåToolStripMenuItem.Visible = false;
-                  íàÓğîâåíüÂâåğõToolStripMenuItem.Visible = false;
-                  íàÓğîâåíüÂíèçToolStripMenuItem.Visible = false;
-                  ïåğåìåñòèòüÂâåğõToolStripMenuItem.Visible = false;
-                  ïåğåìåñòèòüÂíèçToolStripMenuItem.Visible = false;
+                  deleteToolStripMenuItem3.Visible = false;
+                  extractAllToolStripMenuItem.Visible = false;
+                  toLevelTopToolStripMenuItem.Visible = false;
+                  toLevelBottomToolStripMenuItem.Visible = false;
+                  movetoTopToolStripMenuItem.Visible = false;
+                  movetoBottomToolStripMenuItem.Visible = false;
                }
             }
             else
             {
-               âûğåçàòüToolStripMenuItem1.Visible = true;
-               êîïèğîâàòüToolStripMenuItem1.Visible = true;
-               äîáàâèòüÂÇàêëàäêèToolStripMenuItem.Visible = true;
-               ñòèëüToolStripMenuItem.Visible = true;
-               ñîçäàòüToolStripMenuItem.Visible = false;
-               èçâëå÷üÂñåToolStripMenuItem.Visible = false;
+               cutToolStripMenuItem1.Visible = true;
+               copyToolStripMenuItem1.Visible = true;
+               addToMarksToolStripMenuItem.Visible = true;
+               styleToolStripMenuItem.Visible = true;
+               createToolStripMenuItem.Visible = false;
+               extractAllToolStripMenuItem.Visible = false;
 
-               çàìåòêàToolStripMenuItem1.Checked = false;
-               êîäToolStripMenuItem1.Checked = false;
-               öèòàòàToolStripMenuItem.Checked = false;
-               ëîãToolStripMenuItem.Checked = false;
-               ïèñüìîToolStripMenuItem.Checked = false;
-               îò÷åòToolStripMenuItem.Checked = false;
+               noteToolStripMenuItem1.Checked = false;
+               codeToolStripMenuItem1.Checked = false;
+               quoteToolStripMenuItem.Checked = false;
+               logToolStripMenuItem.Checked = false;
+               mailToolStripMenuItem.Checked = false;
+               reportToolStripMenuItem.Checked = false;
                switch (nit.wqSchema)
                {
-                  case 0: çàìåòêàToolStripMenuItem1.Checked = true; break;
-                  case 1: êîäToolStripMenuItem1.Checked = true; break;
-                  case 2: öèòàòàToolStripMenuItem.Checked = true; break;
-                  case 3: ëîãToolStripMenuItem.Checked = true; break;
-                  case 4: ïèñüìîToolStripMenuItem.Checked = true; break;
-                  case 5: îò÷åòToolStripMenuItem.Checked = true; break;
+                  case 0: noteToolStripMenuItem1.Checked = true; break;
+                  case 1: codeToolStripMenuItem1.Checked = true; break;
+                  case 2: quoteToolStripMenuItem.Checked = true; break;
+                  case 3: logToolStripMenuItem.Checked = true; break;
+                  case 4: mailToolStripMenuItem.Checked = true; break;
+                  case 5: reportToolStripMenuItem.Checked = true; break;
                }
             }
-            âûñîêàÿToolStripMenuItem.Checked = false;
-            ñğåäíÿÿToolStripMenuItem.Checked = false;
-            íèçêàÿToolStripMenuItem.Checked = false;
+            highToolStripMenuItem.Checked = false;
+            mediumToolStripMenuItem.Checked = false;
+            lowToolStripMenuItem.Checked = false;
             switch (nit.wqPriority)
             {
-               case 0: ñğåäíÿÿToolStripMenuItem.Checked = true; break;
-               case 1: âûñîêàÿToolStripMenuItem.Checked = true; break;
-               case 2: íèçêàÿToolStripMenuItem.Checked = true; break;
+               case 0: mediumToolStripMenuItem.Checked = true; break;
+               case 1: highToolStripMenuItem.Checked = true; break;
+               case 2: lowToolStripMenuItem.Checked = true; break;
             }
          }
          else e.Cancel = true;
@@ -776,9 +775,8 @@ namespace wqNotes
       private void ïàïêóToolStripMenuItem_Click(object sender, EventArgs e)
       {
          NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
-         String name = "Íîâàÿ ïàïêà #" + Properties.Settings.
-             Default.LastNumberElem.ToString();
-         Properties.Settings.Default.LastNumberElem++;
+         String name = "Íîâàÿ ïàïêà #" + Program.LastNumberElem.ToString();
+         Program.LastNumberElem++;
          TreeNode res = FullTreeNode(MainJrn.CreateDir(nit.wqId, name));
          treeView1.SelectedNode.Nodes.Add(res);
          this.RefreshTop(res, 1);
@@ -791,9 +789,8 @@ namespace wqNotes
       private void çàìåòêóToolStripMenuItem_Click(object sender, EventArgs e)
       {
          NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
-         String name = "Íîâàÿ çàìåòêà #" + Properties.Settings.
-             Default.LastNumberElem.ToString();
-         Properties.Settings.Default.LastNumberElem++;
+         String name = "Íîâàÿ çàìåòêà #" + Program.LastNumberElem.ToString();
+         Program.LastNumberElem++;
          TreeNode res = FullTreeNode(MainJrn.CreateNode(nit.wqId, name));
          treeView1.SelectedNode.Nodes.Add(res);
          //mDB.NodeList.Add(Int32.Parse(res.Name));
@@ -1050,26 +1047,26 @@ namespace wqNotes
       private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
       {
          if (wqRichEdit1.CanUndo)
-            îòìåíèòüToolStripMenuItem1.Enabled = true;
-         else îòìåíèòüToolStripMenuItem1.Enabled = false;
+            undoToolStripMenuItem1.Enabled = true;
+         else undoToolStripMenuItem1.Enabled = false;
          if (wqRichEdit1.CanRedo)
-            ïîâòîğèòüToolStripMenuItem1.Enabled = true;
-         else ïîâòîğèòüToolStripMenuItem1.Enabled = false;
+            redoToolStripMenuItem1.Enabled = true;
+         else redoToolStripMenuItem1.Enabled = false;
          if (wqRichEdit1.SelectionLength > 0)
-            âûğåçàòüToolStripMenuItem2.Enabled = true;
-         else âûğåçàòüToolStripMenuItem2.Enabled = false;
+            cutToolStripMenuItem2.Enabled = true;
+         else cutToolStripMenuItem2.Enabled = false;
          if (wqRichEdit1.SelectionLength > 0)
-            êîïèğîâàòüToolStripMenuItem2.Enabled = true;
-         else êîïèğîâàòüToolStripMenuItem2.Enabled = false;
+            copyToolStripMenuItem2.Enabled = true;
+         else copyToolStripMenuItem2.Enabled = false;
          if (wqRichEdit1.CanPaste(DataFormats.GetFormat(DataFormats.Text)))
-            âñòàâèòüToolStripMenuItem2.Enabled = true;
-         else âñòàâèòüToolStripMenuItem2.Enabled = false;
+            pasteToolStripMenuItem2.Enabled = true;
+         else pasteToolStripMenuItem2.Enabled = false;
          if (wqRichEdit1.Text.Length > 0)
-            óäàëèòüToolStripMenuItem4.Enabled = true;
-         else óäàëèòüToolStripMenuItem4.Enabled = false;
+            deleteToolStripMenuItem4.Enabled = true;
+         else deleteToolStripMenuItem4.Enabled = false;
          if (wqRichEdit1.Text.Length > 0)
-            âûäåëèòüÂñåToolStripMenuItem1.Enabled = true;
-         else âûäåëèòüÂñåToolStripMenuItem1.Enabled = false;
+            selectAllToolStripMenuItem1.Enabled = true;
+         else selectAllToolStripMenuItem1.Enabled = false;
 
          if (mDB == null || mDB.NowNode == null) e.Cancel = true;
       }
@@ -1157,7 +1154,7 @@ namespace wqNotes
             case "Îáû÷íûé òåêñò":
                wqRichEdit1.SelectionFont = new Font("Lucida Console", 8, FontStyle.Regular);
                wqRichEdit1.SelectionColor = Color.FromKnownColor(KnownColor.WindowText);
-               wqRichEdit1.SelectionBackColor = Color.FromKnownColor(KnownColor.Window);
+               //wqRichEdit1.SelectionBackColor = Color.FromKnownColor(KnownColor.Window);
                wqRichEdit1.SelectionAlignment = HorizontalAlignment.Left;
                wqRichEdit1.SelectionCharOffset = 0;
                wqRichEdit1.SelectionBullet = false;
@@ -1189,7 +1186,7 @@ namespace wqNotes
                wqRichEdit1.SelectionColor = Color.Gray;
                break;
             case "Âûäåëåíèå":
-               wqRichEdit1.SelectionBackColor = Color.Yellow;
+               //wqRichEdit1.SelectionBackColor = Color.Yellow;
                break;
             case "Âåğõíèé èíäåêñ":
                wqRichEdit1.SelectionCharOffset = 2;
@@ -1200,7 +1197,7 @@ namespace wqNotes
             default:
                wqRichEdit1.SelectionFont = new Font("Lucida Console", 8, FontStyle.Regular);
                wqRichEdit1.SelectionColor = Color.FromKnownColor(KnownColor.WindowText);
-               wqRichEdit1.SelectionBackColor = Color.FromKnownColor(KnownColor.Window);
+               //wqRichEdit1.SelectionBackColor = Color.FromKnownColor(KnownColor.Window);
                wqRichEdit1.SelectionAlignment = HorizontalAlignment.Left;
                wqRichEdit1.SelectionCharOffset = 0;
                wqRichEdit1.SelectionBullet = false;
@@ -1258,12 +1255,12 @@ namespace wqNotes
          openFileDialog1.Filter = "Æóğíàë wqNotes (*.wqn)|*.wqn|Âñå ôàéëû|*.*";
          openFileDialog1.FilterIndex = 0;
 
-         this.Location = Properties.Settings.Default.Location;
-         this.Size = Properties.Settings.Default.Size;
-         this.WindowState = Properties.Settings.Default.WinState;
-         if (Properties.Settings.Default.LoadLastFile == true)
-            mDB.FileName = Properties.Settings.Default.LastFile;
-         string RecentFiles = Properties.Settings.Default.RecentFiles;
+         //this.Location = Properties.Settings.Default.Location;
+         //this.Size = Properties.Settings.Default.Size;
+         //this.WindowState = Properties.Settings.Default.WinState;
+         //if (Properties.Settings.Default.LoadLastFile == true)
+         //   mDB.FileName = Properties.Settings.Default.LastFile;
+         //string RecentFiles = Properties.Settings.Default.RecentFiles;
 
          openFileDialog1.FileName = mDB.FileName;
          //
@@ -1367,30 +1364,30 @@ namespace wqNotes
       private void Form1_FormClosed(object sender, FormClosedEventArgs e)
       {
          //Ñîõğàíèòü íàñòğîéêè âñÿêèå
-         Properties.Settings.Default.WinState = this.WindowState;
-         if (this.WindowState == FormWindowState.Normal)
-         {
-            Properties.Settings.Default.Location = this.Location;
-            Properties.Settings.Default.Size = this.Size;
-         }
-         else
-         {
-            Properties.Settings.Default.Location = this.RestoreBounds.Location;
-            Properties.Settings.Default.Size = this.RestoreBounds.Size;
-         }
+         //Properties.Settings.Default.WinState = this.WindowState;
+         //if (this.WindowState == FormWindowState.Normal)
+         //{
+         //   Properties.Settings.Default.Location = this.Location;
+         //   Properties.Settings.Default.Size = this.Size;
+         //}
+         //else
+         //{
+         //   Properties.Settings.Default.Location = this.RestoreBounds.Location;
+         //   Properties.Settings.Default.Size = this.RestoreBounds.Size;
+         //}
 
-         Program.Opt.Save();
-         Properties.Settings.Default.Save();
+         //Program.Opt.Save();
+         //Properties.Settings.Default.Save();
       }
 
       private void wqRichEdit1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
       {
-         toolStripStatusLabel4.Text = Control.IsKeyLocked(Keys.Insert) ? "OVR" : "INS";
+         //toolStripStatusLabel4.Text = Control.IsKeyLocked(Keys.Insert) ? "OVR" : "INS";
       }
 
       private void Application_Idle(object sender, EventArgs e)
       {
-         toolStripStatusLabel3.ForeColor = Control.IsKeyLocked(Keys.CapsLock) ? Color.Black : Color.Gray;
+         //toolStripStatusLabel3.ForeColor = Control.IsKeyLocked(Keys.CapsLock) ? Color.Black : Color.Gray;
       }
 
       private void Form1_InputLanguageChanged(object sender, InputLanguageChangedEventArgs e)
@@ -1593,9 +1590,9 @@ namespace wqNotes
          {
             NodeInfoTag nit = (NodeInfoTag)listView2.SelectedItems[0].Tag;
             if (nit.wqType == NodeInfoTag.wqTypes.wqDir)
-               êîïèğîâàòüÑîäåğæèìîåToolStripMenuItem.Visible = false;
+               copyContentToolStripMenuItem.Visible = false;
             else
-               êîïèğîâàòüÑîäåğæèìîåToolStripMenuItem.Visible = true;
+               copyContentToolStripMenuItem.Visible = true;
          }
       }
 
@@ -1681,14 +1678,14 @@ namespace wqNotes
          if (mDB == null || mDB.NowNode == null ||
             mDB.NowNode.wqType == NodeInfoTag.wqTypes.wqDir ||
             !Clipboard.ContainsText(TextDataFormat.Text))
-            äîáàâèòüÈçÁóôåğàToolStripMenuItem.Enabled = false;
+            addFromClipboardToolStripMenuItem.Enabled = false;
          else
-            äîáàâèòüÈçÁóôåğàToolStripMenuItem.Enabled = true;
+            addFromClipboardToolStripMenuItem.Enabled = true;
       }
 
       private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
       {
-         if (äîáàâèòüÈçÁóôåğàToolStripMenuItem.Enabled)
+         if (addFromClipboardToolStripMenuItem.Enabled)
          {
             äîáàâèòüÈçÁóôåğàToolStripMenuItem_Click(sender, (EventArgs)e);
             timer1.Enabled = false;
