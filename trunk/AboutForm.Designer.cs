@@ -78,11 +78,11 @@ namespace wqNotes
            // label3
            // 
            this.label3.AutoSize = true;
-           this.label3.Location = new System.Drawing.Point(315, 76);
+           this.label3.Location = new System.Drawing.Point(299, 76);
            this.label3.Name = "label3";
-           this.label3.Size = new System.Drawing.Size(71, 13);
+           this.label3.Size = new System.Drawing.Size(83, 13);
            this.label3.TabIndex = 2;
-           this.label3.Text = "версия 0.9.2";
+           this.label3.Text = "версия %ver%";
            // 
            // label4
            // 

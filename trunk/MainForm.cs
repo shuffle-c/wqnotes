@@ -211,6 +211,13 @@ namespace wqNotes
          }
       }
 
+      public TreeNode GetHoveringNode(int x, int y)
+      {
+         Point pt = treeView1.PointToClient(new Point(x, y));
+         TreeViewHitTestInfo hitInfo = treeView1.HitTest(pt);
+         return hitInfo.Node;
+      }
+
       public void SetLabelStatus()
       {
          if (mDB.FileState == wqFile.wqFileState.wqNone)
@@ -703,6 +710,10 @@ namespace wqNotes
                наУровеньВнизToolStripMenuItem.Enabled = false;
             else наУровеньВнизToolStripMenuItem.Enabled = true;
 
+            if (Clipboard.ContainsData("wqNotes_node"))
+               вставитьToolStripMenuItem1.Enabled = true;
+            else вставитьToolStripMenuItem1.Enabled = false;
+
             NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
             if (nit.wqParent_id == 1)
                наУровеньВверхToolStripMenuItem.Enabled = false;
@@ -716,6 +727,7 @@ namespace wqNotes
             {
                вырезатьToolStripMenuItem1.Visible = false;
                копироватьToolStripMenuItem1.Visible = false;
+               вставитьToolStripMenuItem1.Visible = true;
                добавитьВЗакладкиToolStripMenuItem.Visible = false;
                стильToolStripMenuItem.Visible = false;
                создатьToolStripMenuItem.Visible = true;
@@ -734,6 +746,7 @@ namespace wqNotes
             {
                вырезатьToolStripMenuItem1.Visible = true;
                копироватьToolStripMenuItem1.Visible = true;
+               вставитьToolStripMenuItem1.Visible = false;
                добавитьВЗакладкиToolStripMenuItem.Visible = true;
                стильToolStripMenuItem.Visible = true;
                создатьToolStripMenuItem.Visible = false;
@@ -1240,6 +1253,7 @@ namespace wqNotes
          listView1.Items.Clear();
          listView1.Groups.Clear();
          ////////////////////////////
+         this.Text = this.Text.Replace("%ver%", Program.wqVersion);
          InitSettings(true);
 
          mDB = new wqFile();
@@ -1261,7 +1275,8 @@ namespace wqNotes
          this.Location = Properties.Settings.Default.Location;
          this.Size = Properties.Settings.Default.Size;
          this.WindowState = Properties.Settings.Default.WinState;
-         if (Properties.Settings.Default.LoadLastFile == true)
+         //if (Properties.Settings.Default.LoadLastFile == true)
+         if(Program.Opt.LoadLastFile == true)
             mDB.FileName = Properties.Settings.Default.LastFile;
          string RecentFiles = Properties.Settings.Default.RecentFiles;
 
@@ -1282,14 +1297,16 @@ namespace wqNotes
                this.DoProcess(true);
                //Thread
                MainJrn.LoadDB();
+               treeView1.Nodes.Add(MainJrn.LoadTreeView(FullTreeNode));
+               treeView1.ExpandAll();
                this.DoProcess(false);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-               Console.WriteLine(ex);
                MainJrn = null;
-               mDB.FileState = wqFile.wqFileState.wqNone;
-               mDB.FileName = "";
+               toolStripProgressBar1.Visible = false;
+               toolStripStatusLabel2.Visible = true;
+               mDB = new wqFile();
             }
          }
          this.SetLabelStatus();
@@ -1380,6 +1397,7 @@ namespace wqNotes
          }
 
          Program.Opt.Save();
+         if (mDB != null) Properties.Settings.Default.LastFile = mDB.FileName;
          Properties.Settings.Default.Save();
       }
 
@@ -1735,6 +1753,111 @@ namespace wqNotes
          {
             InitSettings(false);
          }
+      }
+
+      private void treeView1_ItemDrag(object sender, ItemDragEventArgs e)
+      {
+         if (((NodeInfoTag)((TreeNode)e.Item).Tag).wqId != 1)
+         {
+            treeView1.DoDragDrop(e.Item, DragDropEffects.All);
+         }
+      }
+
+      private void treeView1_DragOver(object sender, DragEventArgs e)
+      {
+         TreeNode hoveringNode = GetHoveringNode(e.X, e.Y);
+         TreeNode draggingNode = e.Data.GetData(typeof(TreeNode)) as TreeNode;
+         e.Effect = DragDropEffects.None;
+
+         if (hoveringNode == null) return;
+         bool ok = ((NodeInfoTag)hoveringNode.Tag).wqType ==
+            NodeInfoTag.wqTypes.wqDir;
+         ok &= hoveringNode != draggingNode;
+         ok &= draggingNode.Parent != hoveringNode;
+         TreeNode tn = hoveringNode.Parent;
+         while (tn != null)
+         {
+            ok &= tn != draggingNode;
+            tn = tn.Parent;
+         }
+         if (!ok) return;
+         e.Effect = DragDropEffects.Move;
+         hoveringNode.TreeView.SelectedNode = hoveringNode;
+      }
+
+      private void treeView1_DragDrop(object sender, DragEventArgs e)
+      {
+         if (e.Effect == DragDropEffects.Move)
+         {
+            TreeNode hoveringNode = GetHoveringNode(e.X, e.Y);
+            if (hoveringNode != null)
+            {
+               TreeNode draggingNode = e.Data.GetData(typeof(TreeNode)) as TreeNode;
+               if (draggingNode != null)
+               {
+                  NodeInfoTag nChild = (NodeInfoTag)draggingNode.Tag;
+                  NodeInfoTag nParent = (NodeInfoTag)hoveringNode.Tag;
+                  MainJrn.BringRandom(nChild, nParent);
+                  RefreshTop(draggingNode);
+                  draggingNode.Remove();
+                  hoveringNode.Nodes.Add(draggingNode);
+                  RefreshTop(draggingNode);
+                  treeView1.SelectedNode = draggingNode;
+               }
+            }
+         }
+      }
+
+      private void вставитьКакНовуюЗаметкуToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         if (MainJrn == null || treeView1.SelectedNode == null) return;
+         if(!Clipboard.ContainsText()) return;
+         TreeNode par;
+         if (((NodeInfoTag)treeView1.SelectedNode.Tag).wqType ==
+            NodeInfoTag.wqTypes.wqDir) par = treeView1.SelectedNode;
+         else par = treeView1.SelectedNode.Parent;
+         NodeInfoTag nit = (NodeInfoTag)par.Tag;
+
+         String name = "Новая заметка #" + Properties.Settings.
+             Default.LastNumberElem.ToString();
+         Properties.Settings.Default.LastNumberElem++;
+         nit = MainJrn.CreateNode(nit.wqId, name);
+         MainJrn.SetNodeContent(nit.wqId, Program.GetRtfFromClipboard());
+         TreeNode res = FullTreeNode(MainJrn.GetInfoElem(nit.wqId,
+            NodeInfoTag.wqTypes.wqNode));
+         par.Nodes.Add(res);
+         this.RefreshTop(res);
+         treeView1.SelectedNode.ExpandAll();
+      }
+
+      private void вырезатьToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
+         if (MainJrn.GetAttachList(nit.wqId).Length > 0)
+         {
+            if (MessageBox.Show("Внимание! У заметки есть прикрепленные файлы, " +
+               "которые будут безвозвратно удалены. Продолжить?", "wqNotes",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
+               MessageBoxDefaultButton.Button2) == DialogResult.No)
+               return;
+         }
+         MainJrn.CopyNode(nit);
+         this.DeleteElem(treeView1.SelectedNode, true);
+      }
+
+      private void копироватьToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
+         MainJrn.CopyNode(nit);
+      }
+
+      private void вставитьToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
+         TreeNode res = FullTreeNode(MainJrn.PasteNode(nit.wqId));
+         treeView1.SelectedNode.Nodes.Add(res);
+         this.RefreshTop(res);
+         treeView1.SelectedNode.Expand();
       }
    }
 }
