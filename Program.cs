@@ -87,7 +87,16 @@ namespace wqNotes
           return rtb.Text;
        }
 
+       public static string GetRtfFromClipboard()
+       {
+          RichTextBox rtb = new RichTextBox(); rtb.Text = "";
+          rtb.Paste(DataFormats.GetFormat(DataFormats.UnicodeText));
+          return rtb.Rtf;
+       }
+
        public static Options Opt = Options.Load();
+
+       public static string wqVersion = "0.9.3 SVN";
 
        /// <summary>
        /// The main entry point for the application.

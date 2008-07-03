@@ -30,58 +30,58 @@ namespace wqNotes
         {
            this.components = new System.ComponentModel.Container();
            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-           System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("C++ (4)");
-           System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Программинг (5)", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-           System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Теория чисел (3)");
-           System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Задачи (1)");
-           System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Математика (5)", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
-           System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Логи (2)");
-           System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Цитаты (2)");
-           System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Лол (6)");
-           System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Пароли (1)");
-           System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Ссылки (1)");
-           System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Заметки (2)");
-           System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Планы (1)");
-           System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Что-то (0)");
-           System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Все записи (25)", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13});
-           System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Сегодня (3)", System.Windows.Forms.HorizontalAlignment.Left);
-           System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Вчера (1)", System.Windows.Forms.HorizontalAlignment.Left);
-           System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+           System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("C++ (4)");
+           System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Программинг (5)", new System.Windows.Forms.TreeNode[] {
+            treeNode15});
+           System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Теория чисел (3)");
+           System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Задачи (1)");
+           System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Математика (5)", new System.Windows.Forms.TreeNode[] {
+            treeNode17,
+            treeNode18});
+           System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Логи (2)");
+           System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Цитаты (2)");
+           System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Лол (6)");
+           System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Пароли (1)");
+           System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Ссылки (1)");
+           System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Заметки (2)");
+           System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Планы (1)");
+           System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Что-то (0)");
+           System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Все записи (25)", new System.Windows.Forms.TreeNode[] {
+            treeNode16,
+            treeNode19,
+            treeNode20,
+            treeNode21,
+            treeNode22,
+            treeNode23,
+            treeNode24,
+            treeNode25,
+            treeNode26,
+            treeNode27});
+           System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Сегодня (3)", System.Windows.Forms.HorizontalAlignment.Left);
+           System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Вчера (1)", System.Windows.Forms.HorizontalAlignment.Left);
+           System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "Бор жжот #932847",
             "5 КБ",
             "27.08.2006",
             "Лол"}, -1);
-           System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Недавние заметки");
-           System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Сотонинский червь");
-           System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Телефон Гришки");
-           System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+           System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Недавние заметки");
+           System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Сотонинский червь");
+           System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Телефон Гришки");
+           System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "Результат поиска 1",
             "344 байт",
             "26.07.2006",
             "26.07.2006",
             "/",
             "Заметка"}, -1);
-           System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+           System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "Результат поиска 2",
             "234 байт",
             "26.07.2006",
             "26.07.2006",
             "/Лол",
             "Заметка"}, -1);
-           System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+           System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "Код от Васи",
             "1000 МБ",
             "26.07.2006",
@@ -627,6 +627,7 @@ namespace wqNotes
                        | System.Windows.Forms.Keys.V)));
            this.вставитьКакНовуюЗаметкуToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
            this.вставитьКакНовуюЗаметкуToolStripMenuItem.Text = "Вставить как новую заметку";
+           this.вставитьКакНовуюЗаметкуToolStripMenuItem.Click += new System.EventHandler(this.вставитьКакНовуюЗаметкуToolStripMenuItem_Click);
            // 
            // удалитьToolStripMenuItem
            // 
@@ -1835,38 +1836,38 @@ namespace wqNotes
            this.treeView1.ImageList = this.imageList1;
            this.treeView1.Location = new System.Drawing.Point(3, 3);
            this.treeView1.Name = "treeView1";
-           treeNode1.Name = "Node2";
-           treeNode1.Text = "C++ (4)";
-           treeNode2.Name = "Node1";
-           treeNode2.Text = "Программинг (5)";
-           treeNode3.Name = "Node12";
-           treeNode3.Text = "Теория чисел (3)";
-           treeNode4.Name = "Node13";
-           treeNode4.Text = "Задачи (1)";
-           treeNode5.Name = "Node11";
-           treeNode5.Text = "Математика (5)";
-           treeNode6.Name = "Node3";
-           treeNode6.Text = "Логи (2)";
-           treeNode7.Name = "Node4";
-           treeNode7.Text = "Цитаты (2)";
-           treeNode8.Name = "Node5";
-           treeNode8.Text = "Лол (6)";
-           treeNode9.ForeColor = System.Drawing.Color.Red;
-           treeNode9.Name = "Node6";
-           treeNode9.Text = "Пароли (1)";
-           treeNode10.Name = "Node7";
-           treeNode10.Text = "Ссылки (1)";
-           treeNode11.Name = "Node8";
-           treeNode11.Text = "Заметки (2)";
-           treeNode12.Name = "Node9";
-           treeNode12.Text = "Планы (1)";
-           treeNode13.Name = "Node10";
-           treeNode13.Text = "Что-то (0)";
-           treeNode14.Name = "Node0";
-           treeNode14.NodeFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-           treeNode14.Text = "Все записи (25)";
+           treeNode15.Name = "Node2";
+           treeNode15.Text = "C++ (4)";
+           treeNode16.Name = "Node1";
+           treeNode16.Text = "Программинг (5)";
+           treeNode17.Name = "Node12";
+           treeNode17.Text = "Теория чисел (3)";
+           treeNode18.Name = "Node13";
+           treeNode18.Text = "Задачи (1)";
+           treeNode19.Name = "Node11";
+           treeNode19.Text = "Математика (5)";
+           treeNode20.Name = "Node3";
+           treeNode20.Text = "Логи (2)";
+           treeNode21.Name = "Node4";
+           treeNode21.Text = "Цитаты (2)";
+           treeNode22.Name = "Node5";
+           treeNode22.Text = "Лол (6)";
+           treeNode23.ForeColor = System.Drawing.Color.Red;
+           treeNode23.Name = "Node6";
+           treeNode23.Text = "Пароли (1)";
+           treeNode24.Name = "Node7";
+           treeNode24.Text = "Ссылки (1)";
+           treeNode25.Name = "Node8";
+           treeNode25.Text = "Заметки (2)";
+           treeNode26.Name = "Node9";
+           treeNode26.Text = "Планы (1)";
+           treeNode27.Name = "Node10";
+           treeNode27.Text = "Что-то (0)";
+           treeNode28.Name = "Node0";
+           treeNode28.NodeFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+           treeNode28.Text = "Все записи (25)";
            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode14});
+            treeNode28});
            this.treeView1.PathSeparator = "/";
            this.treeView1.SelectedImageIndex = 1;
            this.treeView1.ShowRootLines = false;
@@ -1874,8 +1875,11 @@ namespace wqNotes
            this.treeView1.TabIndex = 0;
            this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
            this.treeView1.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView1_AfterLabelEdit);
+           this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
            this.treeView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDown);
+           this.treeView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView1_ItemDrag);
+           this.treeView1.DragOver += new System.Windows.Forms.DragEventHandler(this.treeView1_DragOver);
            // 
            // contextMenuStrip1
            // 
@@ -1943,24 +1947,27 @@ namespace wqNotes
            // 
            // вырезатьToolStripMenuItem1
            // 
-           this.вырезатьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+           this.вырезатьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
            this.вырезатьToolStripMenuItem1.Name = "вырезатьToolStripMenuItem1";
            this.вырезатьToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
            this.вырезатьToolStripMenuItem1.Text = "Вырезать";
+           this.вырезатьToolStripMenuItem1.Click += new System.EventHandler(this.вырезатьToolStripMenuItem1_Click);
            // 
            // копироватьToolStripMenuItem1
            // 
-           this.копироватьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+           this.копироватьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
            this.копироватьToolStripMenuItem1.Name = "копироватьToolStripMenuItem1";
            this.копироватьToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
            this.копироватьToolStripMenuItem1.Text = "Копировать";
+           this.копироватьToolStripMenuItem1.Click += new System.EventHandler(this.копироватьToolStripMenuItem1_Click);
            // 
            // вставитьToolStripMenuItem1
            // 
-           this.вставитьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+           this.вставитьToolStripMenuItem1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
            this.вставитьToolStripMenuItem1.Name = "вставитьToolStripMenuItem1";
            this.вставитьToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
            this.вставитьToolStripMenuItem1.Text = "Вставить";
+           this.вставитьToolStripMenuItem1.Click += new System.EventHandler(this.вставитьToolStripMenuItem1_Click);
            // 
            // очиститьToolStripMenuItem
            // 
@@ -2556,22 +2563,22 @@ namespace wqNotes
            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
            this.listView1.FullRowSelect = true;
            this.listView1.GridLines = true;
-           listViewGroup1.Header = "Сегодня (3)";
-           listViewGroup1.Name = "listViewGroup1";
-           listViewGroup2.Header = "Вчера (1)";
-           listViewGroup2.Name = "listViewGroup2";
+           listViewGroup3.Header = "Сегодня (3)";
+           listViewGroup3.Name = "listViewGroup1";
+           listViewGroup4.Header = "Вчера (1)";
+           listViewGroup4.Name = "listViewGroup2";
            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
-           listViewItem1.Group = listViewGroup1;
-           listViewItem2.Group = listViewGroup1;
-           listViewItem3.Group = listViewGroup1;
-           listViewItem4.Group = listViewGroup2;
+            listViewGroup3,
+            listViewGroup4});
+           listViewItem8.Group = listViewGroup3;
+           listViewItem9.Group = listViewGroup3;
+           listViewItem10.Group = listViewGroup3;
+           listViewItem11.Group = listViewGroup4;
            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11});
            this.listView1.Location = new System.Drawing.Point(3, 3);
            this.listView1.Name = "listView1";
            this.listView1.ShowItemToolTips = true;
@@ -2713,12 +2720,12 @@ namespace wqNotes
            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
            this.listView2.FullRowSelect = true;
            this.listView2.GridLines = true;
-           listViewItem6.ToolTipText = "А тута содержание этой шняги";
-           listViewItem7.ToolTipText = "#include <iostream> // Пашол нахуй";
+           listViewItem13.ToolTipText = "А тута содержание этой шняги";
+           listViewItem14.ToolTipText = "#include <iostream> // Пашол нахуй";
            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5,
-            listViewItem6,
-            listViewItem7});
+            listViewItem12,
+            listViewItem13,
+            listViewItem14});
            this.listView2.Location = new System.Drawing.Point(0, 4);
            this.listView2.Name = "listView2";
            this.listView2.ShowItemToolTips = true;
@@ -3129,7 +3136,7 @@ namespace wqNotes
            this.MinimumSize = new System.Drawing.Size(400, 300);
            this.Name = "MainForm";
            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-           this.Text = "wqNotes 0.9.2";
+           this.Text = "wqNotes %ver%";
            this.Load += new System.EventHandler(this.Form1_Load);
            this.InputLanguageChanged += new System.Windows.Forms.InputLanguageChangedEventHandler(this.Form1_InputLanguageChanged);
            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
