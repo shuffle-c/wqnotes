@@ -215,6 +215,16 @@ namespace wqNotes
          set { _LoadLastFile = value; }
       }
 
+      private Int32 _CountRecentFiles = 4;
+      [DisplayName("Количество недавних файлов")]
+      [Description("Указывает, сколько последних открытых файлов будет отображаться в меню Файл")]
+      [Category("1. Основные")]
+      public Int32 CountRecentFiles
+      {
+         get { return _CountRecentFiles; }
+         set { if (value >= 0) _CountRecentFiles = value; }
+      }
+
       private Font _FontRichEdit = new Font("Lucida Console", 8.25F, FontStyle.Regular);
       [DisplayName("Шрифт окна заметок")]
       [Description("Шрифт, используемый по умолчанию для текста заметок")]

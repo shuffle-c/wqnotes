@@ -94,9 +94,15 @@ namespace wqNotes
           return rtb.Rtf;
        }
 
+       public static string GetShorterPath(string path, int MaxN)
+       {
+          // TODO: Implement это
+          return path;
+       }
+
        public static Options Opt = Options.Load();
 
-       public static string wqVersion = "0.9.3 SVN";
+       public const string wqVersion = "0.9.3 SVN";
 
        /// <summary>
        /// The main entry point for the application.

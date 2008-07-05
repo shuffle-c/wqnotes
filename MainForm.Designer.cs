@@ -346,6 +346,7 @@ namespace wqNotes
            this.êîïèğîâàòüÏóòüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
            this.óäàëèòüÈçÑïèñêàToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+           this.wqRichEdit1 = new wqNotes.wqRichEdit();
            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
            this.îòìåíèòüToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
            this.ïîâòîğèòüToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -386,7 +387,6 @@ namespace wqNotes
            this.îÏğîãğàììåToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
            this.âûõîäToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
            this.timer1 = new System.Windows.Forms.Timer(this.components);
-           this.wqRichEdit1 = new wqNotes.wqRichEdit();
            this.menuStrip1.SuspendLayout();
            this.toolStrip1.SuspendLayout();
            this.statusStrip1.SuspendLayout();
@@ -601,6 +601,7 @@ namespace wqNotes
            this.âûğåçàòüToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
            this.âûğåçàòüToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
            this.âûğåçàòüToolStripMenuItem.Text = "Âûğåçàòü";
+           this.âûğåçàòüToolStripMenuItem.Click += new System.EventHandler(this.âûğåçàòüToolStripMenuItem_Click);
            // 
            // êîïèğîâàòüToolStripMenuItem
            // 
@@ -643,6 +644,7 @@ namespace wqNotes
            this.âûäåëèòüÂñåToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
            this.âûäåëèòüÂñåToolStripMenuItem.Size = new System.Drawing.Size(301, 22);
            this.âûäåëèòüÂñåToolStripMenuItem.Text = "Âûäåëèòü âñå";
+           this.âûäåëèòüÂñåToolStripMenuItem.Click += new System.EventHandler(this.âûäåëèòüÂñåToolStripMenuItem_Click);
            // 
            // toolStripMenuItem4
            // 
@@ -2807,6 +2809,27 @@ namespace wqNotes
            this.óäàëèòüÈçÑïèñêàToolStripMenuItem.Text = "Óäàëèòü èç ñïèñêà";
            this.óäàëèòüÈçÑïèñêàToolStripMenuItem.Click += new System.EventHandler(this.óäàëèòüÈçÑïèñêàToolStripMenuItem_Click);
            // 
+           // wqRichEdit1
+           // 
+           this.wqRichEdit1.AcceptsTab = true;
+           this.wqRichEdit1.AutoWordSelection = true;
+           this.wqRichEdit1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+           this.wqRichEdit1.ContextMenuStrip = this.contextMenuStrip2;
+           this.wqRichEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+           this.wqRichEdit1.EnableAutoDragDrop = true;
+           this.wqRichEdit1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+           this.wqRichEdit1.ForeColor = System.Drawing.SystemColors.WindowText;
+           this.wqRichEdit1.HideSelection = false;
+           this.wqRichEdit1.Location = new System.Drawing.Point(5, 5);
+           this.wqRichEdit1.Margin = new System.Windows.Forms.Padding(10);
+           this.wqRichEdit1.Name = "wqRichEdit1";
+           this.wqRichEdit1.Size = new System.Drawing.Size(504, 236);
+           this.wqRichEdit1.TabIndex = 0;
+           this.wqRichEdit1.Text = resources.GetString("wqRichEdit1.Text");
+           this.wqRichEdit1.SelectionChanged += new System.EventHandler(this.wqRichEdit1_SelectionChanged);
+           this.wqRichEdit1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wqRichEdit1_PreviewKeyDown);
+           this.wqRichEdit1.TextChanged += new System.EventHandler(this.wqRichEdit1_TextChanged);
+           // 
            // contextMenuStrip2
            // 
            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -3098,27 +3121,6 @@ namespace wqNotes
            // 
            this.timer1.Interval = 500;
            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-           // 
-           // wqRichEdit1
-           // 
-           this.wqRichEdit1.AcceptsTab = true;
-           this.wqRichEdit1.AutoWordSelection = true;
-           this.wqRichEdit1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-           this.wqRichEdit1.ContextMenuStrip = this.contextMenuStrip2;
-           this.wqRichEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-           this.wqRichEdit1.EnableAutoDragDrop = true;
-           this.wqRichEdit1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-           this.wqRichEdit1.ForeColor = System.Drawing.SystemColors.WindowText;
-           this.wqRichEdit1.HideSelection = false;
-           this.wqRichEdit1.Location = new System.Drawing.Point(5, 5);
-           this.wqRichEdit1.Margin = new System.Windows.Forms.Padding(10);
-           this.wqRichEdit1.Name = "wqRichEdit1";
-           this.wqRichEdit1.Size = new System.Drawing.Size(504, 236);
-           this.wqRichEdit1.TabIndex = 0;
-           this.wqRichEdit1.Text = resources.GetString("wqRichEdit1.Text");
-           this.wqRichEdit1.SelectionChanged += new System.EventHandler(this.wqRichEdit1_SelectionChanged);
-           this.wqRichEdit1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wqRichEdit1_PreviewKeyDown);
-           this.wqRichEdit1.TextChanged += new System.EventHandler(this.wqRichEdit1_TextChanged);
            // 
            // MainForm
            // 

@@ -11,7 +11,7 @@
     <Setting Name="LastFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="RecentFiles" Type="System.String" Scope="User">
+    <Setting Name="RecentFiles" Type="System.Collections.ArrayList" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="WinState" Type="System.Windows.Forms.FormWindowState" Scope="User">
