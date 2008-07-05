@@ -104,12 +104,79 @@ namespace wqNotes
          return true;
       }
 
+      public void DoOpenFile(string name)
+      {
+         if (!TryClose()) return;
+         treeView1.Nodes.Clear();
+         ClearAttachTool();
+         mDB = new wqFile();
+         try
+         {
+            if (MainJrn != null) MainJrn.CloseDB();
+            MainJrn = new Journal(name, toolStripProgressBar1);
+            mDB.FileState = wqFile.wqFileState.wqOpened;
+            mDB.FileName = name;
+
+            this.DoProcess(true);
+            //Thread
+            MainJrn.LoadDB();
+            treeView1.Nodes.Add(MainJrn.LoadTreeView(FullTreeNode));
+            treeView1.ExpandAll(); //
+            AddRecentFile(mDB.FileName);
+            this.DoProcess(false);
+         }
+         catch
+         {
+            MainJrn = null;
+            toolStripProgressBar1.Visible = false;
+            toolStripStatusLabel2.Visible = true;
+            mDB = new wqFile();
+         }
+         this.SetLabelStatus();
+      }
+
       public void DoProcess(bool start)
       {
          toolStripProgressBar1.Visible = start;
          toolStripStatusLabel2.Visible = !start;
          wqRichEdit1.Enabled = !start;
          treeView1.Enabled = !start;
+      }
+
+      public void RecentFileToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         string name = ((ToolStripItem)sender).Tag.ToString();
+         if (name != mDB.FileName)
+            this.DoOpenFile(name);
+      }
+
+      public void SetupRecentFiles()
+      {
+         недавниеФайлыToolStripMenuItem.DropDownItems.Clear();
+         foreach (object it in Properties.Settings.Default.RecentFiles)
+         {
+            ToolStripItem f = new ToolStripMenuItem();
+            f.Click += new EventHandler(RecentFileToolStripMenuItem_Click);
+            f.Text = Program.GetShorterPath(it.ToString(), 50);
+            f.Tag = it;
+            недавниеФайлыToolStripMenuItem.DropDownItems.Add(f);
+         }
+      }
+
+      public void AddRecentFile(string name)
+      {
+         if (Properties.Settings.Default.RecentFiles.Contains(name))
+            Properties.Settings.Default.RecentFiles.Remove(name);
+         if (Properties.Settings.Default.RecentFiles.Count >=
+            Program.Opt.CountRecentFiles)
+         {
+            Properties.Settings.Default.RecentFiles.RemoveRange(
+               Program.Opt.CountRecentFiles - 1,
+               Properties.Settings.Default.RecentFiles.Count -
+               Program.Opt.CountRecentFiles + 1);
+         }
+         Properties.Settings.Default.RecentFiles.Insert(0, name);
+         SetupRecentFiles();
       }
 
       public void DeleteElem(TreeNode tnow, bool iLast)
@@ -322,6 +389,7 @@ namespace wqNotes
 
       public void AddToMarkslist(NodeInfoTag nit)
       {
+         nit = MainJrn.GetInfoElem(nit.wqId, nit.wqType);
          ListViewItem lvi = new ListViewItem(nit.wqName);
          lvi.Tag = nit; String res = "";
          if (nit.wqType == NodeInfoTag.wqTypes.wqNode)
@@ -402,6 +470,18 @@ namespace wqNotes
          {
             this.wqRichEdit1.Font = Program.Opt.FontRichEdit;
          }
+         try
+         {
+            if (Properties.Settings.Default.RecentFiles.Count >=
+               Program.Opt.CountRecentFiles)
+            {
+               Properties.Settings.Default.RecentFiles.RemoveRange(
+                  Program.Opt.CountRecentFiles - 1,
+                  Properties.Settings.Default.RecentFiles.Count -
+                  Program.Opt.CountRecentFiles + 1);
+            }
+         }
+         catch { }
          //...
       }
       #endregion
@@ -430,32 +510,7 @@ namespace wqNotes
          if (openFileDialog1.ShowDialog() == DialogResult.OK)
          {
             if (mDB.FileName == openFileDialog1.FileName) return;
-            if (!TryClose()) return;
-            treeView1.Nodes.Clear();
-            ClearAttachTool();
-            try
-            {
-               String res = openFileDialog1.FileName;
-               if (MainJrn != null) MainJrn.CloseDB();
-               MainJrn = new Journal(res, toolStripProgressBar1);
-
-               this.DoProcess(true);
-               //Thread
-               MainJrn.LoadDB();
-
-               mDB.FileName = res;
-               mDB.FileState = wqFile.wqFileState.wqOpened;
-               treeView1.Nodes.Add(MainJrn.LoadTreeView(FullTreeNode));
-               treeView1.ExpandAll();
-               this.DoProcess(false);
-            }
-            catch
-            {
-               toolStripProgressBar1.Visible = false;
-               toolStripStatusLabel2.Visible = true;
-               mDB = new wqFile();
-            }
-            this.SetLabelStatus();
+            this.DoOpenFile(openFileDialog1.FileName);
          }
       }
 
@@ -483,7 +538,9 @@ namespace wqNotes
             this.DoProcess(false);
 
             //MainJrn = new Journal(res, false);
+            NodeInfoTag bak = mDB.NowNode;
             mDB = new wqFile();
+            mDB.NowNode = bak;
             mDB.FileName = res;
             mDB.FileState = wqFile.wqFileState.wqOpened;
 
@@ -509,6 +566,11 @@ namespace wqNotes
             сохранитьToolStripMenuItem_Click(sender, e);
          }
       }
+
+      private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         this.Close();
+      }
       #endregion
 
       #region Меню "Правка"
@@ -523,6 +585,11 @@ namespace wqNotes
          wqRichEdit1.Redo();
       }
 
+      private void вырезатьToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         wqRichEdit1.Cut();
+      }
+
       private void копироватьToolStripMenuItem_Click(object sender, EventArgs e)
       {
          wqRichEdit1.Copy();
@@ -531,6 +598,39 @@ namespace wqNotes
       private void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
       {
          wqRichEdit1.Paste(DataFormats.GetFormat(DataFormats.UnicodeText));
+      }
+
+      private void вставитьКакНовуюЗаметкуToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         if (MainJrn == null || treeView1.SelectedNode == null) return;
+         if(!Clipboard.ContainsText()) return;
+         TreeNode par;
+         if (((NodeInfoTag)treeView1.SelectedNode.Tag).wqType ==
+            NodeInfoTag.wqTypes.wqDir) par = treeView1.SelectedNode;
+         else par = treeView1.SelectedNode.Parent;
+         NodeInfoTag nit = (NodeInfoTag)par.Tag;
+
+         String name = "Новая заметка #" + Properties.Settings.
+             Default.LastNumberElem.ToString();
+         Properties.Settings.Default.LastNumberElem++;
+         nit = MainJrn.CreateNode(nit.wqId, name);
+         MainJrn.SetNodeContent(nit.wqId, Program.GetRtfFromClipboard());
+         TreeNode res = FullTreeNode(MainJrn.GetInfoElem(nit.wqId,
+            NodeInfoTag.wqTypes.wqNode));
+         par.Nodes.Add(res);
+         this.RefreshTop(res);
+         treeView1.SelectedNode.ExpandAll();
+      }
+
+      private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         wqRichEdit1.Focus();
+         SendKeys.Send("{DEL}");
+      }
+
+      private void выделитьВсеToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         wqRichEdit1.SelectAll();
       }
 
       private void поискToolStripMenuItem_Click(object sender, EventArgs e)
@@ -626,6 +726,17 @@ namespace wqNotes
       }
       #endregion
 
+      #region Меню "Сервис"
+
+      private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         OptionsForm opt = new OptionsForm();
+         if (opt.ShowDialog() == DialogResult.Yes)
+         {
+            InitSettings(false);
+         }
+      }
+      #endregion
 
       #region Меню "Справка"
 
@@ -824,6 +935,35 @@ namespace wqNotes
          treeView1.SelectedNode.BeginEdit();
       }
 
+      private void вырезатьToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
+         if (MainJrn.GetAttachList(nit.wqId).Length > 0)
+         {
+            if (MessageBox.Show("Внимание! У заметки есть прикрепленные файлы, " +
+               "которые будут безвозвратно удалены. Продолжить?", "wqNotes",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
+               MessageBoxDefaultButton.Button2) == DialogResult.No)
+               return;
+         }
+         MainJrn.CopyNode(nit);
+         this.DeleteElem(treeView1.SelectedNode, true);
+      }
+
+      private void копироватьToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
+         MainJrn.CopyNode(nit);
+      }
+
+      private void вставитьToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
+         TreeNode res = FullTreeNode(MainJrn.PasteNode(nit.wqId));
+         treeView1.SelectedNode.Nodes.Add(res);
+         this.RefreshTop(res);
+         treeView1.SelectedNode.Expand();
+      }
 
       private void удалитьToolStripMenuItem3_Click(object sender, EventArgs e)
       {
@@ -1109,7 +1249,7 @@ namespace wqNotes
 
       private void выделитьВсеToolStripMenuItem1_Click(object sender, EventArgs e)
       {
-         выделитьВсеToolStripMenuItem1_Click(sender, e);
+         выделитьВсеToolStripMenuItem_Click(sender, e);
       }
       #endregion
 
@@ -1244,6 +1384,7 @@ namespace wqNotes
          listView2.Items.Clear();
          label10.Text = "<Не выбран элемент>";
          toolStripLabel1.Text = "Нет присоединенных файлов";
+         toolStripStatusLabel1.Text = "Журнал не открыт";
          toolStripStatusLabel2.Text = "Ln 0 Col 0";
          toolStrip2.Items.Remove(toolStripButton10);
          toolStrip2.Items.Remove(toolStripButton11);
@@ -1254,6 +1395,10 @@ namespace wqNotes
          listView1.Groups.Clear();
          ////////////////////////////
          this.Text = this.Text.Replace("%ver%", Program.wqVersion);
+
+         if (Properties.Settings.Default.RecentFiles == null)
+            Properties.Settings.Default.RecentFiles = new System.Collections.ArrayList();
+
          InitSettings(true);
 
          mDB = new wqFile();
@@ -1278,39 +1423,18 @@ namespace wqNotes
          //if (Properties.Settings.Default.LoadLastFile == true)
          if(Program.Opt.LoadLastFile == true)
             mDB.FileName = Properties.Settings.Default.LastFile;
-         string RecentFiles = Properties.Settings.Default.RecentFiles;
+         //string RecentFiles = Properties.Settings.Default.RecentFiles;
 
          openFileDialog1.FileName = mDB.FileName;
          //
          //1. обработать рекент файлы
          //2. Зазрузить другие настройки
          //
+         SetupRecentFiles();
 
-         if (mDB.FileName.Length == 0) mDB.FileState = wqFile.wqFileState.wqNone;
-         else mDB.FileState = wqFile.wqFileState.wqOpened;
 
-         if (mDB.FileState == wqFile.wqFileState.wqOpened)
-         {
-            try
-            {
-               MainJrn = new Journal(mDB.FileName, toolStripProgressBar1);
-               this.DoProcess(true);
-               //Thread
-               MainJrn.LoadDB();
-               treeView1.Nodes.Add(MainJrn.LoadTreeView(FullTreeNode));
-               treeView1.ExpandAll();
-               this.DoProcess(false);
-            }
-            catch (Exception)
-            {
-               MainJrn = null;
-               toolStripProgressBar1.Visible = false;
-               toolStripStatusLabel2.Visible = true;
-               mDB = new wqFile();
-            }
-         }
-         this.SetLabelStatus();
-         //
+         if (mDB.FileName.Length > 0)
+            this.DoOpenFile(mDB.FileName);
       }
 
       private void wqRichEdit1_SelectionChanged(object sender, EventArgs e)
@@ -1599,11 +1723,6 @@ namespace wqNotes
          }
       }
 
-      private void выходToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         this.Close();
-      }
-
       private void contextMenuStrip3_Opening(object sender, CancelEventArgs e)
       {
          e.Cancel = listView2.SelectedItems.Count == 0;
@@ -1724,12 +1843,6 @@ namespace wqNotes
          timer1.Enabled = false;
       }
 
-      private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         wqRichEdit1.Focus();
-         SendKeys.Send("{DEL}");
-      }
-
       private void удалитьToolStripMenuItem4_Click(object sender, EventArgs e)
       {
          удалитьToolStripMenuItem_Click(sender, e);
@@ -1743,15 +1856,6 @@ namespace wqNotes
             {
                this.Hide();
             }
-         }
-      }
-
-      private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         OptionsForm opt = new OptionsForm();
-         if (opt.ShowDialog() == DialogResult.Yes)
-         {
-            InitSettings(false);
          }
       }
 
@@ -1806,58 +1910,6 @@ namespace wqNotes
                }
             }
          }
-      }
-
-      private void вставитьКакНовуюЗаметкуToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         if (MainJrn == null || treeView1.SelectedNode == null) return;
-         if(!Clipboard.ContainsText()) return;
-         TreeNode par;
-         if (((NodeInfoTag)treeView1.SelectedNode.Tag).wqType ==
-            NodeInfoTag.wqTypes.wqDir) par = treeView1.SelectedNode;
-         else par = treeView1.SelectedNode.Parent;
-         NodeInfoTag nit = (NodeInfoTag)par.Tag;
-
-         String name = "Новая заметка #" + Properties.Settings.
-             Default.LastNumberElem.ToString();
-         Properties.Settings.Default.LastNumberElem++;
-         nit = MainJrn.CreateNode(nit.wqId, name);
-         MainJrn.SetNodeContent(nit.wqId, Program.GetRtfFromClipboard());
-         TreeNode res = FullTreeNode(MainJrn.GetInfoElem(nit.wqId,
-            NodeInfoTag.wqTypes.wqNode));
-         par.Nodes.Add(res);
-         this.RefreshTop(res);
-         treeView1.SelectedNode.ExpandAll();
-      }
-
-      private void вырезатьToolStripMenuItem1_Click(object sender, EventArgs e)
-      {
-         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
-         if (MainJrn.GetAttachList(nit.wqId).Length > 0)
-         {
-            if (MessageBox.Show("Внимание! У заметки есть прикрепленные файлы, " +
-               "которые будут безвозвратно удалены. Продолжить?", "wqNotes",
-               MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
-               MessageBoxDefaultButton.Button2) == DialogResult.No)
-               return;
-         }
-         MainJrn.CopyNode(nit);
-         this.DeleteElem(treeView1.SelectedNode, true);
-      }
-
-      private void копироватьToolStripMenuItem1_Click(object sender, EventArgs e)
-      {
-         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
-         MainJrn.CopyNode(nit);
-      }
-
-      private void вставитьToolStripMenuItem1_Click(object sender, EventArgs e)
-      {
-         NodeInfoTag nit = (NodeInfoTag)treeView1.SelectedNode.Tag;
-         TreeNode res = FullTreeNode(MainJrn.PasteNode(nit.wqId));
-         treeView1.SelectedNode.Nodes.Add(res);
-         this.RefreshTop(res);
-         treeView1.SelectedNode.Expand();
       }
    }
 }

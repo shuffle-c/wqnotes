@@ -61,10 +61,9 @@ namespace wqNotes.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RecentFiles {
+        public global::System.Collections.ArrayList RecentFiles {
             get {
-                return ((string)(this["RecentFiles"]));
+                return ((global::System.Collections.ArrayList)(this["RecentFiles"]));
             }
             set {
                 this["RecentFiles"] = value;

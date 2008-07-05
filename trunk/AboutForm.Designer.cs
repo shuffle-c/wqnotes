@@ -107,7 +107,7 @@ namespace wqNotes
            // label6
            // 
            this.label6.AutoSize = true;
-           this.label6.Location = new System.Drawing.Point(155, 269);
+           this.label6.Location = new System.Drawing.Point(155, 237);
            this.label6.Name = "label6";
            this.label6.Size = new System.Drawing.Size(170, 13);
            this.label6.TabIndex = 7;
@@ -116,7 +116,7 @@ namespace wqNotes
            // linkLabel2
            // 
            this.linkLabel2.AutoSize = true;
-           this.linkLabel2.Location = new System.Drawing.Point(167, 282);
+           this.linkLabel2.Location = new System.Drawing.Point(167, 250);
            this.linkLabel2.Name = "linkLabel2";
            this.linkLabel2.Size = new System.Drawing.Size(92, 13);
            this.linkLabel2.TabIndex = 8;
@@ -227,7 +227,7 @@ namespace wqNotes
            // label5
            // 
            this.label5.AutoSize = true;
-           this.label5.Location = new System.Drawing.Point(155, 237);
+           this.label5.Location = new System.Drawing.Point(155, 265);
            this.label5.Name = "label5";
            this.label5.Size = new System.Drawing.Size(147, 13);
            this.label5.TabIndex = 12;
@@ -236,7 +236,7 @@ namespace wqNotes
            // linkLabel1
            // 
            this.linkLabel1.AutoSize = true;
-           this.linkLabel1.Location = new System.Drawing.Point(167, 253);
+           this.linkLabel1.Location = new System.Drawing.Point(167, 278);
            this.linkLabel1.Name = "linkLabel1";
            this.linkLabel1.Size = new System.Drawing.Size(103, 13);
            this.linkLabel1.TabIndex = 13;
