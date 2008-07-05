@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 
 namespace wqNotes
 {
-   [Serializable]
    public class Pair<T, K>
    {
       public Pair() { }
@@ -51,7 +50,6 @@ namespace wqNotes
       }
    }
 
-   [Serializable]
    public class NodeInfoTag : Object
    {
       public enum wqTypes { wqDir, wqNode, wqAttach }
@@ -310,7 +308,13 @@ namespace wqNotes
 
       public NodeInfoTag CreateAttach(Int32 parent, string FileName, bool IsLink, DateTime dtc, DateTime dtm)
       {
-         Int32 nId = this.wqGetFreeId();
+         Int32 nId = 0;
+         if (DelId.Count > 0)
+         {
+            nId = DelId[0];
+            DelId.RemoveAt(0);
+         }
+         else nId = ++wqLastId;
 
          FileStream fs = new FileStream(FileName, FileMode.Open,
              FileAccess.Read, FileShare.Read, 8192);
@@ -544,7 +548,13 @@ namespace wqNotes
 
       public NodeInfoTag CreateNode(Int32 parent, string name)
       {
-         Int32 nId = this.wqGetFreeId();
+         Int32 nId = 0;
+         if (DelId.Count > 0)
+         {
+            nId = DelId[0];
+            DelId.RemoveAt(0);
+         }
+         else nId = ++wqLastId;
 
          DataRow dr = this.wqMainDts.Tables["node"].Rows.Add(new object[] { 
                 nId,parent,name,DateTime.Now,DateTime.Now,0,0,null,"",0,0 });
@@ -574,7 +584,13 @@ namespace wqNotes
 
       public NodeInfoTag CreateDir(Int32 parent, string name)
       {
-         Int32 nId = this.wqGetFreeId();
+         Int32 nId = 0;
+         if (DelId.Count > 0)
+         {
+            nId = DelId[0];
+            DelId.RemoveAt(0);
+         }
+         else nId = ++wqLastId;
 
          DataRow dr = this.wqMainDts.Tables["dir"].Rows.Add(new object[] { 
                 nId,parent,name,DateTime.Now,DateTime.Now,0,0,"",0,0 });
@@ -691,81 +707,6 @@ namespace wqNotes
          this.IsChanged = true;
          this.wqBackupStructure();
          return true;
-      }
-
-      public bool BringRandom(NodeInfoTag child, NodeInfoTag newpar)
-      {
-         DataRow Child, NewParent, dr;
-         Int32 count = 1;
-         if (child.wqType == NodeInfoTag.wqTypes.wqNode)
-         {
-            Child = wqMainDts.Tables["node"].Select("id=" + child.wqId)[0];
-            dr = Child.GetParentRow("dir-node");
-         }
-         else
-         {
-            Child = wqMainDts.Tables["dir"].Select("id=" + child.wqId)[0];
-            count = Int32.Parse(Child["count"].ToString());
-            dr = Child.GetParentRow("dir-dir");
-         }
-         NewParent = wqMainDts.Tables["dir"].Select("id=" + newpar.wqId)[0];
-         if (NewParent == null) return false;
-         Int32 sz = Int32.Parse(Child["size"].ToString());
-         dr["dtm"] = DateTime.Now;
-         while (dr != null)
-         {
-            dr["size"] = Int32.Parse(dr["size"].ToString()) - sz;
-            dr["count"] = Int32.Parse(dr["count"].ToString()) - count;
-            dr = dr.GetParentRow("dir-dir");
-         }
-         dr = NewParent;
-         dr["dtm"] = DateTime.Now;
-         while (dr != null)
-         {
-            dr["size"] = Int32.Parse(dr["size"].ToString()) + sz;
-            dr["count"] = Int32.Parse(dr["count"].ToString()) + count;
-            dr = dr.GetParentRow("dir-dir");
-         }
-         Child["parent_id"] = NewParent["id"];
-         this.IsChanged = true;
-         this.wqBackupStructure();
-         return true;
-      }
-
-      public void CopyNode(NodeInfoTag id)
-      {
-         Pair<NodeInfoTag, String> data = new Pair<NodeInfoTag, String>();
-         data.First = id;
-         data.Second = this.GetNode(id.wqId);
-         Clipboard.SetData("wqNotes_node", data);
-      }
-
-      public NodeInfoTag PasteNode(Int32 parentId)
-      {
-         Pair<NodeInfoTag, String> data = Clipboard.GetData("wqNotes_node")
-            as Pair<NodeInfoTag, String>;
-         NodeInfoTag nit = data.First;
-         nit.wqId = this.wqGetFreeId();
-         nit.wqParent_id = parentId;
-         nit.wqSize = 0; nit.wqExSize = 0;
-
-         DataRow dr = this.wqMainDts.Tables["node"].Rows.Add(new object[] { 
-                nit.wqId,nit.wqParent_id,nit.wqName,nit.wqDtc,nit.wqDtm,nit.wqSchema,
-                nit.wqPriority,nit.wqCrypto,nit.wqFlag,nit.wqSize,nit.wqExSize });
-         int sz = this.SetNodeContent(nit.wqId, data.Second);
-         if (sz == -1) return null;
-         nit.wqSize = sz; nit.wqExSize = sz;
-         dr = dr.GetParentRow("dir-node");
-         dr["dtm"] = DateTime.Now;
-         while (dr != null)
-         {
-            dr["count"] = Int32.Parse(dr["count"].ToString()) + 1;
-            dr["size"] = Int32.Parse(dr["size"].ToString()) + sz;
-            dr = dr.GetParentRow("dir-dir");
-         }
-         this.IsChanged = true;
-         this.wqBackupStructure();
-         return nit;
       }
 
       public NodeInfoTag GetInfoElem(Int32 id, NodeInfoTag.wqTypes itype)
@@ -891,18 +832,6 @@ namespace wqNotes
       #endregion
 
       #region Private members
-
-      private Int32 wqGetFreeId()
-      {
-         Int32 nId = 0;
-         if (DelId.Count > 0)
-         {
-            nId = DelId[0];
-            DelId.RemoveAt(0);
-         }
-         else nId = ++wqLastId;
-         return nId;
-      }
 
       private bool wqCompare(string s1, string s2, DataRow dr, bool wholeword, bool register, bool regexp, DateTime datefrom, DateTime dateto, int sizefrom, int sizeto)
       {

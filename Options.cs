@@ -190,7 +190,7 @@ namespace wqNotes
          stream.Seek(0, SeekOrigin.Begin);
          Properties.Settings.Default.GeneralOptions =
             Convert.ToBase64String(stream.ToArray());
-         //Properties.Settings.Default.Save();
+         Properties.Settings.Default.Save();
       }
 
       private bool _IsHideOnMinimize = false;
@@ -202,17 +202,6 @@ namespace wqNotes
       {
          get { return _IsHideOnMinimize; }
          set { _IsHideOnMinimize = value; }
-      }
-
-      private bool _LoadLastFile = false;
-      [DisplayName("Загружать последний файл")]
-      [Description("Загружать последний открытый файл при загрузке программы")]
-      [Category("1. Основные")]
-      [TypeConverter(typeof(BooleanTypeConverter<BooleanYesNo>))]
-      public bool LoadLastFile
-      {
-         get { return _LoadLastFile; }
-         set { _LoadLastFile = value; }
       }
 
       private Font _FontRichEdit = new Font("Lucida Console", 8.25F, FontStyle.Regular);

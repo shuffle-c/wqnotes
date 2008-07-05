@@ -13,7 +13,6 @@ namespace wqNotes
       public AboutForm()
       {
          InitializeComponent();
-         label3.Text = label3.Text.Replace("%ver%", Program.wqVersion);
       }
 
       private void pictureBox1_Click(object sender, EventArgs e)
