@@ -35,6 +35,10 @@ namespace wqNotes
       public List<Int32> NodeList = new List<Int32>();
       public Dictionary<Int32, Int32> NodeListPos =
           new Dictionary<Int32, Int32>();
+      public List<NodeInfoTag> MovingList =
+         new List<NodeInfoTag>();
+      public Boolean MoveRet = false;
+      public Int32 MovePos;
 
       public void Delete()
       {
