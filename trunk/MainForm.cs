@@ -143,6 +143,127 @@ namespace wqNotes
          treeView1.Enabled = !start;
       }
 
+      public TreeNode SearchItem(NodeInfoTag nit)
+      {
+         TreeNode[] res = treeView1.Nodes.Find(nit.wqId.ToString(), true);
+         NodeInfoTag f = null;
+         if (res.Length == 1) f = (NodeInfoTag)res[0].Tag;
+         if (f != null && f.wqName == nit.wqName && f.wqType == nit.wqType)
+            return res[0];
+         return null;
+      }
+
+      public void MovingLeftToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)((ToolStripItem)sender).Tag;
+         TreeNode res = this.SearchItem(nit);
+         try
+         {
+            if (res == null || mDB.NowNode == nit) // Удалить из списка
+            {
+               toolStripSplitButton2.DropDownItems.Remove((ToolStripItem)sender);
+               mDB.MovingList.Remove(nit);
+               throw new Exception();
+            }
+            mDB.MoveRet = true;
+            treeView1.SelectedNode = res;
+            mDB.MoveRet = false;
+
+            toolStripSplitButton3.Enabled = true;
+            ToolStripMenuItem tsi;
+            Object bak = null;
+            while (bak != sender)
+            {
+               tsi = new ToolStripMenuItem();
+               tsi.Text = toolStripSplitButton2.DropDownItems[0].Text;
+               tsi.Tag = toolStripSplitButton2.DropDownItems[0].Tag;
+               tsi.Click += new EventHandler(MovingRightToolStripMenuItem_Click);
+               toolStripSplitButton2.DropDownItems.RemoveAt(0);
+               toolStripSplitButton3.DropDownItems.Insert(0, tsi);
+               while (toolStripSplitButton3.DropDownItems.Count > 10)
+                  toolStripSplitButton3.DropDownItems.RemoveAt(10);
+               bak = toolStripSplitButton2.DropDownItems[0];
+               mDB.MovePos++;
+            }
+            mDB.MovingList.RemoveAt(mDB.MovePos); // Удалить текущий
+            toolStripSplitButton2.DropDownItems.RemoveAt(0);
+         }
+         catch { }
+         finally
+         {
+            ToolStripMenuItem tsi;
+            // Добавить недостающие
+            while (toolStripSplitButton2.DropDownItems.Count < 10)
+            {
+               Int32 pos = mDB.MovePos + toolStripSplitButton2.DropDownItems.Count;
+               if (pos >= mDB.MovingList.Count) break;
+               tsi = new ToolStripMenuItem(mDB.MovingList[pos].wqName);
+               tsi.Tag = mDB.MovingList[pos];
+               tsi.Click += new EventHandler(MovingLeftToolStripMenuItem_Click);
+               toolStripSplitButton2.DropDownItems.Add(tsi);
+            }
+            if (toolStripSplitButton2.DropDownItems.Count == 0)
+               toolStripSplitButton2.Enabled = false;
+         }
+      }
+
+      public void MovingRightToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         NodeInfoTag nit = (NodeInfoTag)((ToolStripItem)sender).Tag;
+         TreeNode res = this.SearchItem(nit);
+         try
+         {
+            if (res == null || mDB.NowNode == nit) // Удалить из списка
+            {
+               toolStripSplitButton3.DropDownItems.Remove((ToolStripItem)sender);
+               //if (mDB.MovingList.IndexOf(nit) <= mDB.MovePos)
+               if (mDB.MovePos > 0) mDB.MovePos--;
+               mDB.MovingList.Remove(nit);
+               throw new Exception();
+            }
+            mDB.MoveRet = true;
+            treeView1.SelectedNode = res;
+            mDB.MoveRet = false;
+
+            toolStripSplitButton2.Enabled = true;
+            ToolStripMenuItem tsi;
+            Object bak = toolStripSplitButton3.DropDownItems[0];
+            mDB.MovePos--;
+            while (bak != sender)
+            {
+               tsi = new ToolStripMenuItem();
+               tsi.Text = toolStripSplitButton3.DropDownItems[0].Text;
+               tsi.Tag = toolStripSplitButton3.DropDownItems[0].Tag;
+               tsi.Click += new EventHandler(MovingLeftToolStripMenuItem_Click);
+               toolStripSplitButton3.DropDownItems.RemoveAt(0);
+               toolStripSplitButton2.DropDownItems.Insert(0, tsi);
+               bak = toolStripSplitButton3.DropDownItems[0];
+               mDB.MovePos--;
+            }
+            mDB.MovingList.RemoveAt(mDB.MovePos); // Удалить текущий
+            toolStripSplitButton3.DropDownItems.RemoveAt(0);
+            while (toolStripSplitButton2.DropDownItems.Count > 10)
+               toolStripSplitButton2.DropDownItems.RemoveAt(10);
+         }
+         catch { }
+         finally
+         {
+            ToolStripMenuItem tsi;
+            // Добавить недостающие
+            while (toolStripSplitButton3.DropDownItems.Count < 10)
+            {
+               Int32 pos = mDB.MovePos - toolStripSplitButton3.DropDownItems.Count - 1;
+               if (pos < 0) break;
+               tsi = new ToolStripMenuItem(mDB.MovingList[pos].wqName);
+               tsi.Tag = mDB.MovingList[pos];
+               tsi.Click += new EventHandler(MovingRightToolStripMenuItem_Click);
+               toolStripSplitButton3.DropDownItems.Add(tsi);
+            }
+            if (toolStripSplitButton3.DropDownItems.Count == 0)
+               toolStripSplitButton3.Enabled = false;
+         }
+      }
+
       public void RecentFileToolStripMenuItem_Click(object sender, EventArgs e)
       {
          string name = ((ToolStripItem)sender).Tag.ToString();
@@ -300,6 +421,14 @@ namespace wqNotes
             else toolStripStatusLabel1.Text = mDB.FileName;
             toolStripStatusLabel1.Text += res;
          }
+         // Navigation Panel
+         if (mDB.MovingList.Count == 0)
+         {
+            toolStripSplitButton2.DropDownItems.Clear();
+            toolStripSplitButton2.Enabled = false;
+            toolStripSplitButton3.DropDownItems.Clear();
+            toolStripSplitButton3.Enabled = false;
+         }
       }
 
       public void AddAttachInTool(NodeInfoTag nId, String FileName)
@@ -357,6 +486,36 @@ namespace wqNotes
             toolStrip2.Items.Remove(tsi);
          }
          toolStripLabel1.Text = "Нет присоединенных файлов";
+      }
+
+      public void AddToMovingList(NodeInfoTag nit)
+      {
+         //if (mDB.MovingList.Count > 0 && nit == mDB.MovingList[0]) return;
+         if (this.SearchItem(nit) == null) return;
+         if (mDB.MovePos > 0 && !mDB.MoveRet)
+         {
+            mDB.MovingList.RemoveRange(0, mDB.MovePos);
+            mDB.MovePos = 0;
+         }
+         mDB.MovingList.Insert(mDB.MovePos, nit);
+         if (mDB.MovingList.Count > 50)
+         {
+            mDB.MovingList.RemoveRange(50,
+               mDB.MovingList.Count - 50);
+         }
+
+         if (!mDB.MoveRet)
+         {
+            toolStripSplitButton3.DropDownItems.Clear();
+            toolStripSplitButton3.Enabled = false;
+         }
+         toolStripSplitButton2.Enabled = true;
+         ToolStripItem tsi = new ToolStripMenuItem(nit.wqName);
+         tsi.Tag = nit;
+         tsi.Click += new EventHandler(MovingLeftToolStripMenuItem_Click);
+         toolStripSplitButton2.DropDownItems.Insert(0, tsi);
+         while (toolStripSplitButton2.DropDownItems.Count > 10 && !mDB.MoveRet)
+            toolStripSplitButton2.DropDownItems.RemoveAt(10);
       }
 
       public void StartSearch()
@@ -493,6 +652,7 @@ namespace wqNotes
       private void новыйЖурналToolStripMenuItem_Click(object sender, EventArgs e)
       {
          if (!TryClose()) return;
+         mDB = new wqFile();
          mDB.FileName = System.IO.Path.GetTempFileName();
          mDB.FileState = wqFile.wqFileState.wqNew;
          if (MainJrn != null) MainJrn.CloseDB();
@@ -1262,6 +1422,16 @@ namespace wqNotes
          перейтиКПозицииToolStripMenuItem_Click(sender, e);
       }
 
+      private void toolStripSplitButton2_ButtonClick(object sender, EventArgs e)
+      {
+         MovingLeftToolStripMenuItem_Click(toolStripSplitButton2.DropDownItems[0], e);
+      }
+
+      private void toolStripSplitButton3_ButtonClick(object sender, EventArgs e)
+      {
+         MovingRightToolStripMenuItem_Click(toolStripSplitButton3.DropDownItems[0], e);
+      }
+
       private void toolStripButton1_Click(object sender, EventArgs e)
       {
          новыйЖурналToolStripMenuItem_Click(sender, e);
@@ -1389,6 +1559,8 @@ namespace wqNotes
          toolStrip2.Items.Remove(toolStripButton10);
          toolStrip2.Items.Remove(toolStripButton11);
          toolStripButton12.Enabled = false;
+         toolStripSplitButton2.Enabled = false;
+         toolStripSplitButton3.Enabled = false;
          wqRichEdit1.wqClear();
          wqRichEdit1.ClearUndo();
          listView1.Items.Clear();
@@ -1459,7 +1631,10 @@ namespace wqNotes
                if (!mDB.NodeList.Contains(mDB.NowNode.wqId))
                   mDB.NodeList.Add(mDB.NowNode.wqId);
             }
+            //if (!mDB.MoveRet) 
+            AddToMovingList(mDB.NowNode);
          }
+         //mDB.MoveRet = false;
          mDB.NowNode = (NodeInfoTag)treeView1.SelectedNode.Tag;
          if (mDB.NowNode.wqType == NodeInfoTag.wqTypes.wqNode)
          {
@@ -1546,11 +1721,8 @@ namespace wqNotes
          if (listView2.SelectedItems.Count > 0)
          {
             NodeInfoTag nit = (NodeInfoTag)listView2.SelectedItems[0].Tag;
-            TreeNode[] res = treeView1.Nodes.Find(nit.wqId.ToString(), true);
-            NodeInfoTag f = null;
-            if (res.Length == 1) f = (NodeInfoTag)res[0].Tag;
-            if (f != null && f.wqName == nit.wqName && f.wqType == nit.wqType)
-               treeView1.SelectedNode = res[0];
+            TreeNode res = this.SearchItem(nit);
+            if (res != null) treeView1.SelectedNode = res;
          }
       }
 
@@ -1715,11 +1887,8 @@ namespace wqNotes
          if (listView1.SelectedItems.Count > 0)
          {
             NodeInfoTag nit = (NodeInfoTag)listView1.SelectedItems[0].Tag;
-            TreeNode[] res = treeView1.Nodes.Find(nit.wqId.ToString(), true);
-            NodeInfoTag f = null;
-            if (res.Length == 1) f = (NodeInfoTag)res[0].Tag;
-            if (f != null && f.wqName == nit.wqName && f.wqType == nit.wqType)
-               treeView1.SelectedNode = res[0];
+            TreeNode res = this.SearchItem(nit);
+            if (res != null) treeView1.SelectedNode = res;
          }
       }
 
