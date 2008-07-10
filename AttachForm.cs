@@ -1,7 +1,7 @@
 /*
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
-* Windows: AttachForm.cs, revision $Revision$
+* Windows: AttachForm.cs, $Revision$
 * URL: $HeadURL$
 * $Date$
 */

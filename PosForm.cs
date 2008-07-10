@@ -1,7 +1,7 @@
 /*
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
-* Windows: PosForm.cs, revision $Revision$
+* Windows: PosForm.cs, $Revision$
 * URL: $HeadURL$
 * $Date$
 */

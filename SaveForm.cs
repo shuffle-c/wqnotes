@@ -1,7 +1,7 @@
 /*
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
-* Windows: SaveForm.cs, revision $Revision$
+* Windows: SaveForm.cs, $Revision$
 * URL: $HeadURL$
 * $Date$
 */
