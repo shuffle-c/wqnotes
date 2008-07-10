@@ -1,3 +1,11 @@
+/*
+* Copyright (c) 2007-2008 wqNotes Project
+* License: BSD
+* Windows: Journal.cs, revision $Revision$
+* URL: $HeadURL$
+* $Date$
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

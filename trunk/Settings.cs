@@ -1,3 +1,11 @@
+/*
+* Copyright (c) 2007-2008 wqNotes Project
+* License: BSD
+* Windows: Settings.cs, revision $Revision$
+* URL: $HeadURL$
+* $Date$
+*/
+
 namespace wqNotes.Properties {
     
     

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+* Copyright (c) 2007-2008 wqNotes Project
+* License: BSD
+* Windows: Options.cs, revision $Revision$
+* URL: $HeadURL$
+* $Date$
+*/
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
