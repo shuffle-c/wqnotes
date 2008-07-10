@@ -1,7 +1,7 @@
 /*
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
-* Windows: FindForm.cs, revision $Revision$
+* Windows: FindForm.cs, $Revision$
 * URL: $HeadURL$
 * $Date$
 */

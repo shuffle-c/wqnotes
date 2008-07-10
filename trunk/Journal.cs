@@ -1,7 +1,7 @@
 /*
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
-* Windows: Journal.cs, revision $Revision$
+* Windows: Journal.cs, $Revision$
 * URL: $HeadURL$
 * $Date$
 */
