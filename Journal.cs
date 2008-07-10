@@ -125,8 +125,8 @@ namespace wqNotes
          if (fxmltmps != null) { fxmltmps.Close(); fxmltmps = null; }
          FileInfo fis = new FileInfo(this.wqGetTmpName()[0]);
          FileInfo fix = new FileInfo(this.wqGetTmpName()[1]);
-         if (fis.Exists) fis.Delete();
-         if (fix.Exists) fix.Delete();
+         try { if (fis.Exists) fis.Delete(); } catch { }
+         try { if (fix.Exists) fix.Delete(); } catch { }
       }
 
       public bool CreateNewDB()
@@ -246,7 +246,7 @@ namespace wqNotes
          string res = "";
          xmldb.WriteStartDocument(true);
          xmldb.WriteStartElement("wqMain");
-         /*xmldb.WriteAttributeString("", "");*/
+         xmldb.WriteAttributeString("version", Program.wqVersion);
          wqMainDts.WriteXml(xmldb, XmlWriteMode.WriteSchema);
          try { DBProcess.Value += count / 20; }
          catch { }
@@ -570,9 +570,12 @@ namespace wqNotes
       {
          // ≈сли заметка нова€, приводим ее в исходное состо€ние
          if (!this.wqIndex.ContainsKey(id))
-            return this.SetNodeContent(id, "") != -1;
+            return this.SetNodeContent(id, "{\\rtf1}\0") != -1;
 
-         if (!this.cID.ContainsKey(id)) return false;
+         DataRow dr = wqMainDts.Tables["node"].Select("id=" + id.ToString())[0];
+         dr["size"] = Int32.Parse(dr["size"].ToString()) + wqIndex[id].Second -
+            Int32.Parse(dr["exsize"].ToString());
+         dr["exsize"] = wqIndex[id].Second;
          return this.cID.Remove(id);
       }
 

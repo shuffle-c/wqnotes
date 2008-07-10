@@ -273,13 +273,17 @@ namespace wqNotes
 
       public void SetupRecentFiles()
       {
+         toolStripButton2.DropDownItems.Clear();
          íåäàâíèåÔàéëûToolStripMenuItem.DropDownItems.Clear();
          foreach (object it in Properties.Settings.Default.RecentFiles)
          {
-            ToolStripItem f = new ToolStripMenuItem();
+            ToolStripItem f = new ToolStripMenuItem(), g = new ToolStripMenuItem();
             f.Click += new EventHandler(RecentFileToolStripMenuItem_Click);
+            g.Click += new EventHandler(RecentFileToolStripMenuItem_Click);
             f.Text = Program.GetShorterPath(it.ToString(), 50);
-            f.Tag = it;
+            g.Text = Program.GetShorterPath(it.ToString(), 50);
+            f.Tag = it; g.Tag = it;
+            toolStripButton2.DropDownItems.Add(g);
             íåäàâíèåÔàéëûToolStripMenuItem.DropDownItems.Add(f);
          }
       }
@@ -652,6 +656,7 @@ namespace wqNotes
       private void íîâûéÆóğíàëToolStripMenuItem_Click(object sender, EventArgs e)
       {
          if (!TryClose()) return;
+         mDB = null; wqRichEdit1.Clear();
          mDB = new wqFile();
          mDB.FileName = System.IO.Path.GetTempFileName();
          mDB.FileState = wqFile.wqFileState.wqNew;
@@ -698,9 +703,13 @@ namespace wqNotes
             this.DoProcess(false);
 
             //MainJrn = new Journal(res, false);
-            NodeInfoTag bak = mDB.NowNode;
+            NodeInfoTag bak0 = mDB.NowNode;
+            List<NodeInfoTag> bak1 = mDB.MovingList;
+            Int32 bak2 = mDB.MovePos;
             mDB = new wqFile();
-            mDB.NowNode = bak;
+            mDB.NowNode = bak0;
+            mDB.MovingList = bak1;
+            mDB.MovePos = bak2;
             mDB.FileName = res;
             mDB.FileState = wqFile.wqFileState.wqOpened;
 
@@ -737,27 +746,27 @@ namespace wqNotes
 
       private void îòìåíèòüToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         wqRichEdit1.Undo();
+         if (MainJrn != null) wqRichEdit1.Undo();
       }
 
       private void ïîâòîğèòüToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         wqRichEdit1.Redo();
+         if (MainJrn != null) wqRichEdit1.Redo();
       }
 
       private void âûğåçàòüToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         wqRichEdit1.Cut();
+         if (MainJrn != null) wqRichEdit1.Cut();
       }
 
       private void êîïèğîâàòüToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         wqRichEdit1.Copy();
+         if (MainJrn != null) wqRichEdit1.Copy();
       }
 
       private void âñòàâèòüToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         wqRichEdit1.Paste(DataFormats.GetFormat(DataFormats.UnicodeText));
+         if (MainJrn != null) wqRichEdit1.Paste(DataFormats.GetFormat(DataFormats.UnicodeText));
       }
 
       private void âñòàâèòüÊàêÍîâóşÇàìåòêóToolStripMenuItem_Click(object sender, EventArgs e)
@@ -784,13 +793,16 @@ namespace wqNotes
 
       private void óäàëèòüToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         wqRichEdit1.Focus();
-         SendKeys.Send("{DEL}");
+         if (MainJrn != null)
+         {
+            wqRichEdit1.Focus();
+            SendKeys.Send("{DEL}");
+         }
       }
 
       private void âûäåëèòüÂñåToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         wqRichEdit1.SelectAll();
+         if (MainJrn != null) wqRichEdit1.SelectAll();
       }
 
       private void ïîèñêToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2079,6 +2091,16 @@ namespace wqNotes
                }
             }
          }
+      }
+
+      private void toolStripButton5_Click(object sender, EventArgs e)
+      {
+         âûğåçàòüToolStripMenuItem_Click(sender, e);
+      }
+
+      private void toolStripButton8_Click(object sender, EventArgs e)
+      {
+         óäàëèòüToolStripMenuItem_Click(sender, e);
       }
    }
 }
