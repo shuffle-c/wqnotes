@@ -2,7 +2,7 @@
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
 * Windows: Program.cs, $Revision$
-* URL: $HeadURL$
+* $HeadURL$
 * $Date$
 */
 
@@ -28,7 +28,7 @@ namespace wqNotes
 
       public static string GetShortSize(Int32 qw) //UInt64
       {
-         if (qw < 1024) return qw.ToString() + " ·‡ÈÚ";
+         if (qw < 1024) return qw.ToString() + " ??
          Int32 c = 0, t = 1024 * 1000 - 1;
          while (qw > t) { qw /= 1024; c++; }
          Int32 dw = qw / 1024;
@@ -41,7 +41,7 @@ namespace wqNotes
             ret.Append('0', 4 - ret.Length - uDec.ToString().Length);
             ret.Append(uDec.ToString());
          }
-         String[] use = { " ¡", "Ã¡", "√¡", "“¡" };
+         String[] use = { "?", "?", "?", "?" };
          return ret + " " + use[c];
       }
 
@@ -111,13 +111,12 @@ namespace wqNotes
 
        public static string GetShorterPath(string path, int MaxN)
        {
-          // TODO: Implement ˝ÚÓ
-          return path;
+          // TODO: Implement ?         return path;
        }
 
        public static Options Opt = Options.Load();
 
-       public const string wqVersion = "0.9.3 SVN";
+       public const string wqVersion = "0.9.3.53";
 
        /// <summary>
        /// The main entry point for the application.
