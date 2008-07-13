@@ -2,7 +2,7 @@
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
 * Windows: MainForm.cs, $Revision$
-* URL: $HeadURL$
+* $HeadURL$
 * $Date$
 */
 
@@ -122,12 +122,14 @@ namespace wqNotes
          {
             if (MainJrn != null) MainJrn.CloseDB();
             MainJrn = new Journal(name, toolStripProgressBar1);
+            Boolean isrec = MainJrn.IsChanged;
             mDB.FileState = wqFile.wqFileState.wqOpened;
             mDB.FileName = name;
 
             this.DoProcess(true);
             //Thread
             MainJrn.LoadDB();
+            if (isrec) mDB.NodeList = MainJrn.RecoveryDB();
             treeView1.Nodes.Add(MainJrn.LoadTreeView(FullTreeNode));
             treeView1.ExpandAll(); //
             AddRecentFile(mDB.FileName);
@@ -502,7 +504,7 @@ namespace wqNotes
 
       public void AddToMovingList(NodeInfoTag nit)
       {
-         //if (mDB.MovingList.Count > 0 && nit == mDB.MovingList[0]) return;
+         if (mDB.MovingList.Count > 0 && nit == mDB.MovingList[mDB.MovePos]) return;
          if (this.SearchItem(nit) == null) return;
          if (mDB.MovePos > 0 && !mDB.MoveRet)
          {
@@ -1652,7 +1654,8 @@ namespace wqNotes
                   mDB.NodeList.Add(mDB.NowNode.wqId);
             }
             //if (!mDB.MoveRet) 
-            AddToMovingList(mDB.NowNode);
+            if (((NodeInfoTag)treeView1.SelectedNode.Tag).wqType != NodeInfoTag.wqTypes.wqDir)
+               AddToMovingList(mDB.NowNode);
          }
          //mDB.MoveRet = false;
          mDB.NowNode = (NodeInfoTag)treeView1.SelectedNode.Tag;

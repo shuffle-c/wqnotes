@@ -7,11 +7,11 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("wqNotes")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Your journal of notes")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("wqNotes team")]
 [assembly: AssemblyProduct("wqNotes")]
-[assembly: AssemblyCopyright("Copyleft © 2008")]
+[assembly: AssemblyCopyright("Copyright © New BSD License 2007-2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,6 +30,6 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("0.9.3.0")]
-[assembly: AssemblyFileVersion("0.9.3.0")]
+[assembly: AssemblyVersion("0.9.3.53")]
+[assembly: AssemblyFileVersion("0.9.3.53")]
 [assembly: NeutralResourcesLanguageAttribute("ru")]

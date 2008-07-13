@@ -2,7 +2,7 @@
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
 * Windows: Settings.cs, $Revision$
-* URL: $HeadURL$
+* $HeadURL$
 * $Date$
 */
 

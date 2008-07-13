@@ -2,7 +2,7 @@
 * Copyright (c) 2007-2008 wqNotes Project
 * License: BSD
 * Windows: Journal.cs, $Revision$
-* URL: $HeadURL$
+* $HeadURL$
 * $Date$
 */
 
@@ -124,6 +124,39 @@ namespace wqNotes
       public string FilePath
       {
          get { return this.DBPath; }
+      }
+
+      public List<Int32> RecoveryDB()
+      {
+         XmlDocument xdoc = new XmlDocument();
+         MemoryStream ms = new MemoryStream();
+         XmlTextWriter xmlw = new XmlTextWriter(ms, Encoding.UTF8);
+         xdoc.Load(this.wqGetTmpName()[1]);
+         xdoc.SelectSingleNode("/wqMain/wqStructure").WriteTo(xmlw);
+         xmlw.Flush();
+         ms.Seek(0, SeekOrigin.Begin);
+         wqMainDts = new DataSet();
+         wqMainDts.ReadXml(ms, XmlReadMode.ReadSchema);
+         XmlNode xn = xdoc.SelectSingleNode("/wqMain/wqInfo/infoid");
+         Int32.TryParse(xn.Attributes["lastid"].InnerText, out wqLastId);
+         if (xn.InnerText.Length > 0)
+         {
+            foreach (String str in xn.InnerText.Split(new char[] { '|' }))
+               if (str.Length > 0) DelId.Add(Int32.Parse(str));
+         }
+
+         List<Int32> ret = new List<Int32>();
+         foreach (XmlNode xne in xdoc.SelectNodes("/wqMain/wqInfo/wqElem"))
+         {
+            Int32 key = Int32.Parse(xne.Attributes["id"].InnerText);
+            Int32 val = Int16.Parse(xne.InnerText);
+            cID.Add(key, val);
+            ret.Add(key);
+         }
+         if (xdoc.SelectSingleNode("/wqMain/wqInfo/wqElem") != null)
+            fxmltmps = new FileStream(wqGetTmpName()[0], FileMode.Open);
+         IsChanged = true;
+         return ret;
       }
 
       public void CloseDB()
@@ -1143,6 +1176,7 @@ namespace wqNotes
             xmldb.WriteStartElement("wqElem");
             xmldb.WriteAttributeString("id", u.ToString());
             xmldb.WriteString(this.cID[u].ToString());
+            xmldb.WriteEndElement();
          }
          xmldb.WriteEndElement();
          xmldb.WriteEndElement();
